@@ -1,0 +1,54 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'lib/**'
+      - 'windows/**'
+      - 'pubspec.yaml'
+      - 'pubspec.lock'
+      - '.github/workflows/build-windows.yml'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.24.5'
+
+      - name: Enable Windows desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Windows release
+        run: flutter build windows --release
+
+      - name: Create zip artifact
+        shell: powershell
+        run: |
+          $output = Join-Path $PWD 'build/windows/x64/runner/Release'
+          $zip = Join-Path $PWD 'tubtrace_desktop_windows_release.zip'
+          if (Test-Path $output) {
+            Compress-Archive -Path (Join-Path $output '*') -DestinationPath $zip -Force
+            Write-Host "Created $zip"
+          } else {
+            throw "Windows build output not found: $output"
+          }
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tubtrace-desktop-windows
+          path: tubtrace_desktop_windows_release.zip
+          if-no-files-found: error
