@@ -1,4 +1,4 @@
-name: Build TubTraec Desktop Windows
+name: Build TubTrace Desktop Windows
 
 on:
   workflow_dispatch:
@@ -10,6 +10,10 @@ jobs:
   build-windows:
     runs-on: windows-latest
 
+    defaults:
+      run:
+        working-directory: ./tubtrace_desktop
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,6 +23,9 @@ jobs:
         with:
           channel: stable
           cache: true
+
+      - name: Enable Windows desktop
+        run: flutter config --enable-windows-desktop
 
       - name: Check Flutter
         run: flutter --version
