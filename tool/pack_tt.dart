@@ -9,7 +9,7 @@ import 'package:tubtrace_desktop/services/tt_crypto.dart';
 /// Pack portable JSON into an encrypted .tt for desktop import.
 ///
 /// Usage:
-///   dart run tool/pack_tt.dart <input.json> <licenseKey> [output.tt]
+///   dart run tool/pack_tt.dart input.json licenseKey [output.tt]
 Future<void> main(List<String> args) async {
   if (args.length < 2) {
     stderr.writeln('Usage: dart run tool/pack_tt.dart <input.json> <licenseKey> [output.tt]');

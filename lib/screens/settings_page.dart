@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart' show Value;
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:tubtrace_desktop/app_scope.dart';
 import 'package:tubtrace_desktop/db/app_database.dart';
@@ -26,6 +27,132 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _load() async {
     final s = await AppScope.of(context).auth.settings();
     if (mounted) setState(() => _settings = s);
+  }
+
+  Future<void> _saveProfile() async {
+    final s = _settings;
+    if (s == null) return;
+
+    final labNameCtrl = TextEditingController(text: s.labName);
+    final addressCtrl = TextEditingController(text: s.address);
+    final contactCtrl = TextEditingController(text: s.contact);
+    final emailCtrl = TextEditingController(text: s.email);
+    final websiteCtrl = TextEditingController(text: s.websiteUrl);
+    final extraCtrl = TextEditingController(text: s.additionalInfo);
+    final commissionCtrl = TextEditingController(text: s.defaultDoctorCommissionPercent.toString());
+    final logoPathCtrl = TextEditingController(text: s.logoPath);
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    final db = AppScope.of(context).db;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Lab profile'),
+        content: SizedBox(
+          width: 520,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(controller: labNameCtrl, decoration: const InputDecoration(labelText: 'Lab name')),
+                const SizedBox(height: 8),
+                TextField(controller: addressCtrl, decoration: const InputDecoration(labelText: 'Address'), minLines: 2, maxLines: 3),
+                const SizedBox(height: 8),
+                TextField(controller: contactCtrl, decoration: const InputDecoration(labelText: 'Contact')),
+                const SizedBox(height: 8),
+                TextField(controller: emailCtrl, decoration: const InputDecoration(labelText: 'Email')),
+                const SizedBox(height: 8),
+                TextField(controller: websiteCtrl, decoration: const InputDecoration(labelText: 'Website URL')),
+                const SizedBox(height: 8),
+                TextField(controller: extraCtrl, decoration: const InputDecoration(labelText: 'Additional info'), minLines: 2, maxLines: 4),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: commissionCtrl,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: 'Default doctor commission %'),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: logoPathCtrl,
+                        readOnly: true,
+                        decoration: const InputDecoration(labelText: 'Logo path'),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    TextButton.icon(
+                      onPressed: () async {
+                        final result = await FilePicker.pickFiles(type: FileType.image, allowMultiple: false);
+                        if (result != null && result.files.single.path != null) {
+                          logoPathCtrl.text = result.files.single.path!;
+                        }
+                      },
+                      icon: const Icon(Icons.image_outlined),
+                      label: const Text('Select'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+
+    if (ok != true) {
+      labNameCtrl.dispose();
+      addressCtrl.dispose();
+      contactCtrl.dispose();
+      emailCtrl.dispose();
+      websiteCtrl.dispose();
+      extraCtrl.dispose();
+      commissionCtrl.dispose();
+      logoPathCtrl.dispose();
+      return;
+    }
+
+    setState(() => _busy = true);
+    try {
+      await (db.update(db.appSettings)..where((t) => t.id.equals(1))).write(
+        AppSettingsCompanion(
+          labName: Value(labNameCtrl.text.trim()),
+          address: Value(addressCtrl.text.trim()),
+          contact: Value(contactCtrl.text.trim()),
+          email: Value(emailCtrl.text.trim()),
+          websiteUrl: Value(websiteCtrl.text.trim()),
+          additionalInfo: Value(extraCtrl.text.trim()),
+          logoPath: Value(logoPathCtrl.text.trim()),
+          defaultDoctorCommissionPercent: Value(int.tryParse(commissionCtrl.text.trim()) ?? 0),
+        ),
+      );
+      await _load();
+      if (!mounted || messenger == null) return;
+      messenger.showSnackBar(
+        const SnackBar(content: Text('Lab profile saved')),
+      );
+    } catch (e) {
+      if (!mounted || messenger == null) return;
+      messenger.showSnackBar(SnackBar(content: Text('Profile save failed: $e')));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+
+    labNameCtrl.dispose();
+    addressCtrl.dispose();
+    contactCtrl.dispose();
+    emailCtrl.dispose();
+    websiteCtrl.dispose();
+    extraCtrl.dispose();
+    commissionCtrl.dispose();
+    logoPathCtrl.dispose();
   }
 
   Future<void> _export() async {
@@ -248,6 +375,34 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const SizedBox(height: 14),
           SectionCard(
+            title: 'Lab profile',
+            subtitle: 'Match the web app details for the local lab record',
+            child: s == null
+                ? const LinearProgressIndicator()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _InfoRow(label: 'Lab name', value: s.labName),
+                      _InfoRow(label: 'Address', value: s.address.isEmpty ? '—' : s.address),
+                      _InfoRow(label: 'Contact', value: s.contact.isEmpty ? '—' : s.contact),
+                      _InfoRow(label: 'Email', value: s.email.isEmpty ? '—' : s.email),
+                      _InfoRow(label: 'Website', value: s.websiteUrl.isEmpty ? '—' : s.websiteUrl),
+                      _InfoRow(label: 'Default doctor commission', value: '${s.defaultDoctorCommissionPercent}%'),
+                      if (s.logoPath.isNotEmpty) _InfoRow(label: 'Logo', value: s.logoPath),
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: FilledButton.icon(
+                          onPressed: _busy ? null : _saveProfile,
+                          icon: const Icon(Icons.edit_note_outlined),
+                          label: const Text('Edit lab profile'),
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
+          const SizedBox(height: 14),
+          SectionCard(
             title: 'Theme',
             subtitle: 'Accent color for sidebar, buttons and highlights',
             child: ListenableBuilder(
@@ -345,6 +500,11 @@ class _ReportPrintSettings extends StatefulWidget {
 class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
   late bool _showHeader = widget.settings.showReportHeader;
   late bool _showFooter = widget.settings.showReportFooter;
+  late bool _showSectionTitles = widget.settings.showReportSectionTitles;
+  late bool _colorInRange = widget.settings.reportColorInRange;
+  late bool _colorOutOfRange = widget.settings.reportColorOutOfRange;
+  late bool _flagLow = widget.settings.reportFlagLow;
+  late bool _flagHigh = widget.settings.reportFlagHigh;
   late final _header = TextEditingController(text: widget.settings.reportHeaderHtml);
   late final _footer = TextEditingController(text: widget.settings.reportFooterHtml);
   late final _headerH = TextEditingController(
@@ -352,6 +512,15 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
   );
   late final _footerH = TextEditingController(
     text: widget.settings.reportFooterHeightMm?.toString() ?? '',
+  );
+  late final _patientFont = TextEditingController(
+    text: (widget.settings.reportFontPatientPt ?? 9).toString(),
+  );
+  late final _testsFont = TextEditingController(
+    text: (widget.settings.reportFontTestsPt ?? 9).toString(),
+  );
+  late final _descFont = TextEditingController(
+    text: (widget.settings.reportFontDescriptionPt ?? 8).toString(),
   );
   bool _saving = false;
 
@@ -364,10 +533,18 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
         oldWidget.settings.reportFooterHtml != widget.settings.reportFooterHtml) {
       _showHeader = widget.settings.showReportHeader;
       _showFooter = widget.settings.showReportFooter;
+      _showSectionTitles = widget.settings.showReportSectionTitles;
+      _colorInRange = widget.settings.reportColorInRange;
+      _colorOutOfRange = widget.settings.reportColorOutOfRange;
+      _flagLow = widget.settings.reportFlagLow;
+      _flagHigh = widget.settings.reportFlagHigh;
       _header.text = widget.settings.reportHeaderHtml;
       _footer.text = widget.settings.reportFooterHtml;
       _headerH.text = widget.settings.reportHeaderHeightMm?.toString() ?? '';
       _footerH.text = widget.settings.reportFooterHeightMm?.toString() ?? '';
+      _patientFont.text = (widget.settings.reportFontPatientPt ?? 9).toString();
+      _testsFont.text = (widget.settings.reportFontTestsPt ?? 9).toString();
+      _descFont.text = (widget.settings.reportFontDescriptionPt ?? 8).toString();
     }
   }
 
@@ -377,6 +554,9 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
     _footer.dispose();
     _headerH.dispose();
     _footerH.dispose();
+    _patientFont.dispose();
+    _testsFont.dispose();
+    _descFont.dispose();
     super.dispose();
   }
 
@@ -384,6 +564,12 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
     final t = raw.trim();
     if (t.isEmpty) return null;
     return int.tryParse(t);
+  }
+
+  int _parseFont(String raw, int fallback) {
+    final v = int.tryParse(raw.trim());
+    if (v == null) return fallback;
+    return v.clamp(6, 24);
   }
 
   Future<void> _save({bool quiet = false}) async {
@@ -394,6 +580,14 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
         AppSettingsCompanion(
           showReportHeader: Value(_showHeader),
           showReportFooter: Value(_showFooter),
+          showReportSectionTitles: Value(_showSectionTitles),
+          reportColorInRange: Value(_colorInRange),
+          reportColorOutOfRange: Value(_colorOutOfRange),
+          reportFlagLow: Value(_flagLow),
+          reportFlagHigh: Value(_flagHigh),
+          reportFontPatientPt: Value(_parseFont(_patientFont.text, 9)),
+          reportFontTestsPt: Value(_parseFont(_testsFont.text, 9)),
+          reportFontDescriptionPt: Value(_parseFont(_descFont.text, 8)),
           reportHeaderHtml: Value(_header.text),
           reportFooterHtml: Value(_footer.text),
           reportHeaderHeightMm: Value(_parseMm(_headerH.text)),
@@ -442,6 +636,92 @@ class _ReportPrintSettingsState extends State<_ReportPrintSettings> {
                   setState(() => _showFooter = v);
                   await _save(quiet: true);
                 },
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Show section titles on report'),
+          value: _showSectionTitles,
+          onChanged: disabled
+              ? null
+              : (v) async {
+                  setState(() => _showSectionTitles = v);
+                  await _save(quiet: true);
+                },
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Color in-range values'),
+          value: _colorInRange,
+          onChanged: disabled
+              ? null
+              : (v) async {
+                  setState(() => _colorInRange = v);
+                  await _save(quiet: true);
+                },
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Color out-of-range values'),
+          value: _colorOutOfRange,
+          onChanged: disabled
+              ? null
+              : (v) async {
+                  setState(() => _colorOutOfRange = v);
+                  await _save(quiet: true);
+                },
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Flag low values'),
+          value: _flagLow,
+          onChanged: disabled
+              ? null
+              : (v) async {
+                  setState(() => _flagLow = v);
+                  await _save(quiet: true);
+                },
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Flag high values'),
+          value: _flagHigh,
+          onChanged: disabled
+              ? null
+              : (v) async {
+                  setState(() => _flagHigh = v);
+                  await _save(quiet: true);
+                },
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: _patientFont,
+                enabled: !disabled,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Patient font (pt)'),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: TextField(
+                controller: _testsFont,
+                enabled: !disabled,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Tests font (pt)'),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: TextField(
+                controller: _descFont,
+                enabled: !disabled,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Description font (pt)'),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         Row(

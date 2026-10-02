@@ -162,6 +162,123 @@ class LabRepository {
     );
   }
 
+  Future<void> syncDoctorWallet(int doctorId) async {
+    final rows = await (db.select(db.doctorPercents)
+          ..where((t) => t.doctorId.equals(doctorId) & t.deleteStatus.equals(false)))
+        .get();
+    final wallet = rows.fold<double>(0, (sum, row) => sum + row.payableAmount);
+    await (db.update(db.doctors)..where((t) => t.id.equals(doctorId))).write(
+      DoctorsCompanion(wallet: Value(wallet)),
+    );
+  }
+
+  Future<void> withdrawDoctorAmount(int doctorId, double amount) async {
+    if (amount <= 0) {
+      throw ArgumentError('Amount must be greater than 0 for withdrawal.');
+    }
+
+    final doctor = await (db.select(db.doctors)..where((t) => t.id.equals(doctorId))).getSingleOrNull();
+    if (doctor == null) {
+      throw StateError('Doctor not found');
+    }
+    if (doctor.isInternal) {
+      throw StateError('Withdrawal is not available for internal Self account.');
+    }
+
+    final balance = doctor.wallet;
+    if (amount > balance) {
+      throw StateError('Withdraw amount cannot exceed current balance (₹${balance.toStringAsFixed(2)}).');
+    }
+
+    await db.into(db.doctorPercents).insert(
+      DoctorPercentsCompanion.insert(
+        patientId: 0,
+        doctorId: doctorId,
+        amount: const Value(0),
+        percent: const Value(0),
+        payableAmount: Value(-amount),
+      ),
+    );
+
+    await (db.update(db.doctors)..where((t) => t.id.equals(doctorId))).write(
+      DoctorsCompanion(wallet: Value(balance - amount)),
+    );
+  }
+
+  Future<double> balanceForDoctor(int doctorId) async {
+    final rows = await (db.select(db.doctorPercents)
+          ..where((t) => t.doctorId.equals(doctorId) & t.deleteStatus.equals(false)))
+        .get();
+    return rows.fold<double>(0, (sum, row) => sum + row.payableAmount);
+  }
+
+  Future<void> recordDoctorCommission({
+    required int patientId,
+    required int doctorId,
+    required List<int> patientTestIds,
+    required List<BillLine> lines,
+    required double totalAmount,
+    required double discountAmount,
+  }) async {
+    if (lines.isEmpty || totalAmount <= 0) return;
+
+    final doctor = await (db.select(db.doctors)..where((t) => t.id.equals(doctorId))).getSingleOrNull();
+    if (doctor == null || doctor.isInternal) return;
+
+    final hasSummary = await (db.select(db.doctorPercents)
+          ..where((t) =>
+              t.patientId.equals(patientId) &
+              t.doctorId.equals(doctorId) &
+              t.deleteStatus.equals(false)))
+        .getSingleOrNull();
+    if (hasSummary != null) {
+      await syncDoctorWallet(doctorId);
+      return;
+    }
+
+    var totalCommission = 0.0;
+    final netBill = (totalAmount - discountAmount).clamp(0, double.infinity).toDouble();
+    for (int i = 0; i < lines.length; i++) {
+      final line = lines[i];
+      final share = totalAmount <= 0 ? 0.0 : line.price / totalAmount;
+      final netLine = (line.price - discountAmount * share).clamp(0, double.infinity).toDouble();
+      final pct = line.test.commissionPercent ?? doctor.commissionPercent;
+      totalCommission += netLine * pct / 100;
+    }
+    totalCommission = double.parse(totalCommission.toStringAsFixed(2));
+
+    final summaryId = await db.into(db.doctorPercents).insert(
+      DoctorPercentsCompanion.insert(
+        patientId: patientId,
+        doctorId: doctorId,
+        amount: Value(netBill),
+        percent: Value(netBill > 0 ? (totalCommission / netBill * 100) : 0),
+        payableAmount: Value(totalCommission),
+      ),
+    );
+
+    for (int i = 0; i < lines.length; i++) {
+      final line = lines[i];
+      final share = totalAmount <= 0 ? 0.0 : line.price / totalAmount;
+      final netLine = (line.price - discountAmount * share).clamp(0, double.infinity).toDouble();
+      final pct = line.test.commissionPercent ?? doctor.commissionPercent;
+      final commission = (netLine * pct / 100).clamp(0, double.infinity).toDouble();
+      await db.into(db.doctorCommissionItems).insert(
+        DoctorCommissionItemsCompanion.insert(
+          doctorPercentId: summaryId,
+          patientTestId: Value(patientTestIds.length > i ? patientTestIds[i] : null),
+          testId: line.test.id,
+          testName: Value(line.test.name),
+          billedAmount: Value(netLine),
+          percentApplied: Value(pct),
+          commissionAmount: Value(commission),
+        ),
+      );
+    }
+
+    await syncDoctorWallet(doctorId);
+  }
+
   // ---- Tests & parameters ----
   Stream<List<LabTest>> watchTests() =>
       (db.select(db.labTests)
@@ -462,50 +579,31 @@ class LabRepository {
             ),
           );
 
+      final insertedPatientTests = <int>[];
       for (final line in lines) {
-        await db.into(db.patientTests).insert(
+        final patientTestId = await db.into(db.patientTests).insert(
               PatientTestsCompanion.insert(
                 patientId: id,
                 testId: line.test.id,
                 price: Value(line.price),
               ),
             );
+        insertedPatientTests.add(patientTestId);
       }
 
       if (doctor != null && !doctor.isInternal && doctorId != null) {
-        final commission = _lineCommissions(
-          doctor: doctor,
+        await recordDoctorCommission(
+          patientId: id,
+          doctorId: doctorId,
+          patientTestIds: insertedPatientTests,
           lines: lines,
           totalAmount: total,
           discountAmount: discountAmount,
         );
-        if (commission > 0.009) {
-          await (db.update(db.doctors)..where((t) => t.id.equals(doctorId))).write(
-            DoctorsCompanion(wallet: Value(doctor.wallet + commission)),
-          );
-        }
       }
 
       return id;
     });
-  }
-
-  /// Simplified CommissionResolver: test.commissionPercent ?? doctor % (skip internal).
-  double _lineCommissions({
-    required Doctor doctor,
-    required List<BillLine> lines,
-    required double totalAmount,
-    required double discountAmount,
-  }) {
-    if (lines.isEmpty || totalAmount <= 0 || doctor.isInternal) return 0;
-    var sum = 0.0;
-    for (final line in lines) {
-      final share = line.price / totalAmount;
-      final net = (line.price - discountAmount * share).clamp(0, double.infinity);
-      final pct = line.test.commissionPercent ?? doctor.commissionPercent;
-      sum += net * pct / 100;
-    }
-    return double.parse(sum.toStringAsFixed(2));
   }
 
   Future<void> saveReadings({
@@ -633,10 +731,13 @@ class LabRepository {
     }
     final volume = counts.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
 
-    final doctors = await (db.select(db.doctors)..where((t) => t.deleteStatus.equals(false))).get();
-    // Approximate commissions in range via wallet is not dated; show sum of non-internal wallets as stock.
-    final commissionTotal =
-        doctors.where((d) => !d.isInternal).fold<double>(0, (s, d) => s + d.wallet);
+    final commissionLedger = await (db.select(db.doctorPercents)
+          ..where((t) =>
+              t.deleteStatus.equals(false) &
+              t.createdAt.isBiggerOrEqualValue(start) &
+              t.createdAt.isSmallerOrEqualValue(end)))
+        .get();
+    final commissionTotal = commissionLedger.fold<double>(0, (sum, row) => sum + row.payableAmount);
 
     return AnalyticsSlice(
       from: start,

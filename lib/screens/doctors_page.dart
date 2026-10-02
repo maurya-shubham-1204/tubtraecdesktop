@@ -147,6 +147,61 @@ class DoctorsPage extends StatelessWidget {
     }
   }
 
+  Future<void> _withdraw(BuildContext context, Doctor d) async {
+    if (d.isInternal) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Withdrawal is not available for internal Self account.')),
+      );
+      return;
+    }
+    final controller = TextEditingController();
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Withdraw for ${d.name}'),
+        content: SizedBox(
+          width: 300,
+          child: TextField(
+            controller: controller,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: InputDecoration(
+              labelText: 'Amount',
+              hintText: 'Current wallet: ₹ ${d.wallet.toStringAsFixed(2)}',
+            ),
+            autofocus: true,
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Withdraw'),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !context.mounted) return;
+
+    final amount = double.tryParse(controller.text.trim());
+    if (amount == null || amount <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Enter a valid amount greater than 0.')),
+      );
+      return;
+    }
+
+    try {
+      await LabRepository(AppScope.of(context).db).withdrawDoctorAmount(d.id, amount);
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Withdrawn ₹ ${amount.toStringAsFixed(2)} from ${d.name}')),
+      );
+    } catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final repo = LabRepository(AppScope.of(context).db);
@@ -211,6 +266,11 @@ class DoctorsPage extends StatelessWidget {
                                             child: const Text('Edit'),
                                           ),
                                           if (!d.isInternal) ...[
+                                            const SizedBox(width: 6),
+                                            OutlinedButton(
+                                              onPressed: () => _withdraw(context, d),
+                                              child: const Text('Withdraw'),
+                                            ),
                                             const SizedBox(width: 6),
                                             TextButton(
                                               onPressed: () => _delete(context, d),

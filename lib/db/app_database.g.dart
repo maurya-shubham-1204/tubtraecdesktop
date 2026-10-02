@@ -67,6 +67,88 @@ class $AppSettingsTable extends AppSettings
     requiredDuringInsert: false,
     defaultValue: const Constant('My Lab'),
   );
+  static const VerificationMeta _addressMeta = const VerificationMeta(
+    'address',
+  );
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+    'address',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _contactMeta = const VerificationMeta(
+    'contact',
+  );
+  @override
+  late final GeneratedColumn<String> contact = GeneratedColumn<String>(
+    'contact',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+    'email',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _websiteUrlMeta = const VerificationMeta(
+    'websiteUrl',
+  );
+  @override
+  late final GeneratedColumn<String> websiteUrl = GeneratedColumn<String>(
+    'website_url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _additionalInfoMeta = const VerificationMeta(
+    'additionalInfo',
+  );
+  @override
+  late final GeneratedColumn<String> additionalInfo = GeneratedColumn<String>(
+    'additional_info',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _logoPathMeta = const VerificationMeta(
+    'logoPath',
+  );
+  @override
+  late final GeneratedColumn<String> logoPath = GeneratedColumn<String>(
+    'logo_path',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _defaultDoctorCommissionPercentMeta =
+      const VerificationMeta('defaultDoctorCommissionPercent');
+  @override
+  late final GeneratedColumn<int> defaultDoctorCommissionPercent =
+      GeneratedColumn<int>(
+        'default_doctor_commission_percent',
+        aliasedName,
+        false,
+        type: DriftSqlType.int,
+        requiredDuringInsert: false,
+        defaultValue: const Constant(0),
+      );
   static const VerificationMeta _registeredMeta = const VerificationMeta(
     'registered',
   );
@@ -175,6 +257,112 @@ class $AppSettingsTable extends AppSettings
     ),
     defaultValue: const Constant(true),
   );
+  static const VerificationMeta _showReportSectionTitlesMeta =
+      const VerificationMeta('showReportSectionTitles');
+  @override
+  late final GeneratedColumn<bool> showReportSectionTitles =
+      GeneratedColumn<bool>(
+        'show_report_section_titles',
+        aliasedName,
+        false,
+        type: DriftSqlType.bool,
+        requiredDuringInsert: false,
+        defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("show_report_section_titles" IN (0, 1))',
+        ),
+        defaultValue: const Constant(true),
+      );
+  static const VerificationMeta _reportFontPatientPtMeta =
+      const VerificationMeta('reportFontPatientPt');
+  @override
+  late final GeneratedColumn<int> reportFontPatientPt = GeneratedColumn<int>(
+    'report_font_patient_pt',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reportFontTestsPtMeta = const VerificationMeta(
+    'reportFontTestsPt',
+  );
+  @override
+  late final GeneratedColumn<int> reportFontTestsPt = GeneratedColumn<int>(
+    'report_font_tests_pt',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reportFontDescriptionPtMeta =
+      const VerificationMeta('reportFontDescriptionPt');
+  @override
+  late final GeneratedColumn<int> reportFontDescriptionPt =
+      GeneratedColumn<int>(
+        'report_font_description_pt',
+        aliasedName,
+        true,
+        type: DriftSqlType.int,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _reportColorInRangeMeta =
+      const VerificationMeta('reportColorInRange');
+  @override
+  late final GeneratedColumn<bool> reportColorInRange = GeneratedColumn<bool>(
+    'report_color_in_range',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("report_color_in_range" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _reportColorOutOfRangeMeta =
+      const VerificationMeta('reportColorOutOfRange');
+  @override
+  late final GeneratedColumn<bool> reportColorOutOfRange =
+      GeneratedColumn<bool>(
+        'report_color_out_of_range',
+        aliasedName,
+        false,
+        type: DriftSqlType.bool,
+        requiredDuringInsert: false,
+        defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("report_color_out_of_range" IN (0, 1))',
+        ),
+        defaultValue: const Constant(true),
+      );
+  static const VerificationMeta _reportFlagLowMeta = const VerificationMeta(
+    'reportFlagLow',
+  );
+  @override
+  late final GeneratedColumn<bool> reportFlagLow = GeneratedColumn<bool>(
+    'report_flag_low',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("report_flag_low" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _reportFlagHighMeta = const VerificationMeta(
+    'reportFlagHigh',
+  );
+  @override
+  late final GeneratedColumn<bool> reportFlagHigh = GeneratedColumn<bool>(
+    'report_flag_high',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("report_flag_high" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
   static const VerificationMeta _reportHeaderHtmlMeta = const VerificationMeta(
     'reportHeaderHtml',
   );
@@ -226,6 +414,13 @@ class $AppSettingsTable extends AppSettings
     licenseKey,
     licenseVer,
     labName,
+    address,
+    contact,
+    email,
+    websiteUrl,
+    additionalInfo,
+    logoPath,
+    defaultDoctorCommissionPercent,
     registered,
     securityEnabled,
     passwordHash,
@@ -234,6 +429,14 @@ class $AppSettingsTable extends AppSettings
     registeredAt,
     showReportHeader,
     showReportFooter,
+    showReportSectionTitles,
+    reportFontPatientPt,
+    reportFontTestsPt,
+    reportFontDescriptionPt,
+    reportColorInRange,
+    reportColorOutOfRange,
+    reportFlagLow,
+    reportFlagHigh,
     reportHeaderHtml,
     reportFooterHtml,
     reportHeaderHeightMm,
@@ -276,6 +479,54 @@ class $AppSettingsTable extends AppSettings
       context.handle(
         _labNameMeta,
         labName.isAcceptableOrUnknown(data['lab_name']!, _labNameMeta),
+      );
+    }
+    if (data.containsKey('address')) {
+      context.handle(
+        _addressMeta,
+        address.isAcceptableOrUnknown(data['address']!, _addressMeta),
+      );
+    }
+    if (data.containsKey('contact')) {
+      context.handle(
+        _contactMeta,
+        contact.isAcceptableOrUnknown(data['contact']!, _contactMeta),
+      );
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['email']!, _emailMeta),
+      );
+    }
+    if (data.containsKey('website_url')) {
+      context.handle(
+        _websiteUrlMeta,
+        websiteUrl.isAcceptableOrUnknown(data['website_url']!, _websiteUrlMeta),
+      );
+    }
+    if (data.containsKey('additional_info')) {
+      context.handle(
+        _additionalInfoMeta,
+        additionalInfo.isAcceptableOrUnknown(
+          data['additional_info']!,
+          _additionalInfoMeta,
+        ),
+      );
+    }
+    if (data.containsKey('logo_path')) {
+      context.handle(
+        _logoPathMeta,
+        logoPath.isAcceptableOrUnknown(data['logo_path']!, _logoPathMeta),
+      );
+    }
+    if (data.containsKey('default_doctor_commission_percent')) {
+      context.handle(
+        _defaultDoctorCommissionPercentMeta,
+        defaultDoctorCommissionPercent.isAcceptableOrUnknown(
+          data['default_doctor_commission_percent']!,
+          _defaultDoctorCommissionPercentMeta,
+        ),
       );
     }
     if (data.containsKey('registered')) {
@@ -347,6 +598,78 @@ class $AppSettingsTable extends AppSettings
         ),
       );
     }
+    if (data.containsKey('show_report_section_titles')) {
+      context.handle(
+        _showReportSectionTitlesMeta,
+        showReportSectionTitles.isAcceptableOrUnknown(
+          data['show_report_section_titles']!,
+          _showReportSectionTitlesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_font_patient_pt')) {
+      context.handle(
+        _reportFontPatientPtMeta,
+        reportFontPatientPt.isAcceptableOrUnknown(
+          data['report_font_patient_pt']!,
+          _reportFontPatientPtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_font_tests_pt')) {
+      context.handle(
+        _reportFontTestsPtMeta,
+        reportFontTestsPt.isAcceptableOrUnknown(
+          data['report_font_tests_pt']!,
+          _reportFontTestsPtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_font_description_pt')) {
+      context.handle(
+        _reportFontDescriptionPtMeta,
+        reportFontDescriptionPt.isAcceptableOrUnknown(
+          data['report_font_description_pt']!,
+          _reportFontDescriptionPtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_color_in_range')) {
+      context.handle(
+        _reportColorInRangeMeta,
+        reportColorInRange.isAcceptableOrUnknown(
+          data['report_color_in_range']!,
+          _reportColorInRangeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_color_out_of_range')) {
+      context.handle(
+        _reportColorOutOfRangeMeta,
+        reportColorOutOfRange.isAcceptableOrUnknown(
+          data['report_color_out_of_range']!,
+          _reportColorOutOfRangeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_flag_low')) {
+      context.handle(
+        _reportFlagLowMeta,
+        reportFlagLow.isAcceptableOrUnknown(
+          data['report_flag_low']!,
+          _reportFlagLowMeta,
+        ),
+      );
+    }
+    if (data.containsKey('report_flag_high')) {
+      context.handle(
+        _reportFlagHighMeta,
+        reportFlagHigh.isAcceptableOrUnknown(
+          data['report_flag_high']!,
+          _reportFlagHighMeta,
+        ),
+      );
+    }
     if (data.containsKey('report_header_html')) {
       context.handle(
         _reportHeaderHtmlMeta,
@@ -412,6 +735,34 @@ class $AppSettingsTable extends AppSettings
         DriftSqlType.string,
         data['${effectivePrefix}lab_name'],
       )!,
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      )!,
+      contact: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact'],
+      )!,
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}email'],
+      )!,
+      websiteUrl: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}website_url'],
+      )!,
+      additionalInfo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}additional_info'],
+      )!,
+      logoPath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}logo_path'],
+      )!,
+      defaultDoctorCommissionPercent: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}default_doctor_commission_percent'],
+      )!,
       registered: attachedDatabase.typeMapping.read(
         DriftSqlType.bool,
         data['${effectivePrefix}registered'],
@@ -444,6 +795,38 @@ class $AppSettingsTable extends AppSettings
         DriftSqlType.bool,
         data['${effectivePrefix}show_report_footer'],
       )!,
+      showReportSectionTitles: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}show_report_section_titles'],
+      )!,
+      reportFontPatientPt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}report_font_patient_pt'],
+      ),
+      reportFontTestsPt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}report_font_tests_pt'],
+      ),
+      reportFontDescriptionPt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}report_font_description_pt'],
+      ),
+      reportColorInRange: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}report_color_in_range'],
+      )!,
+      reportColorOutOfRange: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}report_color_out_of_range'],
+      )!,
+      reportFlagLow: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}report_flag_low'],
+      )!,
+      reportFlagHigh: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}report_flag_high'],
+      )!,
       reportHeaderHtml: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}report_header_html'],
@@ -475,6 +858,13 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
   final String licenseKey;
   final String licenseVer;
   final String labName;
+  final String address;
+  final String contact;
+  final String email;
+  final String websiteUrl;
+  final String additionalInfo;
+  final String logoPath;
+  final int defaultDoctorCommissionPercent;
   final bool registered;
   final bool securityEnabled;
   final String? passwordHash;
@@ -485,6 +875,16 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
   /// Match web lab_settings.show_report_header / show_report_footer.
   final bool showReportHeader;
   final bool showReportFooter;
+  final bool showReportSectionTitles;
+
+  /// Web report font and color settings.
+  final int? reportFontPatientPt;
+  final int? reportFontTestsPt;
+  final int? reportFontDescriptionPt;
+  final bool reportColorInRange;
+  final bool reportColorOutOfRange;
+  final bool reportFlagLow;
+  final bool reportFlagHigh;
 
   /// Web `report_header_html` / `report_footer_html` (HTML letterhead).
   final String reportHeaderHtml;
@@ -497,6 +897,13 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     required this.licenseKey,
     required this.licenseVer,
     required this.labName,
+    required this.address,
+    required this.contact,
+    required this.email,
+    required this.websiteUrl,
+    required this.additionalInfo,
+    required this.logoPath,
+    required this.defaultDoctorCommissionPercent,
     required this.registered,
     required this.securityEnabled,
     this.passwordHash,
@@ -505,6 +912,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     this.registeredAt,
     required this.showReportHeader,
     required this.showReportFooter,
+    required this.showReportSectionTitles,
+    this.reportFontPatientPt,
+    this.reportFontTestsPt,
+    this.reportFontDescriptionPt,
+    required this.reportColorInRange,
+    required this.reportColorOutOfRange,
+    required this.reportFlagLow,
+    required this.reportFlagHigh,
     required this.reportHeaderHtml,
     required this.reportFooterHtml,
     this.reportHeaderHeightMm,
@@ -518,6 +933,15 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     map['license_key'] = Variable<String>(licenseKey);
     map['license_ver'] = Variable<String>(licenseVer);
     map['lab_name'] = Variable<String>(labName);
+    map['address'] = Variable<String>(address);
+    map['contact'] = Variable<String>(contact);
+    map['email'] = Variable<String>(email);
+    map['website_url'] = Variable<String>(websiteUrl);
+    map['additional_info'] = Variable<String>(additionalInfo);
+    map['logo_path'] = Variable<String>(logoPath);
+    map['default_doctor_commission_percent'] = Variable<int>(
+      defaultDoctorCommissionPercent,
+    );
     map['registered'] = Variable<bool>(registered);
     map['security_enabled'] = Variable<bool>(securityEnabled);
     if (!nullToAbsent || passwordHash != null) {
@@ -532,6 +956,22 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     }
     map['show_report_header'] = Variable<bool>(showReportHeader);
     map['show_report_footer'] = Variable<bool>(showReportFooter);
+    map['show_report_section_titles'] = Variable<bool>(showReportSectionTitles);
+    if (!nullToAbsent || reportFontPatientPt != null) {
+      map['report_font_patient_pt'] = Variable<int>(reportFontPatientPt);
+    }
+    if (!nullToAbsent || reportFontTestsPt != null) {
+      map['report_font_tests_pt'] = Variable<int>(reportFontTestsPt);
+    }
+    if (!nullToAbsent || reportFontDescriptionPt != null) {
+      map['report_font_description_pt'] = Variable<int>(
+        reportFontDescriptionPt,
+      );
+    }
+    map['report_color_in_range'] = Variable<bool>(reportColorInRange);
+    map['report_color_out_of_range'] = Variable<bool>(reportColorOutOfRange);
+    map['report_flag_low'] = Variable<bool>(reportFlagLow);
+    map['report_flag_high'] = Variable<bool>(reportFlagHigh);
     map['report_header_html'] = Variable<String>(reportHeaderHtml);
     map['report_footer_html'] = Variable<String>(reportFooterHtml);
     if (!nullToAbsent || reportHeaderHeightMm != null) {
@@ -550,6 +990,13 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       licenseKey: Value(licenseKey),
       licenseVer: Value(licenseVer),
       labName: Value(labName),
+      address: Value(address),
+      contact: Value(contact),
+      email: Value(email),
+      websiteUrl: Value(websiteUrl),
+      additionalInfo: Value(additionalInfo),
+      logoPath: Value(logoPath),
+      defaultDoctorCommissionPercent: Value(defaultDoctorCommissionPercent),
       registered: Value(registered),
       securityEnabled: Value(securityEnabled),
       passwordHash: passwordHash == null && nullToAbsent
@@ -564,6 +1011,20 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           : Value(registeredAt),
       showReportHeader: Value(showReportHeader),
       showReportFooter: Value(showReportFooter),
+      showReportSectionTitles: Value(showReportSectionTitles),
+      reportFontPatientPt: reportFontPatientPt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reportFontPatientPt),
+      reportFontTestsPt: reportFontTestsPt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reportFontTestsPt),
+      reportFontDescriptionPt: reportFontDescriptionPt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reportFontDescriptionPt),
+      reportColorInRange: Value(reportColorInRange),
+      reportColorOutOfRange: Value(reportColorOutOfRange),
+      reportFlagLow: Value(reportFlagLow),
+      reportFlagHigh: Value(reportFlagHigh),
       reportHeaderHtml: Value(reportHeaderHtml),
       reportFooterHtml: Value(reportFooterHtml),
       reportHeaderHeightMm: reportHeaderHeightMm == null && nullToAbsent
@@ -586,6 +1047,15 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       licenseKey: serializer.fromJson<String>(json['licenseKey']),
       licenseVer: serializer.fromJson<String>(json['licenseVer']),
       labName: serializer.fromJson<String>(json['labName']),
+      address: serializer.fromJson<String>(json['address']),
+      contact: serializer.fromJson<String>(json['contact']),
+      email: serializer.fromJson<String>(json['email']),
+      websiteUrl: serializer.fromJson<String>(json['websiteUrl']),
+      additionalInfo: serializer.fromJson<String>(json['additionalInfo']),
+      logoPath: serializer.fromJson<String>(json['logoPath']),
+      defaultDoctorCommissionPercent: serializer.fromJson<int>(
+        json['defaultDoctorCommissionPercent'],
+      ),
       registered: serializer.fromJson<bool>(json['registered']),
       securityEnabled: serializer.fromJson<bool>(json['securityEnabled']),
       passwordHash: serializer.fromJson<String?>(json['passwordHash']),
@@ -594,6 +1064,22 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       registeredAt: serializer.fromJson<DateTime?>(json['registeredAt']),
       showReportHeader: serializer.fromJson<bool>(json['showReportHeader']),
       showReportFooter: serializer.fromJson<bool>(json['showReportFooter']),
+      showReportSectionTitles: serializer.fromJson<bool>(
+        json['showReportSectionTitles'],
+      ),
+      reportFontPatientPt: serializer.fromJson<int?>(
+        json['reportFontPatientPt'],
+      ),
+      reportFontTestsPt: serializer.fromJson<int?>(json['reportFontTestsPt']),
+      reportFontDescriptionPt: serializer.fromJson<int?>(
+        json['reportFontDescriptionPt'],
+      ),
+      reportColorInRange: serializer.fromJson<bool>(json['reportColorInRange']),
+      reportColorOutOfRange: serializer.fromJson<bool>(
+        json['reportColorOutOfRange'],
+      ),
+      reportFlagLow: serializer.fromJson<bool>(json['reportFlagLow']),
+      reportFlagHigh: serializer.fromJson<bool>(json['reportFlagHigh']),
       reportHeaderHtml: serializer.fromJson<String>(json['reportHeaderHtml']),
       reportFooterHtml: serializer.fromJson<String>(json['reportFooterHtml']),
       reportHeaderHeightMm: serializer.fromJson<int?>(
@@ -613,6 +1099,15 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       'licenseKey': serializer.toJson<String>(licenseKey),
       'licenseVer': serializer.toJson<String>(licenseVer),
       'labName': serializer.toJson<String>(labName),
+      'address': serializer.toJson<String>(address),
+      'contact': serializer.toJson<String>(contact),
+      'email': serializer.toJson<String>(email),
+      'websiteUrl': serializer.toJson<String>(websiteUrl),
+      'additionalInfo': serializer.toJson<String>(additionalInfo),
+      'logoPath': serializer.toJson<String>(logoPath),
+      'defaultDoctorCommissionPercent': serializer.toJson<int>(
+        defaultDoctorCommissionPercent,
+      ),
       'registered': serializer.toJson<bool>(registered),
       'securityEnabled': serializer.toJson<bool>(securityEnabled),
       'passwordHash': serializer.toJson<String?>(passwordHash),
@@ -621,6 +1116,18 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       'registeredAt': serializer.toJson<DateTime?>(registeredAt),
       'showReportHeader': serializer.toJson<bool>(showReportHeader),
       'showReportFooter': serializer.toJson<bool>(showReportFooter),
+      'showReportSectionTitles': serializer.toJson<bool>(
+        showReportSectionTitles,
+      ),
+      'reportFontPatientPt': serializer.toJson<int?>(reportFontPatientPt),
+      'reportFontTestsPt': serializer.toJson<int?>(reportFontTestsPt),
+      'reportFontDescriptionPt': serializer.toJson<int?>(
+        reportFontDescriptionPt,
+      ),
+      'reportColorInRange': serializer.toJson<bool>(reportColorInRange),
+      'reportColorOutOfRange': serializer.toJson<bool>(reportColorOutOfRange),
+      'reportFlagLow': serializer.toJson<bool>(reportFlagLow),
+      'reportFlagHigh': serializer.toJson<bool>(reportFlagHigh),
       'reportHeaderHtml': serializer.toJson<String>(reportHeaderHtml),
       'reportFooterHtml': serializer.toJson<String>(reportFooterHtml),
       'reportHeaderHeightMm': serializer.toJson<int?>(reportHeaderHeightMm),
@@ -634,6 +1141,13 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     String? licenseKey,
     String? licenseVer,
     String? labName,
+    String? address,
+    String? contact,
+    String? email,
+    String? websiteUrl,
+    String? additionalInfo,
+    String? logoPath,
+    int? defaultDoctorCommissionPercent,
     bool? registered,
     bool? securityEnabled,
     Value<String?> passwordHash = const Value.absent(),
@@ -642,6 +1156,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     Value<DateTime?> registeredAt = const Value.absent(),
     bool? showReportHeader,
     bool? showReportFooter,
+    bool? showReportSectionTitles,
+    Value<int?> reportFontPatientPt = const Value.absent(),
+    Value<int?> reportFontTestsPt = const Value.absent(),
+    Value<int?> reportFontDescriptionPt = const Value.absent(),
+    bool? reportColorInRange,
+    bool? reportColorOutOfRange,
+    bool? reportFlagLow,
+    bool? reportFlagHigh,
     String? reportHeaderHtml,
     String? reportFooterHtml,
     Value<int?> reportHeaderHeightMm = const Value.absent(),
@@ -652,6 +1174,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     licenseKey: licenseKey ?? this.licenseKey,
     licenseVer: licenseVer ?? this.licenseVer,
     labName: labName ?? this.labName,
+    address: address ?? this.address,
+    contact: contact ?? this.contact,
+    email: email ?? this.email,
+    websiteUrl: websiteUrl ?? this.websiteUrl,
+    additionalInfo: additionalInfo ?? this.additionalInfo,
+    logoPath: logoPath ?? this.logoPath,
+    defaultDoctorCommissionPercent:
+        defaultDoctorCommissionPercent ?? this.defaultDoctorCommissionPercent,
     registered: registered ?? this.registered,
     securityEnabled: securityEnabled ?? this.securityEnabled,
     passwordHash: passwordHash.present ? passwordHash.value : this.passwordHash,
@@ -660,6 +1190,21 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     registeredAt: registeredAt.present ? registeredAt.value : this.registeredAt,
     showReportHeader: showReportHeader ?? this.showReportHeader,
     showReportFooter: showReportFooter ?? this.showReportFooter,
+    showReportSectionTitles:
+        showReportSectionTitles ?? this.showReportSectionTitles,
+    reportFontPatientPt: reportFontPatientPt.present
+        ? reportFontPatientPt.value
+        : this.reportFontPatientPt,
+    reportFontTestsPt: reportFontTestsPt.present
+        ? reportFontTestsPt.value
+        : this.reportFontTestsPt,
+    reportFontDescriptionPt: reportFontDescriptionPt.present
+        ? reportFontDescriptionPt.value
+        : this.reportFontDescriptionPt,
+    reportColorInRange: reportColorInRange ?? this.reportColorInRange,
+    reportColorOutOfRange: reportColorOutOfRange ?? this.reportColorOutOfRange,
+    reportFlagLow: reportFlagLow ?? this.reportFlagLow,
+    reportFlagHigh: reportFlagHigh ?? this.reportFlagHigh,
     reportHeaderHtml: reportHeaderHtml ?? this.reportHeaderHtml,
     reportFooterHtml: reportFooterHtml ?? this.reportFooterHtml,
     reportHeaderHeightMm: reportHeaderHeightMm.present
@@ -680,6 +1225,20 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           ? data.licenseVer.value
           : this.licenseVer,
       labName: data.labName.present ? data.labName.value : this.labName,
+      address: data.address.present ? data.address.value : this.address,
+      contact: data.contact.present ? data.contact.value : this.contact,
+      email: data.email.present ? data.email.value : this.email,
+      websiteUrl: data.websiteUrl.present
+          ? data.websiteUrl.value
+          : this.websiteUrl,
+      additionalInfo: data.additionalInfo.present
+          ? data.additionalInfo.value
+          : this.additionalInfo,
+      logoPath: data.logoPath.present ? data.logoPath.value : this.logoPath,
+      defaultDoctorCommissionPercent:
+          data.defaultDoctorCommissionPercent.present
+          ? data.defaultDoctorCommissionPercent.value
+          : this.defaultDoctorCommissionPercent,
       registered: data.registered.present
           ? data.registered.value
           : this.registered,
@@ -704,6 +1263,30 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
       showReportFooter: data.showReportFooter.present
           ? data.showReportFooter.value
           : this.showReportFooter,
+      showReportSectionTitles: data.showReportSectionTitles.present
+          ? data.showReportSectionTitles.value
+          : this.showReportSectionTitles,
+      reportFontPatientPt: data.reportFontPatientPt.present
+          ? data.reportFontPatientPt.value
+          : this.reportFontPatientPt,
+      reportFontTestsPt: data.reportFontTestsPt.present
+          ? data.reportFontTestsPt.value
+          : this.reportFontTestsPt,
+      reportFontDescriptionPt: data.reportFontDescriptionPt.present
+          ? data.reportFontDescriptionPt.value
+          : this.reportFontDescriptionPt,
+      reportColorInRange: data.reportColorInRange.present
+          ? data.reportColorInRange.value
+          : this.reportColorInRange,
+      reportColorOutOfRange: data.reportColorOutOfRange.present
+          ? data.reportColorOutOfRange.value
+          : this.reportColorOutOfRange,
+      reportFlagLow: data.reportFlagLow.present
+          ? data.reportFlagLow.value
+          : this.reportFlagLow,
+      reportFlagHigh: data.reportFlagHigh.present
+          ? data.reportFlagHigh.value
+          : this.reportFlagHigh,
       reportHeaderHtml: data.reportHeaderHtml.present
           ? data.reportHeaderHtml.value
           : this.reportHeaderHtml,
@@ -727,6 +1310,15 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           ..write('licenseKey: $licenseKey, ')
           ..write('licenseVer: $licenseVer, ')
           ..write('labName: $labName, ')
+          ..write('address: $address, ')
+          ..write('contact: $contact, ')
+          ..write('email: $email, ')
+          ..write('websiteUrl: $websiteUrl, ')
+          ..write('additionalInfo: $additionalInfo, ')
+          ..write('logoPath: $logoPath, ')
+          ..write(
+            'defaultDoctorCommissionPercent: $defaultDoctorCommissionPercent, ',
+          )
           ..write('registered: $registered, ')
           ..write('securityEnabled: $securityEnabled, ')
           ..write('passwordHash: $passwordHash, ')
@@ -735,6 +1327,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           ..write('registeredAt: $registeredAt, ')
           ..write('showReportHeader: $showReportHeader, ')
           ..write('showReportFooter: $showReportFooter, ')
+          ..write('showReportSectionTitles: $showReportSectionTitles, ')
+          ..write('reportFontPatientPt: $reportFontPatientPt, ')
+          ..write('reportFontTestsPt: $reportFontTestsPt, ')
+          ..write('reportFontDescriptionPt: $reportFontDescriptionPt, ')
+          ..write('reportColorInRange: $reportColorInRange, ')
+          ..write('reportColorOutOfRange: $reportColorOutOfRange, ')
+          ..write('reportFlagLow: $reportFlagLow, ')
+          ..write('reportFlagHigh: $reportFlagHigh, ')
           ..write('reportHeaderHtml: $reportHeaderHtml, ')
           ..write('reportFooterHtml: $reportFooterHtml, ')
           ..write('reportHeaderHeightMm: $reportHeaderHeightMm, ')
@@ -744,12 +1344,19 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
   }
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll([
     id,
     labCode,
     licenseKey,
     licenseVer,
     labName,
+    address,
+    contact,
+    email,
+    websiteUrl,
+    additionalInfo,
+    logoPath,
+    defaultDoctorCommissionPercent,
     registered,
     securityEnabled,
     passwordHash,
@@ -758,11 +1365,19 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
     registeredAt,
     showReportHeader,
     showReportFooter,
+    showReportSectionTitles,
+    reportFontPatientPt,
+    reportFontTestsPt,
+    reportFontDescriptionPt,
+    reportColorInRange,
+    reportColorOutOfRange,
+    reportFlagLow,
+    reportFlagHigh,
     reportHeaderHtml,
     reportFooterHtml,
     reportHeaderHeightMm,
     reportFooterHeightMm,
-  );
+  ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -772,6 +1387,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           other.licenseKey == this.licenseKey &&
           other.licenseVer == this.licenseVer &&
           other.labName == this.labName &&
+          other.address == this.address &&
+          other.contact == this.contact &&
+          other.email == this.email &&
+          other.websiteUrl == this.websiteUrl &&
+          other.additionalInfo == this.additionalInfo &&
+          other.logoPath == this.logoPath &&
+          other.defaultDoctorCommissionPercent ==
+              this.defaultDoctorCommissionPercent &&
           other.registered == this.registered &&
           other.securityEnabled == this.securityEnabled &&
           other.passwordHash == this.passwordHash &&
@@ -780,6 +1403,14 @@ class AppSetting extends DataClass implements Insertable<AppSetting> {
           other.registeredAt == this.registeredAt &&
           other.showReportHeader == this.showReportHeader &&
           other.showReportFooter == this.showReportFooter &&
+          other.showReportSectionTitles == this.showReportSectionTitles &&
+          other.reportFontPatientPt == this.reportFontPatientPt &&
+          other.reportFontTestsPt == this.reportFontTestsPt &&
+          other.reportFontDescriptionPt == this.reportFontDescriptionPt &&
+          other.reportColorInRange == this.reportColorInRange &&
+          other.reportColorOutOfRange == this.reportColorOutOfRange &&
+          other.reportFlagLow == this.reportFlagLow &&
+          other.reportFlagHigh == this.reportFlagHigh &&
           other.reportHeaderHtml == this.reportHeaderHtml &&
           other.reportFooterHtml == this.reportFooterHtml &&
           other.reportHeaderHeightMm == this.reportHeaderHeightMm &&
@@ -792,6 +1423,13 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
   final Value<String> licenseKey;
   final Value<String> licenseVer;
   final Value<String> labName;
+  final Value<String> address;
+  final Value<String> contact;
+  final Value<String> email;
+  final Value<String> websiteUrl;
+  final Value<String> additionalInfo;
+  final Value<String> logoPath;
+  final Value<int> defaultDoctorCommissionPercent;
   final Value<bool> registered;
   final Value<bool> securityEnabled;
   final Value<String?> passwordHash;
@@ -800,6 +1438,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
   final Value<DateTime?> registeredAt;
   final Value<bool> showReportHeader;
   final Value<bool> showReportFooter;
+  final Value<bool> showReportSectionTitles;
+  final Value<int?> reportFontPatientPt;
+  final Value<int?> reportFontTestsPt;
+  final Value<int?> reportFontDescriptionPt;
+  final Value<bool> reportColorInRange;
+  final Value<bool> reportColorOutOfRange;
+  final Value<bool> reportFlagLow;
+  final Value<bool> reportFlagHigh;
   final Value<String> reportHeaderHtml;
   final Value<String> reportFooterHtml;
   final Value<int?> reportHeaderHeightMm;
@@ -810,6 +1456,13 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     this.licenseKey = const Value.absent(),
     this.licenseVer = const Value.absent(),
     this.labName = const Value.absent(),
+    this.address = const Value.absent(),
+    this.contact = const Value.absent(),
+    this.email = const Value.absent(),
+    this.websiteUrl = const Value.absent(),
+    this.additionalInfo = const Value.absent(),
+    this.logoPath = const Value.absent(),
+    this.defaultDoctorCommissionPercent = const Value.absent(),
     this.registered = const Value.absent(),
     this.securityEnabled = const Value.absent(),
     this.passwordHash = const Value.absent(),
@@ -818,6 +1471,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     this.registeredAt = const Value.absent(),
     this.showReportHeader = const Value.absent(),
     this.showReportFooter = const Value.absent(),
+    this.showReportSectionTitles = const Value.absent(),
+    this.reportFontPatientPt = const Value.absent(),
+    this.reportFontTestsPt = const Value.absent(),
+    this.reportFontDescriptionPt = const Value.absent(),
+    this.reportColorInRange = const Value.absent(),
+    this.reportColorOutOfRange = const Value.absent(),
+    this.reportFlagLow = const Value.absent(),
+    this.reportFlagHigh = const Value.absent(),
     this.reportHeaderHtml = const Value.absent(),
     this.reportFooterHtml = const Value.absent(),
     this.reportHeaderHeightMm = const Value.absent(),
@@ -829,6 +1490,13 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     this.licenseKey = const Value.absent(),
     this.licenseVer = const Value.absent(),
     this.labName = const Value.absent(),
+    this.address = const Value.absent(),
+    this.contact = const Value.absent(),
+    this.email = const Value.absent(),
+    this.websiteUrl = const Value.absent(),
+    this.additionalInfo = const Value.absent(),
+    this.logoPath = const Value.absent(),
+    this.defaultDoctorCommissionPercent = const Value.absent(),
     this.registered = const Value.absent(),
     this.securityEnabled = const Value.absent(),
     this.passwordHash = const Value.absent(),
@@ -837,6 +1505,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     this.registeredAt = const Value.absent(),
     this.showReportHeader = const Value.absent(),
     this.showReportFooter = const Value.absent(),
+    this.showReportSectionTitles = const Value.absent(),
+    this.reportFontPatientPt = const Value.absent(),
+    this.reportFontTestsPt = const Value.absent(),
+    this.reportFontDescriptionPt = const Value.absent(),
+    this.reportColorInRange = const Value.absent(),
+    this.reportColorOutOfRange = const Value.absent(),
+    this.reportFlagLow = const Value.absent(),
+    this.reportFlagHigh = const Value.absent(),
     this.reportHeaderHtml = const Value.absent(),
     this.reportFooterHtml = const Value.absent(),
     this.reportHeaderHeightMm = const Value.absent(),
@@ -848,6 +1524,13 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     Expression<String>? licenseKey,
     Expression<String>? licenseVer,
     Expression<String>? labName,
+    Expression<String>? address,
+    Expression<String>? contact,
+    Expression<String>? email,
+    Expression<String>? websiteUrl,
+    Expression<String>? additionalInfo,
+    Expression<String>? logoPath,
+    Expression<int>? defaultDoctorCommissionPercent,
     Expression<bool>? registered,
     Expression<bool>? securityEnabled,
     Expression<String>? passwordHash,
@@ -856,6 +1539,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     Expression<DateTime>? registeredAt,
     Expression<bool>? showReportHeader,
     Expression<bool>? showReportFooter,
+    Expression<bool>? showReportSectionTitles,
+    Expression<int>? reportFontPatientPt,
+    Expression<int>? reportFontTestsPt,
+    Expression<int>? reportFontDescriptionPt,
+    Expression<bool>? reportColorInRange,
+    Expression<bool>? reportColorOutOfRange,
+    Expression<bool>? reportFlagLow,
+    Expression<bool>? reportFlagHigh,
     Expression<String>? reportHeaderHtml,
     Expression<String>? reportFooterHtml,
     Expression<int>? reportHeaderHeightMm,
@@ -867,6 +1558,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
       if (licenseKey != null) 'license_key': licenseKey,
       if (licenseVer != null) 'license_ver': licenseVer,
       if (labName != null) 'lab_name': labName,
+      if (address != null) 'address': address,
+      if (contact != null) 'contact': contact,
+      if (email != null) 'email': email,
+      if (websiteUrl != null) 'website_url': websiteUrl,
+      if (additionalInfo != null) 'additional_info': additionalInfo,
+      if (logoPath != null) 'logo_path': logoPath,
+      if (defaultDoctorCommissionPercent != null)
+        'default_doctor_commission_percent': defaultDoctorCommissionPercent,
       if (registered != null) 'registered': registered,
       if (securityEnabled != null) 'security_enabled': securityEnabled,
       if (passwordHash != null) 'password_hash': passwordHash,
@@ -875,6 +1574,19 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
       if (registeredAt != null) 'registered_at': registeredAt,
       if (showReportHeader != null) 'show_report_header': showReportHeader,
       if (showReportFooter != null) 'show_report_footer': showReportFooter,
+      if (showReportSectionTitles != null)
+        'show_report_section_titles': showReportSectionTitles,
+      if (reportFontPatientPt != null)
+        'report_font_patient_pt': reportFontPatientPt,
+      if (reportFontTestsPt != null) 'report_font_tests_pt': reportFontTestsPt,
+      if (reportFontDescriptionPt != null)
+        'report_font_description_pt': reportFontDescriptionPt,
+      if (reportColorInRange != null)
+        'report_color_in_range': reportColorInRange,
+      if (reportColorOutOfRange != null)
+        'report_color_out_of_range': reportColorOutOfRange,
+      if (reportFlagLow != null) 'report_flag_low': reportFlagLow,
+      if (reportFlagHigh != null) 'report_flag_high': reportFlagHigh,
       if (reportHeaderHtml != null) 'report_header_html': reportHeaderHtml,
       if (reportFooterHtml != null) 'report_footer_html': reportFooterHtml,
       if (reportHeaderHeightMm != null)
@@ -890,6 +1602,13 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     Value<String>? licenseKey,
     Value<String>? licenseVer,
     Value<String>? labName,
+    Value<String>? address,
+    Value<String>? contact,
+    Value<String>? email,
+    Value<String>? websiteUrl,
+    Value<String>? additionalInfo,
+    Value<String>? logoPath,
+    Value<int>? defaultDoctorCommissionPercent,
     Value<bool>? registered,
     Value<bool>? securityEnabled,
     Value<String?>? passwordHash,
@@ -898,6 +1617,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     Value<DateTime?>? registeredAt,
     Value<bool>? showReportHeader,
     Value<bool>? showReportFooter,
+    Value<bool>? showReportSectionTitles,
+    Value<int?>? reportFontPatientPt,
+    Value<int?>? reportFontTestsPt,
+    Value<int?>? reportFontDescriptionPt,
+    Value<bool>? reportColorInRange,
+    Value<bool>? reportColorOutOfRange,
+    Value<bool>? reportFlagLow,
+    Value<bool>? reportFlagHigh,
     Value<String>? reportHeaderHtml,
     Value<String>? reportFooterHtml,
     Value<int?>? reportHeaderHeightMm,
@@ -909,6 +1636,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
       licenseKey: licenseKey ?? this.licenseKey,
       licenseVer: licenseVer ?? this.licenseVer,
       labName: labName ?? this.labName,
+      address: address ?? this.address,
+      contact: contact ?? this.contact,
+      email: email ?? this.email,
+      websiteUrl: websiteUrl ?? this.websiteUrl,
+      additionalInfo: additionalInfo ?? this.additionalInfo,
+      logoPath: logoPath ?? this.logoPath,
+      defaultDoctorCommissionPercent:
+          defaultDoctorCommissionPercent ?? this.defaultDoctorCommissionPercent,
       registered: registered ?? this.registered,
       securityEnabled: securityEnabled ?? this.securityEnabled,
       passwordHash: passwordHash ?? this.passwordHash,
@@ -917,6 +1652,17 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
       registeredAt: registeredAt ?? this.registeredAt,
       showReportHeader: showReportHeader ?? this.showReportHeader,
       showReportFooter: showReportFooter ?? this.showReportFooter,
+      showReportSectionTitles:
+          showReportSectionTitles ?? this.showReportSectionTitles,
+      reportFontPatientPt: reportFontPatientPt ?? this.reportFontPatientPt,
+      reportFontTestsPt: reportFontTestsPt ?? this.reportFontTestsPt,
+      reportFontDescriptionPt:
+          reportFontDescriptionPt ?? this.reportFontDescriptionPt,
+      reportColorInRange: reportColorInRange ?? this.reportColorInRange,
+      reportColorOutOfRange:
+          reportColorOutOfRange ?? this.reportColorOutOfRange,
+      reportFlagLow: reportFlagLow ?? this.reportFlagLow,
+      reportFlagHigh: reportFlagHigh ?? this.reportFlagHigh,
       reportHeaderHtml: reportHeaderHtml ?? this.reportHeaderHtml,
       reportFooterHtml: reportFooterHtml ?? this.reportFooterHtml,
       reportHeaderHeightMm: reportHeaderHeightMm ?? this.reportHeaderHeightMm,
@@ -942,6 +1688,29 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     if (labName.present) {
       map['lab_name'] = Variable<String>(labName.value);
     }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (contact.present) {
+      map['contact'] = Variable<String>(contact.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (websiteUrl.present) {
+      map['website_url'] = Variable<String>(websiteUrl.value);
+    }
+    if (additionalInfo.present) {
+      map['additional_info'] = Variable<String>(additionalInfo.value);
+    }
+    if (logoPath.present) {
+      map['logo_path'] = Variable<String>(logoPath.value);
+    }
+    if (defaultDoctorCommissionPercent.present) {
+      map['default_doctor_commission_percent'] = Variable<int>(
+        defaultDoctorCommissionPercent.value,
+      );
+    }
     if (registered.present) {
       map['registered'] = Variable<bool>(registered.value);
     }
@@ -965,6 +1734,36 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
     }
     if (showReportFooter.present) {
       map['show_report_footer'] = Variable<bool>(showReportFooter.value);
+    }
+    if (showReportSectionTitles.present) {
+      map['show_report_section_titles'] = Variable<bool>(
+        showReportSectionTitles.value,
+      );
+    }
+    if (reportFontPatientPt.present) {
+      map['report_font_patient_pt'] = Variable<int>(reportFontPatientPt.value);
+    }
+    if (reportFontTestsPt.present) {
+      map['report_font_tests_pt'] = Variable<int>(reportFontTestsPt.value);
+    }
+    if (reportFontDescriptionPt.present) {
+      map['report_font_description_pt'] = Variable<int>(
+        reportFontDescriptionPt.value,
+      );
+    }
+    if (reportColorInRange.present) {
+      map['report_color_in_range'] = Variable<bool>(reportColorInRange.value);
+    }
+    if (reportColorOutOfRange.present) {
+      map['report_color_out_of_range'] = Variable<bool>(
+        reportColorOutOfRange.value,
+      );
+    }
+    if (reportFlagLow.present) {
+      map['report_flag_low'] = Variable<bool>(reportFlagLow.value);
+    }
+    if (reportFlagHigh.present) {
+      map['report_flag_high'] = Variable<bool>(reportFlagHigh.value);
     }
     if (reportHeaderHtml.present) {
       map['report_header_html'] = Variable<String>(reportHeaderHtml.value);
@@ -993,6 +1792,15 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
           ..write('licenseKey: $licenseKey, ')
           ..write('licenseVer: $licenseVer, ')
           ..write('labName: $labName, ')
+          ..write('address: $address, ')
+          ..write('contact: $contact, ')
+          ..write('email: $email, ')
+          ..write('websiteUrl: $websiteUrl, ')
+          ..write('additionalInfo: $additionalInfo, ')
+          ..write('logoPath: $logoPath, ')
+          ..write(
+            'defaultDoctorCommissionPercent: $defaultDoctorCommissionPercent, ',
+          )
           ..write('registered: $registered, ')
           ..write('securityEnabled: $securityEnabled, ')
           ..write('passwordHash: $passwordHash, ')
@@ -1001,6 +1809,14 @@ class AppSettingsCompanion extends UpdateCompanion<AppSetting> {
           ..write('registeredAt: $registeredAt, ')
           ..write('showReportHeader: $showReportHeader, ')
           ..write('showReportFooter: $showReportFooter, ')
+          ..write('showReportSectionTitles: $showReportSectionTitles, ')
+          ..write('reportFontPatientPt: $reportFontPatientPt, ')
+          ..write('reportFontTestsPt: $reportFontTestsPt, ')
+          ..write('reportFontDescriptionPt: $reportFontDescriptionPt, ')
+          ..write('reportColorInRange: $reportColorInRange, ')
+          ..write('reportColorOutOfRange: $reportColorOutOfRange, ')
+          ..write('reportFlagLow: $reportFlagLow, ')
+          ..write('reportFlagHigh: $reportFlagHigh, ')
           ..write('reportHeaderHtml: $reportHeaderHtml, ')
           ..write('reportFooterHtml: $reportFooterHtml, ')
           ..write('reportHeaderHeightMm: $reportHeaderHeightMm, ')
@@ -1641,1473 +2457,6 @@ class DoctorsCompanion extends UpdateCompanion<Doctor> {
           ..write('isInternal: $isInternal, ')
           ..write('deleteStatus: $deleteStatus, ')
           ..write('createdAt: $createdAt')
-          ..write(')'))
-        .toString();
-  }
-}
-
-class $LabTestsTable extends LabTests with TableInfo<$LabTestsTable, LabTest> {
-  @override
-  final GeneratedDatabase attachedDatabase;
-  final String? _alias;
-  $LabTestsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _idMeta = const VerificationMeta('id');
-  @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
-    'id',
-    aliasedName,
-    false,
-    hasAutoIncrement: true,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'PRIMARY KEY AUTOINCREMENT',
-    ),
-  );
-  static const VerificationMeta _codeMeta = const VerificationMeta('code');
-  @override
-  late final GeneratedColumn<String> code = GeneratedColumn<String>(
-    'code',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: true,
-  );
-  static const VerificationMeta _nameMeta = const VerificationMeta('name');
-  @override
-  late final GeneratedColumn<String> name = GeneratedColumn<String>(
-    'name',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: true,
-  );
-  static const VerificationMeta _departmentMeta = const VerificationMeta(
-    'department',
-  );
-  @override
-  late final GeneratedColumn<String> department = GeneratedColumn<String>(
-    'department',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant('General'),
-  );
-  static const VerificationMeta _descriptionMeta = const VerificationMeta(
-    'description',
-  );
-  @override
-  late final GeneratedColumn<String> description = GeneratedColumn<String>(
-    'description',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(''),
-  );
-  static const VerificationMeta _priceMeta = const VerificationMeta('price');
-  @override
-  late final GeneratedColumn<double> price = GeneratedColumn<double>(
-    'price',
-    aliasedName,
-    false,
-    type: DriftSqlType.double,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(0),
-  );
-  static const VerificationMeta _maxDiscMeta = const VerificationMeta(
-    'maxDisc',
-  );
-  @override
-  late final GeneratedColumn<double> maxDisc = GeneratedColumn<double>(
-    'max_disc',
-    aliasedName,
-    false,
-    type: DriftSqlType.double,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(0),
-  );
-  static const VerificationMeta _commissionPercentMeta = const VerificationMeta(
-    'commissionPercent',
-  );
-  @override
-  late final GeneratedColumn<double> commissionPercent =
-      GeneratedColumn<double>(
-        'commission_percent',
-        aliasedName,
-        true,
-        type: DriftSqlType.double,
-        requiredDuringInsert: false,
-      );
-  static const VerificationMeta _paramCountMeta = const VerificationMeta(
-    'paramCount',
-  );
-  @override
-  late final GeneratedColumn<int> paramCount = GeneratedColumn<int>(
-    'param_count',
-    aliasedName,
-    false,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(1),
-  );
-  static const VerificationMeta _masterTestIdMeta = const VerificationMeta(
-    'masterTestId',
-  );
-  @override
-  late final GeneratedColumn<int> masterTestId = GeneratedColumn<int>(
-    'master_test_id',
-    aliasedName,
-    true,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-  );
-  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
-    'deleteStatus',
-  );
-  @override
-  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
-    'delete_status',
-    aliasedName,
-    false,
-    type: DriftSqlType.bool,
-    requiredDuringInsert: false,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'CHECK ("delete_status" IN (0, 1))',
-    ),
-    defaultValue: const Constant(false),
-  );
-  static const VerificationMeta _createdAtMeta = const VerificationMeta(
-    'createdAt',
-  );
-  @override
-  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
-    'created_at',
-    aliasedName,
-    false,
-    type: DriftSqlType.dateTime,
-    requiredDuringInsert: false,
-    defaultValue: currentDateAndTime,
-  );
-  @override
-  List<GeneratedColumn> get $columns => [
-    id,
-    code,
-    name,
-    department,
-    description,
-    price,
-    maxDisc,
-    commissionPercent,
-    paramCount,
-    masterTestId,
-    deleteStatus,
-    createdAt,
-  ];
-  @override
-  String get aliasedName => _alias ?? actualTableName;
-  @override
-  String get actualTableName => $name;
-  static const String $name = 'lab_tests';
-  @override
-  VerificationContext validateIntegrity(
-    Insertable<LabTest> instance, {
-    bool isInserting = false,
-  }) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    }
-    if (data.containsKey('code')) {
-      context.handle(
-        _codeMeta,
-        code.isAcceptableOrUnknown(data['code']!, _codeMeta),
-      );
-    } else if (isInserting) {
-      context.missing(_codeMeta);
-    }
-    if (data.containsKey('name')) {
-      context.handle(
-        _nameMeta,
-        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
-      );
-    } else if (isInserting) {
-      context.missing(_nameMeta);
-    }
-    if (data.containsKey('department')) {
-      context.handle(
-        _departmentMeta,
-        department.isAcceptableOrUnknown(data['department']!, _departmentMeta),
-      );
-    }
-    if (data.containsKey('description')) {
-      context.handle(
-        _descriptionMeta,
-        description.isAcceptableOrUnknown(
-          data['description']!,
-          _descriptionMeta,
-        ),
-      );
-    }
-    if (data.containsKey('price')) {
-      context.handle(
-        _priceMeta,
-        price.isAcceptableOrUnknown(data['price']!, _priceMeta),
-      );
-    }
-    if (data.containsKey('max_disc')) {
-      context.handle(
-        _maxDiscMeta,
-        maxDisc.isAcceptableOrUnknown(data['max_disc']!, _maxDiscMeta),
-      );
-    }
-    if (data.containsKey('commission_percent')) {
-      context.handle(
-        _commissionPercentMeta,
-        commissionPercent.isAcceptableOrUnknown(
-          data['commission_percent']!,
-          _commissionPercentMeta,
-        ),
-      );
-    }
-    if (data.containsKey('param_count')) {
-      context.handle(
-        _paramCountMeta,
-        paramCount.isAcceptableOrUnknown(data['param_count']!, _paramCountMeta),
-      );
-    }
-    if (data.containsKey('master_test_id')) {
-      context.handle(
-        _masterTestIdMeta,
-        masterTestId.isAcceptableOrUnknown(
-          data['master_test_id']!,
-          _masterTestIdMeta,
-        ),
-      );
-    }
-    if (data.containsKey('delete_status')) {
-      context.handle(
-        _deleteStatusMeta,
-        deleteStatus.isAcceptableOrUnknown(
-          data['delete_status']!,
-          _deleteStatusMeta,
-        ),
-      );
-    }
-    if (data.containsKey('created_at')) {
-      context.handle(
-        _createdAtMeta,
-        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
-      );
-    }
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {id};
-  @override
-  LabTest map(Map<String, dynamic> data, {String? tablePrefix}) {
-    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return LabTest(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}id'],
-      )!,
-      code: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}code'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      department: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}department'],
-      )!,
-      description: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}description'],
-      )!,
-      price: attachedDatabase.typeMapping.read(
-        DriftSqlType.double,
-        data['${effectivePrefix}price'],
-      )!,
-      maxDisc: attachedDatabase.typeMapping.read(
-        DriftSqlType.double,
-        data['${effectivePrefix}max_disc'],
-      )!,
-      commissionPercent: attachedDatabase.typeMapping.read(
-        DriftSqlType.double,
-        data['${effectivePrefix}commission_percent'],
-      ),
-      paramCount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}param_count'],
-      )!,
-      masterTestId: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}master_test_id'],
-      ),
-      deleteStatus: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}delete_status'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
-    );
-  }
-
-  @override
-  $LabTestsTable createAlias(String alias) {
-    return $LabTestsTable(attachedDatabase, alias);
-  }
-}
-
-class LabTest extends DataClass implements Insertable<LabTest> {
-  final int id;
-  final String code;
-  final String name;
-  final String department;
-  final String description;
-  final double price;
-  final double maxDisc;
-  final double? commissionPercent;
-  final int paramCount;
-  final int? masterTestId;
-  final bool deleteStatus;
-  final DateTime createdAt;
-  const LabTest({
-    required this.id,
-    required this.code,
-    required this.name,
-    required this.department,
-    required this.description,
-    required this.price,
-    required this.maxDisc,
-    this.commissionPercent,
-    required this.paramCount,
-    this.masterTestId,
-    required this.deleteStatus,
-    required this.createdAt,
-  });
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    map['code'] = Variable<String>(code);
-    map['name'] = Variable<String>(name);
-    map['department'] = Variable<String>(department);
-    map['description'] = Variable<String>(description);
-    map['price'] = Variable<double>(price);
-    map['max_disc'] = Variable<double>(maxDisc);
-    if (!nullToAbsent || commissionPercent != null) {
-      map['commission_percent'] = Variable<double>(commissionPercent);
-    }
-    map['param_count'] = Variable<int>(paramCount);
-    if (!nullToAbsent || masterTestId != null) {
-      map['master_test_id'] = Variable<int>(masterTestId);
-    }
-    map['delete_status'] = Variable<bool>(deleteStatus);
-    map['created_at'] = Variable<DateTime>(createdAt);
-    return map;
-  }
-
-  LabTestsCompanion toCompanion(bool nullToAbsent) {
-    return LabTestsCompanion(
-      id: Value(id),
-      code: Value(code),
-      name: Value(name),
-      department: Value(department),
-      description: Value(description),
-      price: Value(price),
-      maxDisc: Value(maxDisc),
-      commissionPercent: commissionPercent == null && nullToAbsent
-          ? const Value.absent()
-          : Value(commissionPercent),
-      paramCount: Value(paramCount),
-      masterTestId: masterTestId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(masterTestId),
-      deleteStatus: Value(deleteStatus),
-      createdAt: Value(createdAt),
-    );
-  }
-
-  factory LabTest.fromJson(
-    Map<String, dynamic> json, {
-    ValueSerializer? serializer,
-  }) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return LabTest(
-      id: serializer.fromJson<int>(json['id']),
-      code: serializer.fromJson<String>(json['code']),
-      name: serializer.fromJson<String>(json['name']),
-      department: serializer.fromJson<String>(json['department']),
-      description: serializer.fromJson<String>(json['description']),
-      price: serializer.fromJson<double>(json['price']),
-      maxDisc: serializer.fromJson<double>(json['maxDisc']),
-      commissionPercent: serializer.fromJson<double?>(
-        json['commissionPercent'],
-      ),
-      paramCount: serializer.fromJson<int>(json['paramCount']),
-      masterTestId: serializer.fromJson<int?>(json['masterTestId']),
-      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
-      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'code': serializer.toJson<String>(code),
-      'name': serializer.toJson<String>(name),
-      'department': serializer.toJson<String>(department),
-      'description': serializer.toJson<String>(description),
-      'price': serializer.toJson<double>(price),
-      'maxDisc': serializer.toJson<double>(maxDisc),
-      'commissionPercent': serializer.toJson<double?>(commissionPercent),
-      'paramCount': serializer.toJson<int>(paramCount),
-      'masterTestId': serializer.toJson<int?>(masterTestId),
-      'deleteStatus': serializer.toJson<bool>(deleteStatus),
-      'createdAt': serializer.toJson<DateTime>(createdAt),
-    };
-  }
-
-  LabTest copyWith({
-    int? id,
-    String? code,
-    String? name,
-    String? department,
-    String? description,
-    double? price,
-    double? maxDisc,
-    Value<double?> commissionPercent = const Value.absent(),
-    int? paramCount,
-    Value<int?> masterTestId = const Value.absent(),
-    bool? deleteStatus,
-    DateTime? createdAt,
-  }) => LabTest(
-    id: id ?? this.id,
-    code: code ?? this.code,
-    name: name ?? this.name,
-    department: department ?? this.department,
-    description: description ?? this.description,
-    price: price ?? this.price,
-    maxDisc: maxDisc ?? this.maxDisc,
-    commissionPercent: commissionPercent.present
-        ? commissionPercent.value
-        : this.commissionPercent,
-    paramCount: paramCount ?? this.paramCount,
-    masterTestId: masterTestId.present ? masterTestId.value : this.masterTestId,
-    deleteStatus: deleteStatus ?? this.deleteStatus,
-    createdAt: createdAt ?? this.createdAt,
-  );
-  LabTest copyWithCompanion(LabTestsCompanion data) {
-    return LabTest(
-      id: data.id.present ? data.id.value : this.id,
-      code: data.code.present ? data.code.value : this.code,
-      name: data.name.present ? data.name.value : this.name,
-      department: data.department.present
-          ? data.department.value
-          : this.department,
-      description: data.description.present
-          ? data.description.value
-          : this.description,
-      price: data.price.present ? data.price.value : this.price,
-      maxDisc: data.maxDisc.present ? data.maxDisc.value : this.maxDisc,
-      commissionPercent: data.commissionPercent.present
-          ? data.commissionPercent.value
-          : this.commissionPercent,
-      paramCount: data.paramCount.present
-          ? data.paramCount.value
-          : this.paramCount,
-      masterTestId: data.masterTestId.present
-          ? data.masterTestId.value
-          : this.masterTestId,
-      deleteStatus: data.deleteStatus.present
-          ? data.deleteStatus.value
-          : this.deleteStatus,
-      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
-    );
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('LabTest(')
-          ..write('id: $id, ')
-          ..write('code: $code, ')
-          ..write('name: $name, ')
-          ..write('department: $department, ')
-          ..write('description: $description, ')
-          ..write('price: $price, ')
-          ..write('maxDisc: $maxDisc, ')
-          ..write('commissionPercent: $commissionPercent, ')
-          ..write('paramCount: $paramCount, ')
-          ..write('masterTestId: $masterTestId, ')
-          ..write('deleteStatus: $deleteStatus, ')
-          ..write('createdAt: $createdAt')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    code,
-    name,
-    department,
-    description,
-    price,
-    maxDisc,
-    commissionPercent,
-    paramCount,
-    masterTestId,
-    deleteStatus,
-    createdAt,
-  );
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is LabTest &&
-          other.id == this.id &&
-          other.code == this.code &&
-          other.name == this.name &&
-          other.department == this.department &&
-          other.description == this.description &&
-          other.price == this.price &&
-          other.maxDisc == this.maxDisc &&
-          other.commissionPercent == this.commissionPercent &&
-          other.paramCount == this.paramCount &&
-          other.masterTestId == this.masterTestId &&
-          other.deleteStatus == this.deleteStatus &&
-          other.createdAt == this.createdAt);
-}
-
-class LabTestsCompanion extends UpdateCompanion<LabTest> {
-  final Value<int> id;
-  final Value<String> code;
-  final Value<String> name;
-  final Value<String> department;
-  final Value<String> description;
-  final Value<double> price;
-  final Value<double> maxDisc;
-  final Value<double?> commissionPercent;
-  final Value<int> paramCount;
-  final Value<int?> masterTestId;
-  final Value<bool> deleteStatus;
-  final Value<DateTime> createdAt;
-  const LabTestsCompanion({
-    this.id = const Value.absent(),
-    this.code = const Value.absent(),
-    this.name = const Value.absent(),
-    this.department = const Value.absent(),
-    this.description = const Value.absent(),
-    this.price = const Value.absent(),
-    this.maxDisc = const Value.absent(),
-    this.commissionPercent = const Value.absent(),
-    this.paramCount = const Value.absent(),
-    this.masterTestId = const Value.absent(),
-    this.deleteStatus = const Value.absent(),
-    this.createdAt = const Value.absent(),
-  });
-  LabTestsCompanion.insert({
-    this.id = const Value.absent(),
-    required String code,
-    required String name,
-    this.department = const Value.absent(),
-    this.description = const Value.absent(),
-    this.price = const Value.absent(),
-    this.maxDisc = const Value.absent(),
-    this.commissionPercent = const Value.absent(),
-    this.paramCount = const Value.absent(),
-    this.masterTestId = const Value.absent(),
-    this.deleteStatus = const Value.absent(),
-    this.createdAt = const Value.absent(),
-  }) : code = Value(code),
-       name = Value(name);
-  static Insertable<LabTest> custom({
-    Expression<int>? id,
-    Expression<String>? code,
-    Expression<String>? name,
-    Expression<String>? department,
-    Expression<String>? description,
-    Expression<double>? price,
-    Expression<double>? maxDisc,
-    Expression<double>? commissionPercent,
-    Expression<int>? paramCount,
-    Expression<int>? masterTestId,
-    Expression<bool>? deleteStatus,
-    Expression<DateTime>? createdAt,
-  }) {
-    return RawValuesInsertable({
-      if (id != null) 'id': id,
-      if (code != null) 'code': code,
-      if (name != null) 'name': name,
-      if (department != null) 'department': department,
-      if (description != null) 'description': description,
-      if (price != null) 'price': price,
-      if (maxDisc != null) 'max_disc': maxDisc,
-      if (commissionPercent != null) 'commission_percent': commissionPercent,
-      if (paramCount != null) 'param_count': paramCount,
-      if (masterTestId != null) 'master_test_id': masterTestId,
-      if (deleteStatus != null) 'delete_status': deleteStatus,
-      if (createdAt != null) 'created_at': createdAt,
-    });
-  }
-
-  LabTestsCompanion copyWith({
-    Value<int>? id,
-    Value<String>? code,
-    Value<String>? name,
-    Value<String>? department,
-    Value<String>? description,
-    Value<double>? price,
-    Value<double>? maxDisc,
-    Value<double?>? commissionPercent,
-    Value<int>? paramCount,
-    Value<int?>? masterTestId,
-    Value<bool>? deleteStatus,
-    Value<DateTime>? createdAt,
-  }) {
-    return LabTestsCompanion(
-      id: id ?? this.id,
-      code: code ?? this.code,
-      name: name ?? this.name,
-      department: department ?? this.department,
-      description: description ?? this.description,
-      price: price ?? this.price,
-      maxDisc: maxDisc ?? this.maxDisc,
-      commissionPercent: commissionPercent ?? this.commissionPercent,
-      paramCount: paramCount ?? this.paramCount,
-      masterTestId: masterTestId ?? this.masterTestId,
-      deleteStatus: deleteStatus ?? this.deleteStatus,
-      createdAt: createdAt ?? this.createdAt,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (id.present) {
-      map['id'] = Variable<int>(id.value);
-    }
-    if (code.present) {
-      map['code'] = Variable<String>(code.value);
-    }
-    if (name.present) {
-      map['name'] = Variable<String>(name.value);
-    }
-    if (department.present) {
-      map['department'] = Variable<String>(department.value);
-    }
-    if (description.present) {
-      map['description'] = Variable<String>(description.value);
-    }
-    if (price.present) {
-      map['price'] = Variable<double>(price.value);
-    }
-    if (maxDisc.present) {
-      map['max_disc'] = Variable<double>(maxDisc.value);
-    }
-    if (commissionPercent.present) {
-      map['commission_percent'] = Variable<double>(commissionPercent.value);
-    }
-    if (paramCount.present) {
-      map['param_count'] = Variable<int>(paramCount.value);
-    }
-    if (masterTestId.present) {
-      map['master_test_id'] = Variable<int>(masterTestId.value);
-    }
-    if (deleteStatus.present) {
-      map['delete_status'] = Variable<bool>(deleteStatus.value);
-    }
-    if (createdAt.present) {
-      map['created_at'] = Variable<DateTime>(createdAt.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('LabTestsCompanion(')
-          ..write('id: $id, ')
-          ..write('code: $code, ')
-          ..write('name: $name, ')
-          ..write('department: $department, ')
-          ..write('description: $description, ')
-          ..write('price: $price, ')
-          ..write('maxDisc: $maxDisc, ')
-          ..write('commissionPercent: $commissionPercent, ')
-          ..write('paramCount: $paramCount, ')
-          ..write('masterTestId: $masterTestId, ')
-          ..write('deleteStatus: $deleteStatus, ')
-          ..write('createdAt: $createdAt')
-          ..write(')'))
-        .toString();
-  }
-}
-
-class $TestParametersTable extends TestParameters
-    with TableInfo<$TestParametersTable, TestParameter> {
-  @override
-  final GeneratedDatabase attachedDatabase;
-  final String? _alias;
-  $TestParametersTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _idMeta = const VerificationMeta('id');
-  @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
-    'id',
-    aliasedName,
-    false,
-    hasAutoIncrement: true,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'PRIMARY KEY AUTOINCREMENT',
-    ),
-  );
-  static const VerificationMeta _testIdMeta = const VerificationMeta('testId');
-  @override
-  late final GeneratedColumn<int> testId = GeneratedColumn<int>(
-    'test_id',
-    aliasedName,
-    false,
-    type: DriftSqlType.int,
-    requiredDuringInsert: true,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'REFERENCES lab_tests (id)',
-    ),
-  );
-  static const VerificationMeta _titleMeta = const VerificationMeta('title');
-  @override
-  late final GeneratedColumn<String> title = GeneratedColumn<String>(
-    'title',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: true,
-  );
-  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
-  @override
-  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
-    'unit',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(''),
-  );
-  static const VerificationMeta _valueTypeMeta = const VerificationMeta(
-    'valueType',
-  );
-  @override
-  late final GeneratedColumn<String> valueType = GeneratedColumn<String>(
-    'value_type',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant('float'),
-  );
-  static const VerificationMeta _formulaMeta = const VerificationMeta(
-    'formula',
-  );
-  @override
-  late final GeneratedColumn<String> formula = GeneratedColumn<String>(
-    'formula',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(''),
-  );
-  static const VerificationMeta _maleRangeMeta = const VerificationMeta(
-    'maleRange',
-  );
-  @override
-  late final GeneratedColumn<String> maleRange = GeneratedColumn<String>(
-    'male_range',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(''),
-  );
-  static const VerificationMeta _femaleRangeMeta = const VerificationMeta(
-    'femaleRange',
-  );
-  @override
-  late final GeneratedColumn<String> femaleRange = GeneratedColumn<String>(
-    'female_range',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(''),
-  );
-  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
-    'sortOrder',
-  );
-  @override
-  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
-    'sort_order',
-    aliasedName,
-    false,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-    defaultValue: const Constant(0),
-  );
-  static const VerificationMeta _sectionTitleMeta = const VerificationMeta(
-    'sectionTitle',
-  );
-  @override
-  late final GeneratedColumn<String> sectionTitle = GeneratedColumn<String>(
-    'section_title',
-    aliasedName,
-    true,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-  );
-  static const VerificationMeta _groupSumEqualsMeta = const VerificationMeta(
-    'groupSumEquals',
-  );
-  @override
-  late final GeneratedColumn<double> groupSumEquals = GeneratedColumn<double>(
-    'group_sum_equals',
-    aliasedName,
-    true,
-    type: DriftSqlType.double,
-    requiredDuringInsert: false,
-  );
-  static const VerificationMeta _masterParameterIdMeta = const VerificationMeta(
-    'masterParameterId',
-  );
-  @override
-  late final GeneratedColumn<int> masterParameterId = GeneratedColumn<int>(
-    'master_parameter_id',
-    aliasedName,
-    true,
-    type: DriftSqlType.int,
-    requiredDuringInsert: false,
-  );
-  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
-    'deleteStatus',
-  );
-  @override
-  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
-    'delete_status',
-    aliasedName,
-    false,
-    type: DriftSqlType.bool,
-    requiredDuringInsert: false,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'CHECK ("delete_status" IN (0, 1))',
-    ),
-    defaultValue: const Constant(false),
-  );
-  @override
-  List<GeneratedColumn> get $columns => [
-    id,
-    testId,
-    title,
-    unit,
-    valueType,
-    formula,
-    maleRange,
-    femaleRange,
-    sortOrder,
-    sectionTitle,
-    groupSumEquals,
-    masterParameterId,
-    deleteStatus,
-  ];
-  @override
-  String get aliasedName => _alias ?? actualTableName;
-  @override
-  String get actualTableName => $name;
-  static const String $name = 'test_parameters';
-  @override
-  VerificationContext validateIntegrity(
-    Insertable<TestParameter> instance, {
-    bool isInserting = false,
-  }) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    }
-    if (data.containsKey('test_id')) {
-      context.handle(
-        _testIdMeta,
-        testId.isAcceptableOrUnknown(data['test_id']!, _testIdMeta),
-      );
-    } else if (isInserting) {
-      context.missing(_testIdMeta);
-    }
-    if (data.containsKey('title')) {
-      context.handle(
-        _titleMeta,
-        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
-      );
-    } else if (isInserting) {
-      context.missing(_titleMeta);
-    }
-    if (data.containsKey('unit')) {
-      context.handle(
-        _unitMeta,
-        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
-      );
-    }
-    if (data.containsKey('value_type')) {
-      context.handle(
-        _valueTypeMeta,
-        valueType.isAcceptableOrUnknown(data['value_type']!, _valueTypeMeta),
-      );
-    }
-    if (data.containsKey('formula')) {
-      context.handle(
-        _formulaMeta,
-        formula.isAcceptableOrUnknown(data['formula']!, _formulaMeta),
-      );
-    }
-    if (data.containsKey('male_range')) {
-      context.handle(
-        _maleRangeMeta,
-        maleRange.isAcceptableOrUnknown(data['male_range']!, _maleRangeMeta),
-      );
-    }
-    if (data.containsKey('female_range')) {
-      context.handle(
-        _femaleRangeMeta,
-        femaleRange.isAcceptableOrUnknown(
-          data['female_range']!,
-          _femaleRangeMeta,
-        ),
-      );
-    }
-    if (data.containsKey('sort_order')) {
-      context.handle(
-        _sortOrderMeta,
-        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
-      );
-    }
-    if (data.containsKey('section_title')) {
-      context.handle(
-        _sectionTitleMeta,
-        sectionTitle.isAcceptableOrUnknown(
-          data['section_title']!,
-          _sectionTitleMeta,
-        ),
-      );
-    }
-    if (data.containsKey('group_sum_equals')) {
-      context.handle(
-        _groupSumEqualsMeta,
-        groupSumEquals.isAcceptableOrUnknown(
-          data['group_sum_equals']!,
-          _groupSumEqualsMeta,
-        ),
-      );
-    }
-    if (data.containsKey('master_parameter_id')) {
-      context.handle(
-        _masterParameterIdMeta,
-        masterParameterId.isAcceptableOrUnknown(
-          data['master_parameter_id']!,
-          _masterParameterIdMeta,
-        ),
-      );
-    }
-    if (data.containsKey('delete_status')) {
-      context.handle(
-        _deleteStatusMeta,
-        deleteStatus.isAcceptableOrUnknown(
-          data['delete_status']!,
-          _deleteStatusMeta,
-        ),
-      );
-    }
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {id};
-  @override
-  TestParameter map(Map<String, dynamic> data, {String? tablePrefix}) {
-    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return TestParameter(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}id'],
-      )!,
-      testId: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}test_id'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      unit: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}unit'],
-      )!,
-      valueType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}value_type'],
-      )!,
-      formula: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}formula'],
-      )!,
-      maleRange: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}male_range'],
-      )!,
-      femaleRange: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}female_range'],
-      )!,
-      sortOrder: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}sort_order'],
-      )!,
-      sectionTitle: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}section_title'],
-      ),
-      groupSumEquals: attachedDatabase.typeMapping.read(
-        DriftSqlType.double,
-        data['${effectivePrefix}group_sum_equals'],
-      ),
-      masterParameterId: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}master_parameter_id'],
-      ),
-      deleteStatus: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}delete_status'],
-      )!,
-    );
-  }
-
-  @override
-  $TestParametersTable createAlias(String alias) {
-    return $TestParametersTable(attachedDatabase, alias);
-  }
-}
-
-class TestParameter extends DataClass implements Insertable<TestParameter> {
-  final int id;
-  final int testId;
-  final String title;
-  final String unit;
-  final String valueType;
-  final String formula;
-  final String maleRange;
-  final String femaleRange;
-  final int sortOrder;
-  final String? sectionTitle;
-  final double? groupSumEquals;
-  final int? masterParameterId;
-  final bool deleteStatus;
-  const TestParameter({
-    required this.id,
-    required this.testId,
-    required this.title,
-    required this.unit,
-    required this.valueType,
-    required this.formula,
-    required this.maleRange,
-    required this.femaleRange,
-    required this.sortOrder,
-    this.sectionTitle,
-    this.groupSumEquals,
-    this.masterParameterId,
-    required this.deleteStatus,
-  });
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    map['test_id'] = Variable<int>(testId);
-    map['title'] = Variable<String>(title);
-    map['unit'] = Variable<String>(unit);
-    map['value_type'] = Variable<String>(valueType);
-    map['formula'] = Variable<String>(formula);
-    map['male_range'] = Variable<String>(maleRange);
-    map['female_range'] = Variable<String>(femaleRange);
-    map['sort_order'] = Variable<int>(sortOrder);
-    if (!nullToAbsent || sectionTitle != null) {
-      map['section_title'] = Variable<String>(sectionTitle);
-    }
-    if (!nullToAbsent || groupSumEquals != null) {
-      map['group_sum_equals'] = Variable<double>(groupSumEquals);
-    }
-    if (!nullToAbsent || masterParameterId != null) {
-      map['master_parameter_id'] = Variable<int>(masterParameterId);
-    }
-    map['delete_status'] = Variable<bool>(deleteStatus);
-    return map;
-  }
-
-  TestParametersCompanion toCompanion(bool nullToAbsent) {
-    return TestParametersCompanion(
-      id: Value(id),
-      testId: Value(testId),
-      title: Value(title),
-      unit: Value(unit),
-      valueType: Value(valueType),
-      formula: Value(formula),
-      maleRange: Value(maleRange),
-      femaleRange: Value(femaleRange),
-      sortOrder: Value(sortOrder),
-      sectionTitle: sectionTitle == null && nullToAbsent
-          ? const Value.absent()
-          : Value(sectionTitle),
-      groupSumEquals: groupSumEquals == null && nullToAbsent
-          ? const Value.absent()
-          : Value(groupSumEquals),
-      masterParameterId: masterParameterId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(masterParameterId),
-      deleteStatus: Value(deleteStatus),
-    );
-  }
-
-  factory TestParameter.fromJson(
-    Map<String, dynamic> json, {
-    ValueSerializer? serializer,
-  }) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return TestParameter(
-      id: serializer.fromJson<int>(json['id']),
-      testId: serializer.fromJson<int>(json['testId']),
-      title: serializer.fromJson<String>(json['title']),
-      unit: serializer.fromJson<String>(json['unit']),
-      valueType: serializer.fromJson<String>(json['valueType']),
-      formula: serializer.fromJson<String>(json['formula']),
-      maleRange: serializer.fromJson<String>(json['maleRange']),
-      femaleRange: serializer.fromJson<String>(json['femaleRange']),
-      sortOrder: serializer.fromJson<int>(json['sortOrder']),
-      sectionTitle: serializer.fromJson<String?>(json['sectionTitle']),
-      groupSumEquals: serializer.fromJson<double?>(json['groupSumEquals']),
-      masterParameterId: serializer.fromJson<int?>(json['masterParameterId']),
-      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'testId': serializer.toJson<int>(testId),
-      'title': serializer.toJson<String>(title),
-      'unit': serializer.toJson<String>(unit),
-      'valueType': serializer.toJson<String>(valueType),
-      'formula': serializer.toJson<String>(formula),
-      'maleRange': serializer.toJson<String>(maleRange),
-      'femaleRange': serializer.toJson<String>(femaleRange),
-      'sortOrder': serializer.toJson<int>(sortOrder),
-      'sectionTitle': serializer.toJson<String?>(sectionTitle),
-      'groupSumEquals': serializer.toJson<double?>(groupSumEquals),
-      'masterParameterId': serializer.toJson<int?>(masterParameterId),
-      'deleteStatus': serializer.toJson<bool>(deleteStatus),
-    };
-  }
-
-  TestParameter copyWith({
-    int? id,
-    int? testId,
-    String? title,
-    String? unit,
-    String? valueType,
-    String? formula,
-    String? maleRange,
-    String? femaleRange,
-    int? sortOrder,
-    Value<String?> sectionTitle = const Value.absent(),
-    Value<double?> groupSumEquals = const Value.absent(),
-    Value<int?> masterParameterId = const Value.absent(),
-    bool? deleteStatus,
-  }) => TestParameter(
-    id: id ?? this.id,
-    testId: testId ?? this.testId,
-    title: title ?? this.title,
-    unit: unit ?? this.unit,
-    valueType: valueType ?? this.valueType,
-    formula: formula ?? this.formula,
-    maleRange: maleRange ?? this.maleRange,
-    femaleRange: femaleRange ?? this.femaleRange,
-    sortOrder: sortOrder ?? this.sortOrder,
-    sectionTitle: sectionTitle.present ? sectionTitle.value : this.sectionTitle,
-    groupSumEquals: groupSumEquals.present
-        ? groupSumEquals.value
-        : this.groupSumEquals,
-    masterParameterId: masterParameterId.present
-        ? masterParameterId.value
-        : this.masterParameterId,
-    deleteStatus: deleteStatus ?? this.deleteStatus,
-  );
-  TestParameter copyWithCompanion(TestParametersCompanion data) {
-    return TestParameter(
-      id: data.id.present ? data.id.value : this.id,
-      testId: data.testId.present ? data.testId.value : this.testId,
-      title: data.title.present ? data.title.value : this.title,
-      unit: data.unit.present ? data.unit.value : this.unit,
-      valueType: data.valueType.present ? data.valueType.value : this.valueType,
-      formula: data.formula.present ? data.formula.value : this.formula,
-      maleRange: data.maleRange.present ? data.maleRange.value : this.maleRange,
-      femaleRange: data.femaleRange.present
-          ? data.femaleRange.value
-          : this.femaleRange,
-      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
-      sectionTitle: data.sectionTitle.present
-          ? data.sectionTitle.value
-          : this.sectionTitle,
-      groupSumEquals: data.groupSumEquals.present
-          ? data.groupSumEquals.value
-          : this.groupSumEquals,
-      masterParameterId: data.masterParameterId.present
-          ? data.masterParameterId.value
-          : this.masterParameterId,
-      deleteStatus: data.deleteStatus.present
-          ? data.deleteStatus.value
-          : this.deleteStatus,
-    );
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('TestParameter(')
-          ..write('id: $id, ')
-          ..write('testId: $testId, ')
-          ..write('title: $title, ')
-          ..write('unit: $unit, ')
-          ..write('valueType: $valueType, ')
-          ..write('formula: $formula, ')
-          ..write('maleRange: $maleRange, ')
-          ..write('femaleRange: $femaleRange, ')
-          ..write('sortOrder: $sortOrder, ')
-          ..write('sectionTitle: $sectionTitle, ')
-          ..write('groupSumEquals: $groupSumEquals, ')
-          ..write('masterParameterId: $masterParameterId, ')
-          ..write('deleteStatus: $deleteStatus')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    testId,
-    title,
-    unit,
-    valueType,
-    formula,
-    maleRange,
-    femaleRange,
-    sortOrder,
-    sectionTitle,
-    groupSumEquals,
-    masterParameterId,
-    deleteStatus,
-  );
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is TestParameter &&
-          other.id == this.id &&
-          other.testId == this.testId &&
-          other.title == this.title &&
-          other.unit == this.unit &&
-          other.valueType == this.valueType &&
-          other.formula == this.formula &&
-          other.maleRange == this.maleRange &&
-          other.femaleRange == this.femaleRange &&
-          other.sortOrder == this.sortOrder &&
-          other.sectionTitle == this.sectionTitle &&
-          other.groupSumEquals == this.groupSumEquals &&
-          other.masterParameterId == this.masterParameterId &&
-          other.deleteStatus == this.deleteStatus);
-}
-
-class TestParametersCompanion extends UpdateCompanion<TestParameter> {
-  final Value<int> id;
-  final Value<int> testId;
-  final Value<String> title;
-  final Value<String> unit;
-  final Value<String> valueType;
-  final Value<String> formula;
-  final Value<String> maleRange;
-  final Value<String> femaleRange;
-  final Value<int> sortOrder;
-  final Value<String?> sectionTitle;
-  final Value<double?> groupSumEquals;
-  final Value<int?> masterParameterId;
-  final Value<bool> deleteStatus;
-  const TestParametersCompanion({
-    this.id = const Value.absent(),
-    this.testId = const Value.absent(),
-    this.title = const Value.absent(),
-    this.unit = const Value.absent(),
-    this.valueType = const Value.absent(),
-    this.formula = const Value.absent(),
-    this.maleRange = const Value.absent(),
-    this.femaleRange = const Value.absent(),
-    this.sortOrder = const Value.absent(),
-    this.sectionTitle = const Value.absent(),
-    this.groupSumEquals = const Value.absent(),
-    this.masterParameterId = const Value.absent(),
-    this.deleteStatus = const Value.absent(),
-  });
-  TestParametersCompanion.insert({
-    this.id = const Value.absent(),
-    required int testId,
-    required String title,
-    this.unit = const Value.absent(),
-    this.valueType = const Value.absent(),
-    this.formula = const Value.absent(),
-    this.maleRange = const Value.absent(),
-    this.femaleRange = const Value.absent(),
-    this.sortOrder = const Value.absent(),
-    this.sectionTitle = const Value.absent(),
-    this.groupSumEquals = const Value.absent(),
-    this.masterParameterId = const Value.absent(),
-    this.deleteStatus = const Value.absent(),
-  }) : testId = Value(testId),
-       title = Value(title);
-  static Insertable<TestParameter> custom({
-    Expression<int>? id,
-    Expression<int>? testId,
-    Expression<String>? title,
-    Expression<String>? unit,
-    Expression<String>? valueType,
-    Expression<String>? formula,
-    Expression<String>? maleRange,
-    Expression<String>? femaleRange,
-    Expression<int>? sortOrder,
-    Expression<String>? sectionTitle,
-    Expression<double>? groupSumEquals,
-    Expression<int>? masterParameterId,
-    Expression<bool>? deleteStatus,
-  }) {
-    return RawValuesInsertable({
-      if (id != null) 'id': id,
-      if (testId != null) 'test_id': testId,
-      if (title != null) 'title': title,
-      if (unit != null) 'unit': unit,
-      if (valueType != null) 'value_type': valueType,
-      if (formula != null) 'formula': formula,
-      if (maleRange != null) 'male_range': maleRange,
-      if (femaleRange != null) 'female_range': femaleRange,
-      if (sortOrder != null) 'sort_order': sortOrder,
-      if (sectionTitle != null) 'section_title': sectionTitle,
-      if (groupSumEquals != null) 'group_sum_equals': groupSumEquals,
-      if (masterParameterId != null) 'master_parameter_id': masterParameterId,
-      if (deleteStatus != null) 'delete_status': deleteStatus,
-    });
-  }
-
-  TestParametersCompanion copyWith({
-    Value<int>? id,
-    Value<int>? testId,
-    Value<String>? title,
-    Value<String>? unit,
-    Value<String>? valueType,
-    Value<String>? formula,
-    Value<String>? maleRange,
-    Value<String>? femaleRange,
-    Value<int>? sortOrder,
-    Value<String?>? sectionTitle,
-    Value<double?>? groupSumEquals,
-    Value<int?>? masterParameterId,
-    Value<bool>? deleteStatus,
-  }) {
-    return TestParametersCompanion(
-      id: id ?? this.id,
-      testId: testId ?? this.testId,
-      title: title ?? this.title,
-      unit: unit ?? this.unit,
-      valueType: valueType ?? this.valueType,
-      formula: formula ?? this.formula,
-      maleRange: maleRange ?? this.maleRange,
-      femaleRange: femaleRange ?? this.femaleRange,
-      sortOrder: sortOrder ?? this.sortOrder,
-      sectionTitle: sectionTitle ?? this.sectionTitle,
-      groupSumEquals: groupSumEquals ?? this.groupSumEquals,
-      masterParameterId: masterParameterId ?? this.masterParameterId,
-      deleteStatus: deleteStatus ?? this.deleteStatus,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (id.present) {
-      map['id'] = Variable<int>(id.value);
-    }
-    if (testId.present) {
-      map['test_id'] = Variable<int>(testId.value);
-    }
-    if (title.present) {
-      map['title'] = Variable<String>(title.value);
-    }
-    if (unit.present) {
-      map['unit'] = Variable<String>(unit.value);
-    }
-    if (valueType.present) {
-      map['value_type'] = Variable<String>(valueType.value);
-    }
-    if (formula.present) {
-      map['formula'] = Variable<String>(formula.value);
-    }
-    if (maleRange.present) {
-      map['male_range'] = Variable<String>(maleRange.value);
-    }
-    if (femaleRange.present) {
-      map['female_range'] = Variable<String>(femaleRange.value);
-    }
-    if (sortOrder.present) {
-      map['sort_order'] = Variable<int>(sortOrder.value);
-    }
-    if (sectionTitle.present) {
-      map['section_title'] = Variable<String>(sectionTitle.value);
-    }
-    if (groupSumEquals.present) {
-      map['group_sum_equals'] = Variable<double>(groupSumEquals.value);
-    }
-    if (masterParameterId.present) {
-      map['master_parameter_id'] = Variable<int>(masterParameterId.value);
-    }
-    if (deleteStatus.present) {
-      map['delete_status'] = Variable<bool>(deleteStatus.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('TestParametersCompanion(')
-          ..write('id: $id, ')
-          ..write('testId: $testId, ')
-          ..write('title: $title, ')
-          ..write('unit: $unit, ')
-          ..write('valueType: $valueType, ')
-          ..write('formula: $formula, ')
-          ..write('maleRange: $maleRange, ')
-          ..write('femaleRange: $femaleRange, ')
-          ..write('sortOrder: $sortOrder, ')
-          ..write('sectionTitle: $sectionTitle, ')
-          ..write('groupSumEquals: $groupSumEquals, ')
-          ..write('masterParameterId: $masterParameterId, ')
-          ..write('deleteStatus: $deleteStatus')
           ..write(')'))
         .toString();
   }
@@ -4281,6 +3630,1269 @@ class PatientsCompanion extends UpdateCompanion<Patient> {
   }
 }
 
+class $DoctorPercentsTable extends DoctorPercents
+    with TableInfo<$DoctorPercentsTable, DoctorPercent> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DoctorPercentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _patientIdMeta = const VerificationMeta(
+    'patientId',
+  );
+  @override
+  late final GeneratedColumn<int> patientId = GeneratedColumn<int>(
+    'patient_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES patients (id)',
+    ),
+  );
+  static const VerificationMeta _doctorIdMeta = const VerificationMeta(
+    'doctorId',
+  );
+  @override
+  late final GeneratedColumn<int> doctorId = GeneratedColumn<int>(
+    'doctor_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES doctors (id)',
+    ),
+  );
+  static const VerificationMeta _amountMeta = const VerificationMeta('amount');
+  @override
+  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
+    'amount',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _percentMeta = const VerificationMeta(
+    'percent',
+  );
+  @override
+  late final GeneratedColumn<double> percent = GeneratedColumn<double>(
+    'percent',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _payableAmountMeta = const VerificationMeta(
+    'payableAmount',
+  );
+  @override
+  late final GeneratedColumn<double> payableAmount = GeneratedColumn<double>(
+    'payable_amount',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<bool> status = GeneratedColumn<bool>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
+    'deleteStatus',
+  );
+  @override
+  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
+    'delete_status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("delete_status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    patientId,
+    doctorId,
+    amount,
+    percent,
+    payableAmount,
+    status,
+    deleteStatus,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'doctor_percents';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DoctorPercent> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('patient_id')) {
+      context.handle(
+        _patientIdMeta,
+        patientId.isAcceptableOrUnknown(data['patient_id']!, _patientIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_patientIdMeta);
+    }
+    if (data.containsKey('doctor_id')) {
+      context.handle(
+        _doctorIdMeta,
+        doctorId.isAcceptableOrUnknown(data['doctor_id']!, _doctorIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_doctorIdMeta);
+    }
+    if (data.containsKey('amount')) {
+      context.handle(
+        _amountMeta,
+        amount.isAcceptableOrUnknown(data['amount']!, _amountMeta),
+      );
+    }
+    if (data.containsKey('percent')) {
+      context.handle(
+        _percentMeta,
+        percent.isAcceptableOrUnknown(data['percent']!, _percentMeta),
+      );
+    }
+    if (data.containsKey('payable_amount')) {
+      context.handle(
+        _payableAmountMeta,
+        payableAmount.isAcceptableOrUnknown(
+          data['payable_amount']!,
+          _payableAmountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    }
+    if (data.containsKey('delete_status')) {
+      context.handle(
+        _deleteStatusMeta,
+        deleteStatus.isAcceptableOrUnknown(
+          data['delete_status']!,
+          _deleteStatusMeta,
+        ),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DoctorPercent map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DoctorPercent(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      patientId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}patient_id'],
+      )!,
+      doctorId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}doctor_id'],
+      )!,
+      amount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}amount'],
+      )!,
+      percent: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}percent'],
+      )!,
+      payableAmount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}payable_amount'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}status'],
+      )!,
+      deleteStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}delete_status'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $DoctorPercentsTable createAlias(String alias) {
+    return $DoctorPercentsTable(attachedDatabase, alias);
+  }
+}
+
+class DoctorPercent extends DataClass implements Insertable<DoctorPercent> {
+  final int id;
+  final int patientId;
+  final int doctorId;
+  final double amount;
+  final double percent;
+  final double payableAmount;
+  final bool status;
+  final bool deleteStatus;
+  final DateTime createdAt;
+  const DoctorPercent({
+    required this.id,
+    required this.patientId,
+    required this.doctorId,
+    required this.amount,
+    required this.percent,
+    required this.payableAmount,
+    required this.status,
+    required this.deleteStatus,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['patient_id'] = Variable<int>(patientId);
+    map['doctor_id'] = Variable<int>(doctorId);
+    map['amount'] = Variable<double>(amount);
+    map['percent'] = Variable<double>(percent);
+    map['payable_amount'] = Variable<double>(payableAmount);
+    map['status'] = Variable<bool>(status);
+    map['delete_status'] = Variable<bool>(deleteStatus);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  DoctorPercentsCompanion toCompanion(bool nullToAbsent) {
+    return DoctorPercentsCompanion(
+      id: Value(id),
+      patientId: Value(patientId),
+      doctorId: Value(doctorId),
+      amount: Value(amount),
+      percent: Value(percent),
+      payableAmount: Value(payableAmount),
+      status: Value(status),
+      deleteStatus: Value(deleteStatus),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory DoctorPercent.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DoctorPercent(
+      id: serializer.fromJson<int>(json['id']),
+      patientId: serializer.fromJson<int>(json['patientId']),
+      doctorId: serializer.fromJson<int>(json['doctorId']),
+      amount: serializer.fromJson<double>(json['amount']),
+      percent: serializer.fromJson<double>(json['percent']),
+      payableAmount: serializer.fromJson<double>(json['payableAmount']),
+      status: serializer.fromJson<bool>(json['status']),
+      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'patientId': serializer.toJson<int>(patientId),
+      'doctorId': serializer.toJson<int>(doctorId),
+      'amount': serializer.toJson<double>(amount),
+      'percent': serializer.toJson<double>(percent),
+      'payableAmount': serializer.toJson<double>(payableAmount),
+      'status': serializer.toJson<bool>(status),
+      'deleteStatus': serializer.toJson<bool>(deleteStatus),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  DoctorPercent copyWith({
+    int? id,
+    int? patientId,
+    int? doctorId,
+    double? amount,
+    double? percent,
+    double? payableAmount,
+    bool? status,
+    bool? deleteStatus,
+    DateTime? createdAt,
+  }) => DoctorPercent(
+    id: id ?? this.id,
+    patientId: patientId ?? this.patientId,
+    doctorId: doctorId ?? this.doctorId,
+    amount: amount ?? this.amount,
+    percent: percent ?? this.percent,
+    payableAmount: payableAmount ?? this.payableAmount,
+    status: status ?? this.status,
+    deleteStatus: deleteStatus ?? this.deleteStatus,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  DoctorPercent copyWithCompanion(DoctorPercentsCompanion data) {
+    return DoctorPercent(
+      id: data.id.present ? data.id.value : this.id,
+      patientId: data.patientId.present ? data.patientId.value : this.patientId,
+      doctorId: data.doctorId.present ? data.doctorId.value : this.doctorId,
+      amount: data.amount.present ? data.amount.value : this.amount,
+      percent: data.percent.present ? data.percent.value : this.percent,
+      payableAmount: data.payableAmount.present
+          ? data.payableAmount.value
+          : this.payableAmount,
+      status: data.status.present ? data.status.value : this.status,
+      deleteStatus: data.deleteStatus.present
+          ? data.deleteStatus.value
+          : this.deleteStatus,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DoctorPercent(')
+          ..write('id: $id, ')
+          ..write('patientId: $patientId, ')
+          ..write('doctorId: $doctorId, ')
+          ..write('amount: $amount, ')
+          ..write('percent: $percent, ')
+          ..write('payableAmount: $payableAmount, ')
+          ..write('status: $status, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    patientId,
+    doctorId,
+    amount,
+    percent,
+    payableAmount,
+    status,
+    deleteStatus,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DoctorPercent &&
+          other.id == this.id &&
+          other.patientId == this.patientId &&
+          other.doctorId == this.doctorId &&
+          other.amount == this.amount &&
+          other.percent == this.percent &&
+          other.payableAmount == this.payableAmount &&
+          other.status == this.status &&
+          other.deleteStatus == this.deleteStatus &&
+          other.createdAt == this.createdAt);
+}
+
+class DoctorPercentsCompanion extends UpdateCompanion<DoctorPercent> {
+  final Value<int> id;
+  final Value<int> patientId;
+  final Value<int> doctorId;
+  final Value<double> amount;
+  final Value<double> percent;
+  final Value<double> payableAmount;
+  final Value<bool> status;
+  final Value<bool> deleteStatus;
+  final Value<DateTime> createdAt;
+  const DoctorPercentsCompanion({
+    this.id = const Value.absent(),
+    this.patientId = const Value.absent(),
+    this.doctorId = const Value.absent(),
+    this.amount = const Value.absent(),
+    this.percent = const Value.absent(),
+    this.payableAmount = const Value.absent(),
+    this.status = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  });
+  DoctorPercentsCompanion.insert({
+    this.id = const Value.absent(),
+    required int patientId,
+    required int doctorId,
+    this.amount = const Value.absent(),
+    this.percent = const Value.absent(),
+    this.payableAmount = const Value.absent(),
+    this.status = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  }) : patientId = Value(patientId),
+       doctorId = Value(doctorId);
+  static Insertable<DoctorPercent> custom({
+    Expression<int>? id,
+    Expression<int>? patientId,
+    Expression<int>? doctorId,
+    Expression<double>? amount,
+    Expression<double>? percent,
+    Expression<double>? payableAmount,
+    Expression<bool>? status,
+    Expression<bool>? deleteStatus,
+    Expression<DateTime>? createdAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (patientId != null) 'patient_id': patientId,
+      if (doctorId != null) 'doctor_id': doctorId,
+      if (amount != null) 'amount': amount,
+      if (percent != null) 'percent': percent,
+      if (payableAmount != null) 'payable_amount': payableAmount,
+      if (status != null) 'status': status,
+      if (deleteStatus != null) 'delete_status': deleteStatus,
+      if (createdAt != null) 'created_at': createdAt,
+    });
+  }
+
+  DoctorPercentsCompanion copyWith({
+    Value<int>? id,
+    Value<int>? patientId,
+    Value<int>? doctorId,
+    Value<double>? amount,
+    Value<double>? percent,
+    Value<double>? payableAmount,
+    Value<bool>? status,
+    Value<bool>? deleteStatus,
+    Value<DateTime>? createdAt,
+  }) {
+    return DoctorPercentsCompanion(
+      id: id ?? this.id,
+      patientId: patientId ?? this.patientId,
+      doctorId: doctorId ?? this.doctorId,
+      amount: amount ?? this.amount,
+      percent: percent ?? this.percent,
+      payableAmount: payableAmount ?? this.payableAmount,
+      status: status ?? this.status,
+      deleteStatus: deleteStatus ?? this.deleteStatus,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (patientId.present) {
+      map['patient_id'] = Variable<int>(patientId.value);
+    }
+    if (doctorId.present) {
+      map['doctor_id'] = Variable<int>(doctorId.value);
+    }
+    if (amount.present) {
+      map['amount'] = Variable<double>(amount.value);
+    }
+    if (percent.present) {
+      map['percent'] = Variable<double>(percent.value);
+    }
+    if (payableAmount.present) {
+      map['payable_amount'] = Variable<double>(payableAmount.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<bool>(status.value);
+    }
+    if (deleteStatus.present) {
+      map['delete_status'] = Variable<bool>(deleteStatus.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DoctorPercentsCompanion(')
+          ..write('id: $id, ')
+          ..write('patientId: $patientId, ')
+          ..write('doctorId: $doctorId, ')
+          ..write('amount: $amount, ')
+          ..write('percent: $percent, ')
+          ..write('payableAmount: $payableAmount, ')
+          ..write('status: $status, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LabTestsTable extends LabTests with TableInfo<$LabTestsTable, LabTest> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LabTestsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _codeMeta = const VerificationMeta('code');
+  @override
+  late final GeneratedColumn<String> code = GeneratedColumn<String>(
+    'code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _departmentMeta = const VerificationMeta(
+    'department',
+  );
+  @override
+  late final GeneratedColumn<String> department = GeneratedColumn<String>(
+    'department',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('General'),
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _priceMeta = const VerificationMeta('price');
+  @override
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+    'price',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _maxDiscMeta = const VerificationMeta(
+    'maxDisc',
+  );
+  @override
+  late final GeneratedColumn<double> maxDisc = GeneratedColumn<double>(
+    'max_disc',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _commissionPercentMeta = const VerificationMeta(
+    'commissionPercent',
+  );
+  @override
+  late final GeneratedColumn<double> commissionPercent =
+      GeneratedColumn<double>(
+        'commission_percent',
+        aliasedName,
+        true,
+        type: DriftSqlType.double,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _paramCountMeta = const VerificationMeta(
+    'paramCount',
+  );
+  @override
+  late final GeneratedColumn<int> paramCount = GeneratedColumn<int>(
+    'param_count',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _masterTestIdMeta = const VerificationMeta(
+    'masterTestId',
+  );
+  @override
+  late final GeneratedColumn<int> masterTestId = GeneratedColumn<int>(
+    'master_test_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
+    'deleteStatus',
+  );
+  @override
+  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
+    'delete_status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("delete_status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    code,
+    name,
+    department,
+    description,
+    price,
+    maxDisc,
+    commissionPercent,
+    paramCount,
+    masterTestId,
+    deleteStatus,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'lab_tests';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LabTest> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('code')) {
+      context.handle(
+        _codeMeta,
+        code.isAcceptableOrUnknown(data['code']!, _codeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_codeMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('department')) {
+      context.handle(
+        _departmentMeta,
+        department.isAcceptableOrUnknown(data['department']!, _departmentMeta),
+      );
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('price')) {
+      context.handle(
+        _priceMeta,
+        price.isAcceptableOrUnknown(data['price']!, _priceMeta),
+      );
+    }
+    if (data.containsKey('max_disc')) {
+      context.handle(
+        _maxDiscMeta,
+        maxDisc.isAcceptableOrUnknown(data['max_disc']!, _maxDiscMeta),
+      );
+    }
+    if (data.containsKey('commission_percent')) {
+      context.handle(
+        _commissionPercentMeta,
+        commissionPercent.isAcceptableOrUnknown(
+          data['commission_percent']!,
+          _commissionPercentMeta,
+        ),
+      );
+    }
+    if (data.containsKey('param_count')) {
+      context.handle(
+        _paramCountMeta,
+        paramCount.isAcceptableOrUnknown(data['param_count']!, _paramCountMeta),
+      );
+    }
+    if (data.containsKey('master_test_id')) {
+      context.handle(
+        _masterTestIdMeta,
+        masterTestId.isAcceptableOrUnknown(
+          data['master_test_id']!,
+          _masterTestIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('delete_status')) {
+      context.handle(
+        _deleteStatusMeta,
+        deleteStatus.isAcceptableOrUnknown(
+          data['delete_status']!,
+          _deleteStatusMeta,
+        ),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LabTest map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LabTest(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      code: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}code'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      department: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}department'],
+      )!,
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      )!,
+      price: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}price'],
+      )!,
+      maxDisc: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}max_disc'],
+      )!,
+      commissionPercent: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}commission_percent'],
+      ),
+      paramCount: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}param_count'],
+      )!,
+      masterTestId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}master_test_id'],
+      ),
+      deleteStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}delete_status'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $LabTestsTable createAlias(String alias) {
+    return $LabTestsTable(attachedDatabase, alias);
+  }
+}
+
+class LabTest extends DataClass implements Insertable<LabTest> {
+  final int id;
+  final String code;
+  final String name;
+  final String department;
+  final String description;
+  final double price;
+  final double maxDisc;
+  final double? commissionPercent;
+  final int paramCount;
+  final int? masterTestId;
+  final bool deleteStatus;
+  final DateTime createdAt;
+  const LabTest({
+    required this.id,
+    required this.code,
+    required this.name,
+    required this.department,
+    required this.description,
+    required this.price,
+    required this.maxDisc,
+    this.commissionPercent,
+    required this.paramCount,
+    this.masterTestId,
+    required this.deleteStatus,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['code'] = Variable<String>(code);
+    map['name'] = Variable<String>(name);
+    map['department'] = Variable<String>(department);
+    map['description'] = Variable<String>(description);
+    map['price'] = Variable<double>(price);
+    map['max_disc'] = Variable<double>(maxDisc);
+    if (!nullToAbsent || commissionPercent != null) {
+      map['commission_percent'] = Variable<double>(commissionPercent);
+    }
+    map['param_count'] = Variable<int>(paramCount);
+    if (!nullToAbsent || masterTestId != null) {
+      map['master_test_id'] = Variable<int>(masterTestId);
+    }
+    map['delete_status'] = Variable<bool>(deleteStatus);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  LabTestsCompanion toCompanion(bool nullToAbsent) {
+    return LabTestsCompanion(
+      id: Value(id),
+      code: Value(code),
+      name: Value(name),
+      department: Value(department),
+      description: Value(description),
+      price: Value(price),
+      maxDisc: Value(maxDisc),
+      commissionPercent: commissionPercent == null && nullToAbsent
+          ? const Value.absent()
+          : Value(commissionPercent),
+      paramCount: Value(paramCount),
+      masterTestId: masterTestId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(masterTestId),
+      deleteStatus: Value(deleteStatus),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory LabTest.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LabTest(
+      id: serializer.fromJson<int>(json['id']),
+      code: serializer.fromJson<String>(json['code']),
+      name: serializer.fromJson<String>(json['name']),
+      department: serializer.fromJson<String>(json['department']),
+      description: serializer.fromJson<String>(json['description']),
+      price: serializer.fromJson<double>(json['price']),
+      maxDisc: serializer.fromJson<double>(json['maxDisc']),
+      commissionPercent: serializer.fromJson<double?>(
+        json['commissionPercent'],
+      ),
+      paramCount: serializer.fromJson<int>(json['paramCount']),
+      masterTestId: serializer.fromJson<int?>(json['masterTestId']),
+      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'code': serializer.toJson<String>(code),
+      'name': serializer.toJson<String>(name),
+      'department': serializer.toJson<String>(department),
+      'description': serializer.toJson<String>(description),
+      'price': serializer.toJson<double>(price),
+      'maxDisc': serializer.toJson<double>(maxDisc),
+      'commissionPercent': serializer.toJson<double?>(commissionPercent),
+      'paramCount': serializer.toJson<int>(paramCount),
+      'masterTestId': serializer.toJson<int?>(masterTestId),
+      'deleteStatus': serializer.toJson<bool>(deleteStatus),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  LabTest copyWith({
+    int? id,
+    String? code,
+    String? name,
+    String? department,
+    String? description,
+    double? price,
+    double? maxDisc,
+    Value<double?> commissionPercent = const Value.absent(),
+    int? paramCount,
+    Value<int?> masterTestId = const Value.absent(),
+    bool? deleteStatus,
+    DateTime? createdAt,
+  }) => LabTest(
+    id: id ?? this.id,
+    code: code ?? this.code,
+    name: name ?? this.name,
+    department: department ?? this.department,
+    description: description ?? this.description,
+    price: price ?? this.price,
+    maxDisc: maxDisc ?? this.maxDisc,
+    commissionPercent: commissionPercent.present
+        ? commissionPercent.value
+        : this.commissionPercent,
+    paramCount: paramCount ?? this.paramCount,
+    masterTestId: masterTestId.present ? masterTestId.value : this.masterTestId,
+    deleteStatus: deleteStatus ?? this.deleteStatus,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  LabTest copyWithCompanion(LabTestsCompanion data) {
+    return LabTest(
+      id: data.id.present ? data.id.value : this.id,
+      code: data.code.present ? data.code.value : this.code,
+      name: data.name.present ? data.name.value : this.name,
+      department: data.department.present
+          ? data.department.value
+          : this.department,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+      price: data.price.present ? data.price.value : this.price,
+      maxDisc: data.maxDisc.present ? data.maxDisc.value : this.maxDisc,
+      commissionPercent: data.commissionPercent.present
+          ? data.commissionPercent.value
+          : this.commissionPercent,
+      paramCount: data.paramCount.present
+          ? data.paramCount.value
+          : this.paramCount,
+      masterTestId: data.masterTestId.present
+          ? data.masterTestId.value
+          : this.masterTestId,
+      deleteStatus: data.deleteStatus.present
+          ? data.deleteStatus.value
+          : this.deleteStatus,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LabTest(')
+          ..write('id: $id, ')
+          ..write('code: $code, ')
+          ..write('name: $name, ')
+          ..write('department: $department, ')
+          ..write('description: $description, ')
+          ..write('price: $price, ')
+          ..write('maxDisc: $maxDisc, ')
+          ..write('commissionPercent: $commissionPercent, ')
+          ..write('paramCount: $paramCount, ')
+          ..write('masterTestId: $masterTestId, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    code,
+    name,
+    department,
+    description,
+    price,
+    maxDisc,
+    commissionPercent,
+    paramCount,
+    masterTestId,
+    deleteStatus,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LabTest &&
+          other.id == this.id &&
+          other.code == this.code &&
+          other.name == this.name &&
+          other.department == this.department &&
+          other.description == this.description &&
+          other.price == this.price &&
+          other.maxDisc == this.maxDisc &&
+          other.commissionPercent == this.commissionPercent &&
+          other.paramCount == this.paramCount &&
+          other.masterTestId == this.masterTestId &&
+          other.deleteStatus == this.deleteStatus &&
+          other.createdAt == this.createdAt);
+}
+
+class LabTestsCompanion extends UpdateCompanion<LabTest> {
+  final Value<int> id;
+  final Value<String> code;
+  final Value<String> name;
+  final Value<String> department;
+  final Value<String> description;
+  final Value<double> price;
+  final Value<double> maxDisc;
+  final Value<double?> commissionPercent;
+  final Value<int> paramCount;
+  final Value<int?> masterTestId;
+  final Value<bool> deleteStatus;
+  final Value<DateTime> createdAt;
+  const LabTestsCompanion({
+    this.id = const Value.absent(),
+    this.code = const Value.absent(),
+    this.name = const Value.absent(),
+    this.department = const Value.absent(),
+    this.description = const Value.absent(),
+    this.price = const Value.absent(),
+    this.maxDisc = const Value.absent(),
+    this.commissionPercent = const Value.absent(),
+    this.paramCount = const Value.absent(),
+    this.masterTestId = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  });
+  LabTestsCompanion.insert({
+    this.id = const Value.absent(),
+    required String code,
+    required String name,
+    this.department = const Value.absent(),
+    this.description = const Value.absent(),
+    this.price = const Value.absent(),
+    this.maxDisc = const Value.absent(),
+    this.commissionPercent = const Value.absent(),
+    this.paramCount = const Value.absent(),
+    this.masterTestId = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  }) : code = Value(code),
+       name = Value(name);
+  static Insertable<LabTest> custom({
+    Expression<int>? id,
+    Expression<String>? code,
+    Expression<String>? name,
+    Expression<String>? department,
+    Expression<String>? description,
+    Expression<double>? price,
+    Expression<double>? maxDisc,
+    Expression<double>? commissionPercent,
+    Expression<int>? paramCount,
+    Expression<int>? masterTestId,
+    Expression<bool>? deleteStatus,
+    Expression<DateTime>? createdAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (code != null) 'code': code,
+      if (name != null) 'name': name,
+      if (department != null) 'department': department,
+      if (description != null) 'description': description,
+      if (price != null) 'price': price,
+      if (maxDisc != null) 'max_disc': maxDisc,
+      if (commissionPercent != null) 'commission_percent': commissionPercent,
+      if (paramCount != null) 'param_count': paramCount,
+      if (masterTestId != null) 'master_test_id': masterTestId,
+      if (deleteStatus != null) 'delete_status': deleteStatus,
+      if (createdAt != null) 'created_at': createdAt,
+    });
+  }
+
+  LabTestsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? code,
+    Value<String>? name,
+    Value<String>? department,
+    Value<String>? description,
+    Value<double>? price,
+    Value<double>? maxDisc,
+    Value<double?>? commissionPercent,
+    Value<int>? paramCount,
+    Value<int?>? masterTestId,
+    Value<bool>? deleteStatus,
+    Value<DateTime>? createdAt,
+  }) {
+    return LabTestsCompanion(
+      id: id ?? this.id,
+      code: code ?? this.code,
+      name: name ?? this.name,
+      department: department ?? this.department,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      maxDisc: maxDisc ?? this.maxDisc,
+      commissionPercent: commissionPercent ?? this.commissionPercent,
+      paramCount: paramCount ?? this.paramCount,
+      masterTestId: masterTestId ?? this.masterTestId,
+      deleteStatus: deleteStatus ?? this.deleteStatus,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (code.present) {
+      map['code'] = Variable<String>(code.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (department.present) {
+      map['department'] = Variable<String>(department.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (price.present) {
+      map['price'] = Variable<double>(price.value);
+    }
+    if (maxDisc.present) {
+      map['max_disc'] = Variable<double>(maxDisc.value);
+    }
+    if (commissionPercent.present) {
+      map['commission_percent'] = Variable<double>(commissionPercent.value);
+    }
+    if (paramCount.present) {
+      map['param_count'] = Variable<int>(paramCount.value);
+    }
+    if (masterTestId.present) {
+      map['master_test_id'] = Variable<int>(masterTestId.value);
+    }
+    if (deleteStatus.present) {
+      map['delete_status'] = Variable<bool>(deleteStatus.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LabTestsCompanion(')
+          ..write('id: $id, ')
+          ..write('code: $code, ')
+          ..write('name: $name, ')
+          ..write('department: $department, ')
+          ..write('description: $description, ')
+          ..write('price: $price, ')
+          ..write('maxDisc: $maxDisc, ')
+          ..write('commissionPercent: $commissionPercent, ')
+          ..write('paramCount: $paramCount, ')
+          ..write('masterTestId: $masterTestId, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $PatientTestsTable extends PatientTests
     with TableInfo<$PatientTestsTable, PatientTest> {
   @override
@@ -4680,6 +5292,1444 @@ class PatientTestsCompanion extends UpdateCompanion<PatientTest> {
           ..write('price: $price, ')
           ..write('deleteStatus: $deleteStatus, ')
           ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DoctorCommissionItemsTable extends DoctorCommissionItems
+    with TableInfo<$DoctorCommissionItemsTable, DoctorCommissionItem> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DoctorCommissionItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _doctorPercentIdMeta = const VerificationMeta(
+    'doctorPercentId',
+  );
+  @override
+  late final GeneratedColumn<int> doctorPercentId = GeneratedColumn<int>(
+    'doctor_percent_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES doctor_percents (id)',
+    ),
+  );
+  static const VerificationMeta _patientTestIdMeta = const VerificationMeta(
+    'patientTestId',
+  );
+  @override
+  late final GeneratedColumn<int> patientTestId = GeneratedColumn<int>(
+    'patient_test_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES patient_tests (id)',
+    ),
+  );
+  static const VerificationMeta _testIdMeta = const VerificationMeta('testId');
+  @override
+  late final GeneratedColumn<int> testId = GeneratedColumn<int>(
+    'test_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES lab_tests (id)',
+    ),
+  );
+  static const VerificationMeta _testNameMeta = const VerificationMeta(
+    'testName',
+  );
+  @override
+  late final GeneratedColumn<String> testName = GeneratedColumn<String>(
+    'test_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _billedAmountMeta = const VerificationMeta(
+    'billedAmount',
+  );
+  @override
+  late final GeneratedColumn<double> billedAmount = GeneratedColumn<double>(
+    'billed_amount',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _percentAppliedMeta = const VerificationMeta(
+    'percentApplied',
+  );
+  @override
+  late final GeneratedColumn<double> percentApplied = GeneratedColumn<double>(
+    'percent_applied',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _commissionAmountMeta = const VerificationMeta(
+    'commissionAmount',
+  );
+  @override
+  late final GeneratedColumn<double> commissionAmount = GeneratedColumn<double>(
+    'commission_amount',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<bool> status = GeneratedColumn<bool>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
+    'deleteStatus',
+  );
+  @override
+  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
+    'delete_status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("delete_status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    doctorPercentId,
+    patientTestId,
+    testId,
+    testName,
+    billedAmount,
+    percentApplied,
+    commissionAmount,
+    status,
+    deleteStatus,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'doctor_commission_items';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DoctorCommissionItem> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('doctor_percent_id')) {
+      context.handle(
+        _doctorPercentIdMeta,
+        doctorPercentId.isAcceptableOrUnknown(
+          data['doctor_percent_id']!,
+          _doctorPercentIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_doctorPercentIdMeta);
+    }
+    if (data.containsKey('patient_test_id')) {
+      context.handle(
+        _patientTestIdMeta,
+        patientTestId.isAcceptableOrUnknown(
+          data['patient_test_id']!,
+          _patientTestIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('test_id')) {
+      context.handle(
+        _testIdMeta,
+        testId.isAcceptableOrUnknown(data['test_id']!, _testIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_testIdMeta);
+    }
+    if (data.containsKey('test_name')) {
+      context.handle(
+        _testNameMeta,
+        testName.isAcceptableOrUnknown(data['test_name']!, _testNameMeta),
+      );
+    }
+    if (data.containsKey('billed_amount')) {
+      context.handle(
+        _billedAmountMeta,
+        billedAmount.isAcceptableOrUnknown(
+          data['billed_amount']!,
+          _billedAmountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('percent_applied')) {
+      context.handle(
+        _percentAppliedMeta,
+        percentApplied.isAcceptableOrUnknown(
+          data['percent_applied']!,
+          _percentAppliedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('commission_amount')) {
+      context.handle(
+        _commissionAmountMeta,
+        commissionAmount.isAcceptableOrUnknown(
+          data['commission_amount']!,
+          _commissionAmountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    }
+    if (data.containsKey('delete_status')) {
+      context.handle(
+        _deleteStatusMeta,
+        deleteStatus.isAcceptableOrUnknown(
+          data['delete_status']!,
+          _deleteStatusMeta,
+        ),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DoctorCommissionItem map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DoctorCommissionItem(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      doctorPercentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}doctor_percent_id'],
+      )!,
+      patientTestId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}patient_test_id'],
+      ),
+      testId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}test_id'],
+      )!,
+      testName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}test_name'],
+      )!,
+      billedAmount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}billed_amount'],
+      )!,
+      percentApplied: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}percent_applied'],
+      )!,
+      commissionAmount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}commission_amount'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}status'],
+      )!,
+      deleteStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}delete_status'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $DoctorCommissionItemsTable createAlias(String alias) {
+    return $DoctorCommissionItemsTable(attachedDatabase, alias);
+  }
+}
+
+class DoctorCommissionItem extends DataClass
+    implements Insertable<DoctorCommissionItem> {
+  final int id;
+  final int doctorPercentId;
+  final int? patientTestId;
+  final int testId;
+  final String testName;
+  final double billedAmount;
+  final double percentApplied;
+  final double commissionAmount;
+  final bool status;
+  final bool deleteStatus;
+  final DateTime createdAt;
+  const DoctorCommissionItem({
+    required this.id,
+    required this.doctorPercentId,
+    this.patientTestId,
+    required this.testId,
+    required this.testName,
+    required this.billedAmount,
+    required this.percentApplied,
+    required this.commissionAmount,
+    required this.status,
+    required this.deleteStatus,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['doctor_percent_id'] = Variable<int>(doctorPercentId);
+    if (!nullToAbsent || patientTestId != null) {
+      map['patient_test_id'] = Variable<int>(patientTestId);
+    }
+    map['test_id'] = Variable<int>(testId);
+    map['test_name'] = Variable<String>(testName);
+    map['billed_amount'] = Variable<double>(billedAmount);
+    map['percent_applied'] = Variable<double>(percentApplied);
+    map['commission_amount'] = Variable<double>(commissionAmount);
+    map['status'] = Variable<bool>(status);
+    map['delete_status'] = Variable<bool>(deleteStatus);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  DoctorCommissionItemsCompanion toCompanion(bool nullToAbsent) {
+    return DoctorCommissionItemsCompanion(
+      id: Value(id),
+      doctorPercentId: Value(doctorPercentId),
+      patientTestId: patientTestId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(patientTestId),
+      testId: Value(testId),
+      testName: Value(testName),
+      billedAmount: Value(billedAmount),
+      percentApplied: Value(percentApplied),
+      commissionAmount: Value(commissionAmount),
+      status: Value(status),
+      deleteStatus: Value(deleteStatus),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory DoctorCommissionItem.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DoctorCommissionItem(
+      id: serializer.fromJson<int>(json['id']),
+      doctorPercentId: serializer.fromJson<int>(json['doctorPercentId']),
+      patientTestId: serializer.fromJson<int?>(json['patientTestId']),
+      testId: serializer.fromJson<int>(json['testId']),
+      testName: serializer.fromJson<String>(json['testName']),
+      billedAmount: serializer.fromJson<double>(json['billedAmount']),
+      percentApplied: serializer.fromJson<double>(json['percentApplied']),
+      commissionAmount: serializer.fromJson<double>(json['commissionAmount']),
+      status: serializer.fromJson<bool>(json['status']),
+      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'doctorPercentId': serializer.toJson<int>(doctorPercentId),
+      'patientTestId': serializer.toJson<int?>(patientTestId),
+      'testId': serializer.toJson<int>(testId),
+      'testName': serializer.toJson<String>(testName),
+      'billedAmount': serializer.toJson<double>(billedAmount),
+      'percentApplied': serializer.toJson<double>(percentApplied),
+      'commissionAmount': serializer.toJson<double>(commissionAmount),
+      'status': serializer.toJson<bool>(status),
+      'deleteStatus': serializer.toJson<bool>(deleteStatus),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  DoctorCommissionItem copyWith({
+    int? id,
+    int? doctorPercentId,
+    Value<int?> patientTestId = const Value.absent(),
+    int? testId,
+    String? testName,
+    double? billedAmount,
+    double? percentApplied,
+    double? commissionAmount,
+    bool? status,
+    bool? deleteStatus,
+    DateTime? createdAt,
+  }) => DoctorCommissionItem(
+    id: id ?? this.id,
+    doctorPercentId: doctorPercentId ?? this.doctorPercentId,
+    patientTestId: patientTestId.present
+        ? patientTestId.value
+        : this.patientTestId,
+    testId: testId ?? this.testId,
+    testName: testName ?? this.testName,
+    billedAmount: billedAmount ?? this.billedAmount,
+    percentApplied: percentApplied ?? this.percentApplied,
+    commissionAmount: commissionAmount ?? this.commissionAmount,
+    status: status ?? this.status,
+    deleteStatus: deleteStatus ?? this.deleteStatus,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  DoctorCommissionItem copyWithCompanion(DoctorCommissionItemsCompanion data) {
+    return DoctorCommissionItem(
+      id: data.id.present ? data.id.value : this.id,
+      doctorPercentId: data.doctorPercentId.present
+          ? data.doctorPercentId.value
+          : this.doctorPercentId,
+      patientTestId: data.patientTestId.present
+          ? data.patientTestId.value
+          : this.patientTestId,
+      testId: data.testId.present ? data.testId.value : this.testId,
+      testName: data.testName.present ? data.testName.value : this.testName,
+      billedAmount: data.billedAmount.present
+          ? data.billedAmount.value
+          : this.billedAmount,
+      percentApplied: data.percentApplied.present
+          ? data.percentApplied.value
+          : this.percentApplied,
+      commissionAmount: data.commissionAmount.present
+          ? data.commissionAmount.value
+          : this.commissionAmount,
+      status: data.status.present ? data.status.value : this.status,
+      deleteStatus: data.deleteStatus.present
+          ? data.deleteStatus.value
+          : this.deleteStatus,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DoctorCommissionItem(')
+          ..write('id: $id, ')
+          ..write('doctorPercentId: $doctorPercentId, ')
+          ..write('patientTestId: $patientTestId, ')
+          ..write('testId: $testId, ')
+          ..write('testName: $testName, ')
+          ..write('billedAmount: $billedAmount, ')
+          ..write('percentApplied: $percentApplied, ')
+          ..write('commissionAmount: $commissionAmount, ')
+          ..write('status: $status, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    doctorPercentId,
+    patientTestId,
+    testId,
+    testName,
+    billedAmount,
+    percentApplied,
+    commissionAmount,
+    status,
+    deleteStatus,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DoctorCommissionItem &&
+          other.id == this.id &&
+          other.doctorPercentId == this.doctorPercentId &&
+          other.patientTestId == this.patientTestId &&
+          other.testId == this.testId &&
+          other.testName == this.testName &&
+          other.billedAmount == this.billedAmount &&
+          other.percentApplied == this.percentApplied &&
+          other.commissionAmount == this.commissionAmount &&
+          other.status == this.status &&
+          other.deleteStatus == this.deleteStatus &&
+          other.createdAt == this.createdAt);
+}
+
+class DoctorCommissionItemsCompanion
+    extends UpdateCompanion<DoctorCommissionItem> {
+  final Value<int> id;
+  final Value<int> doctorPercentId;
+  final Value<int?> patientTestId;
+  final Value<int> testId;
+  final Value<String> testName;
+  final Value<double> billedAmount;
+  final Value<double> percentApplied;
+  final Value<double> commissionAmount;
+  final Value<bool> status;
+  final Value<bool> deleteStatus;
+  final Value<DateTime> createdAt;
+  const DoctorCommissionItemsCompanion({
+    this.id = const Value.absent(),
+    this.doctorPercentId = const Value.absent(),
+    this.patientTestId = const Value.absent(),
+    this.testId = const Value.absent(),
+    this.testName = const Value.absent(),
+    this.billedAmount = const Value.absent(),
+    this.percentApplied = const Value.absent(),
+    this.commissionAmount = const Value.absent(),
+    this.status = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  });
+  DoctorCommissionItemsCompanion.insert({
+    this.id = const Value.absent(),
+    required int doctorPercentId,
+    this.patientTestId = const Value.absent(),
+    required int testId,
+    this.testName = const Value.absent(),
+    this.billedAmount = const Value.absent(),
+    this.percentApplied = const Value.absent(),
+    this.commissionAmount = const Value.absent(),
+    this.status = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  }) : doctorPercentId = Value(doctorPercentId),
+       testId = Value(testId);
+  static Insertable<DoctorCommissionItem> custom({
+    Expression<int>? id,
+    Expression<int>? doctorPercentId,
+    Expression<int>? patientTestId,
+    Expression<int>? testId,
+    Expression<String>? testName,
+    Expression<double>? billedAmount,
+    Expression<double>? percentApplied,
+    Expression<double>? commissionAmount,
+    Expression<bool>? status,
+    Expression<bool>? deleteStatus,
+    Expression<DateTime>? createdAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (doctorPercentId != null) 'doctor_percent_id': doctorPercentId,
+      if (patientTestId != null) 'patient_test_id': patientTestId,
+      if (testId != null) 'test_id': testId,
+      if (testName != null) 'test_name': testName,
+      if (billedAmount != null) 'billed_amount': billedAmount,
+      if (percentApplied != null) 'percent_applied': percentApplied,
+      if (commissionAmount != null) 'commission_amount': commissionAmount,
+      if (status != null) 'status': status,
+      if (deleteStatus != null) 'delete_status': deleteStatus,
+      if (createdAt != null) 'created_at': createdAt,
+    });
+  }
+
+  DoctorCommissionItemsCompanion copyWith({
+    Value<int>? id,
+    Value<int>? doctorPercentId,
+    Value<int?>? patientTestId,
+    Value<int>? testId,
+    Value<String>? testName,
+    Value<double>? billedAmount,
+    Value<double>? percentApplied,
+    Value<double>? commissionAmount,
+    Value<bool>? status,
+    Value<bool>? deleteStatus,
+    Value<DateTime>? createdAt,
+  }) {
+    return DoctorCommissionItemsCompanion(
+      id: id ?? this.id,
+      doctorPercentId: doctorPercentId ?? this.doctorPercentId,
+      patientTestId: patientTestId ?? this.patientTestId,
+      testId: testId ?? this.testId,
+      testName: testName ?? this.testName,
+      billedAmount: billedAmount ?? this.billedAmount,
+      percentApplied: percentApplied ?? this.percentApplied,
+      commissionAmount: commissionAmount ?? this.commissionAmount,
+      status: status ?? this.status,
+      deleteStatus: deleteStatus ?? this.deleteStatus,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (doctorPercentId.present) {
+      map['doctor_percent_id'] = Variable<int>(doctorPercentId.value);
+    }
+    if (patientTestId.present) {
+      map['patient_test_id'] = Variable<int>(patientTestId.value);
+    }
+    if (testId.present) {
+      map['test_id'] = Variable<int>(testId.value);
+    }
+    if (testName.present) {
+      map['test_name'] = Variable<String>(testName.value);
+    }
+    if (billedAmount.present) {
+      map['billed_amount'] = Variable<double>(billedAmount.value);
+    }
+    if (percentApplied.present) {
+      map['percent_applied'] = Variable<double>(percentApplied.value);
+    }
+    if (commissionAmount.present) {
+      map['commission_amount'] = Variable<double>(commissionAmount.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<bool>(status.value);
+    }
+    if (deleteStatus.present) {
+      map['delete_status'] = Variable<bool>(deleteStatus.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DoctorCommissionItemsCompanion(')
+          ..write('id: $id, ')
+          ..write('doctorPercentId: $doctorPercentId, ')
+          ..write('patientTestId: $patientTestId, ')
+          ..write('testId: $testId, ')
+          ..write('testName: $testName, ')
+          ..write('billedAmount: $billedAmount, ')
+          ..write('percentApplied: $percentApplied, ')
+          ..write('commissionAmount: $commissionAmount, ')
+          ..write('status: $status, ')
+          ..write('deleteStatus: $deleteStatus, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $TestParametersTable extends TestParameters
+    with TableInfo<$TestParametersTable, TestParameter> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $TestParametersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _testIdMeta = const VerificationMeta('testId');
+  @override
+  late final GeneratedColumn<int> testId = GeneratedColumn<int>(
+    'test_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES lab_tests (id)',
+    ),
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
+  @override
+  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
+    'unit',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _valueTypeMeta = const VerificationMeta(
+    'valueType',
+  );
+  @override
+  late final GeneratedColumn<String> valueType = GeneratedColumn<String>(
+    'value_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('float'),
+  );
+  static const VerificationMeta _formulaMeta = const VerificationMeta(
+    'formula',
+  );
+  @override
+  late final GeneratedColumn<String> formula = GeneratedColumn<String>(
+    'formula',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _maleRangeMeta = const VerificationMeta(
+    'maleRange',
+  );
+  @override
+  late final GeneratedColumn<String> maleRange = GeneratedColumn<String>(
+    'male_range',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _femaleRangeMeta = const VerificationMeta(
+    'femaleRange',
+  );
+  @override
+  late final GeneratedColumn<String> femaleRange = GeneratedColumn<String>(
+    'female_range',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _sectionTitleMeta = const VerificationMeta(
+    'sectionTitle',
+  );
+  @override
+  late final GeneratedColumn<String> sectionTitle = GeneratedColumn<String>(
+    'section_title',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _groupSumEqualsMeta = const VerificationMeta(
+    'groupSumEquals',
+  );
+  @override
+  late final GeneratedColumn<double> groupSumEquals = GeneratedColumn<double>(
+    'group_sum_equals',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _masterParameterIdMeta = const VerificationMeta(
+    'masterParameterId',
+  );
+  @override
+  late final GeneratedColumn<int> masterParameterId = GeneratedColumn<int>(
+    'master_parameter_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deleteStatusMeta = const VerificationMeta(
+    'deleteStatus',
+  );
+  @override
+  late final GeneratedColumn<bool> deleteStatus = GeneratedColumn<bool>(
+    'delete_status',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("delete_status" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    testId,
+    title,
+    unit,
+    valueType,
+    formula,
+    maleRange,
+    femaleRange,
+    sortOrder,
+    sectionTitle,
+    groupSumEquals,
+    masterParameterId,
+    deleteStatus,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'test_parameters';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<TestParameter> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('test_id')) {
+      context.handle(
+        _testIdMeta,
+        testId.isAcceptableOrUnknown(data['test_id']!, _testIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_testIdMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('unit')) {
+      context.handle(
+        _unitMeta,
+        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
+      );
+    }
+    if (data.containsKey('value_type')) {
+      context.handle(
+        _valueTypeMeta,
+        valueType.isAcceptableOrUnknown(data['value_type']!, _valueTypeMeta),
+      );
+    }
+    if (data.containsKey('formula')) {
+      context.handle(
+        _formulaMeta,
+        formula.isAcceptableOrUnknown(data['formula']!, _formulaMeta),
+      );
+    }
+    if (data.containsKey('male_range')) {
+      context.handle(
+        _maleRangeMeta,
+        maleRange.isAcceptableOrUnknown(data['male_range']!, _maleRangeMeta),
+      );
+    }
+    if (data.containsKey('female_range')) {
+      context.handle(
+        _femaleRangeMeta,
+        femaleRange.isAcceptableOrUnknown(
+          data['female_range']!,
+          _femaleRangeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    if (data.containsKey('section_title')) {
+      context.handle(
+        _sectionTitleMeta,
+        sectionTitle.isAcceptableOrUnknown(
+          data['section_title']!,
+          _sectionTitleMeta,
+        ),
+      );
+    }
+    if (data.containsKey('group_sum_equals')) {
+      context.handle(
+        _groupSumEqualsMeta,
+        groupSumEquals.isAcceptableOrUnknown(
+          data['group_sum_equals']!,
+          _groupSumEqualsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('master_parameter_id')) {
+      context.handle(
+        _masterParameterIdMeta,
+        masterParameterId.isAcceptableOrUnknown(
+          data['master_parameter_id']!,
+          _masterParameterIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('delete_status')) {
+      context.handle(
+        _deleteStatusMeta,
+        deleteStatus.isAcceptableOrUnknown(
+          data['delete_status']!,
+          _deleteStatusMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  TestParameter map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TestParameter(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      testId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}test_id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      unit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}unit'],
+      )!,
+      valueType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value_type'],
+      )!,
+      formula: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}formula'],
+      )!,
+      maleRange: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}male_range'],
+      )!,
+      femaleRange: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}female_range'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+      sectionTitle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}section_title'],
+      ),
+      groupSumEquals: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}group_sum_equals'],
+      ),
+      masterParameterId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}master_parameter_id'],
+      ),
+      deleteStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}delete_status'],
+      )!,
+    );
+  }
+
+  @override
+  $TestParametersTable createAlias(String alias) {
+    return $TestParametersTable(attachedDatabase, alias);
+  }
+}
+
+class TestParameter extends DataClass implements Insertable<TestParameter> {
+  final int id;
+  final int testId;
+  final String title;
+  final String unit;
+  final String valueType;
+  final String formula;
+  final String maleRange;
+  final String femaleRange;
+  final int sortOrder;
+  final String? sectionTitle;
+  final double? groupSumEquals;
+  final int? masterParameterId;
+  final bool deleteStatus;
+  const TestParameter({
+    required this.id,
+    required this.testId,
+    required this.title,
+    required this.unit,
+    required this.valueType,
+    required this.formula,
+    required this.maleRange,
+    required this.femaleRange,
+    required this.sortOrder,
+    this.sectionTitle,
+    this.groupSumEquals,
+    this.masterParameterId,
+    required this.deleteStatus,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['test_id'] = Variable<int>(testId);
+    map['title'] = Variable<String>(title);
+    map['unit'] = Variable<String>(unit);
+    map['value_type'] = Variable<String>(valueType);
+    map['formula'] = Variable<String>(formula);
+    map['male_range'] = Variable<String>(maleRange);
+    map['female_range'] = Variable<String>(femaleRange);
+    map['sort_order'] = Variable<int>(sortOrder);
+    if (!nullToAbsent || sectionTitle != null) {
+      map['section_title'] = Variable<String>(sectionTitle);
+    }
+    if (!nullToAbsent || groupSumEquals != null) {
+      map['group_sum_equals'] = Variable<double>(groupSumEquals);
+    }
+    if (!nullToAbsent || masterParameterId != null) {
+      map['master_parameter_id'] = Variable<int>(masterParameterId);
+    }
+    map['delete_status'] = Variable<bool>(deleteStatus);
+    return map;
+  }
+
+  TestParametersCompanion toCompanion(bool nullToAbsent) {
+    return TestParametersCompanion(
+      id: Value(id),
+      testId: Value(testId),
+      title: Value(title),
+      unit: Value(unit),
+      valueType: Value(valueType),
+      formula: Value(formula),
+      maleRange: Value(maleRange),
+      femaleRange: Value(femaleRange),
+      sortOrder: Value(sortOrder),
+      sectionTitle: sectionTitle == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sectionTitle),
+      groupSumEquals: groupSumEquals == null && nullToAbsent
+          ? const Value.absent()
+          : Value(groupSumEquals),
+      masterParameterId: masterParameterId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(masterParameterId),
+      deleteStatus: Value(deleteStatus),
+    );
+  }
+
+  factory TestParameter.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TestParameter(
+      id: serializer.fromJson<int>(json['id']),
+      testId: serializer.fromJson<int>(json['testId']),
+      title: serializer.fromJson<String>(json['title']),
+      unit: serializer.fromJson<String>(json['unit']),
+      valueType: serializer.fromJson<String>(json['valueType']),
+      formula: serializer.fromJson<String>(json['formula']),
+      maleRange: serializer.fromJson<String>(json['maleRange']),
+      femaleRange: serializer.fromJson<String>(json['femaleRange']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      sectionTitle: serializer.fromJson<String?>(json['sectionTitle']),
+      groupSumEquals: serializer.fromJson<double?>(json['groupSumEquals']),
+      masterParameterId: serializer.fromJson<int?>(json['masterParameterId']),
+      deleteStatus: serializer.fromJson<bool>(json['deleteStatus']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'testId': serializer.toJson<int>(testId),
+      'title': serializer.toJson<String>(title),
+      'unit': serializer.toJson<String>(unit),
+      'valueType': serializer.toJson<String>(valueType),
+      'formula': serializer.toJson<String>(formula),
+      'maleRange': serializer.toJson<String>(maleRange),
+      'femaleRange': serializer.toJson<String>(femaleRange),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+      'sectionTitle': serializer.toJson<String?>(sectionTitle),
+      'groupSumEquals': serializer.toJson<double?>(groupSumEquals),
+      'masterParameterId': serializer.toJson<int?>(masterParameterId),
+      'deleteStatus': serializer.toJson<bool>(deleteStatus),
+    };
+  }
+
+  TestParameter copyWith({
+    int? id,
+    int? testId,
+    String? title,
+    String? unit,
+    String? valueType,
+    String? formula,
+    String? maleRange,
+    String? femaleRange,
+    int? sortOrder,
+    Value<String?> sectionTitle = const Value.absent(),
+    Value<double?> groupSumEquals = const Value.absent(),
+    Value<int?> masterParameterId = const Value.absent(),
+    bool? deleteStatus,
+  }) => TestParameter(
+    id: id ?? this.id,
+    testId: testId ?? this.testId,
+    title: title ?? this.title,
+    unit: unit ?? this.unit,
+    valueType: valueType ?? this.valueType,
+    formula: formula ?? this.formula,
+    maleRange: maleRange ?? this.maleRange,
+    femaleRange: femaleRange ?? this.femaleRange,
+    sortOrder: sortOrder ?? this.sortOrder,
+    sectionTitle: sectionTitle.present ? sectionTitle.value : this.sectionTitle,
+    groupSumEquals: groupSumEquals.present
+        ? groupSumEquals.value
+        : this.groupSumEquals,
+    masterParameterId: masterParameterId.present
+        ? masterParameterId.value
+        : this.masterParameterId,
+    deleteStatus: deleteStatus ?? this.deleteStatus,
+  );
+  TestParameter copyWithCompanion(TestParametersCompanion data) {
+    return TestParameter(
+      id: data.id.present ? data.id.value : this.id,
+      testId: data.testId.present ? data.testId.value : this.testId,
+      title: data.title.present ? data.title.value : this.title,
+      unit: data.unit.present ? data.unit.value : this.unit,
+      valueType: data.valueType.present ? data.valueType.value : this.valueType,
+      formula: data.formula.present ? data.formula.value : this.formula,
+      maleRange: data.maleRange.present ? data.maleRange.value : this.maleRange,
+      femaleRange: data.femaleRange.present
+          ? data.femaleRange.value
+          : this.femaleRange,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      sectionTitle: data.sectionTitle.present
+          ? data.sectionTitle.value
+          : this.sectionTitle,
+      groupSumEquals: data.groupSumEquals.present
+          ? data.groupSumEquals.value
+          : this.groupSumEquals,
+      masterParameterId: data.masterParameterId.present
+          ? data.masterParameterId.value
+          : this.masterParameterId,
+      deleteStatus: data.deleteStatus.present
+          ? data.deleteStatus.value
+          : this.deleteStatus,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TestParameter(')
+          ..write('id: $id, ')
+          ..write('testId: $testId, ')
+          ..write('title: $title, ')
+          ..write('unit: $unit, ')
+          ..write('valueType: $valueType, ')
+          ..write('formula: $formula, ')
+          ..write('maleRange: $maleRange, ')
+          ..write('femaleRange: $femaleRange, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('sectionTitle: $sectionTitle, ')
+          ..write('groupSumEquals: $groupSumEquals, ')
+          ..write('masterParameterId: $masterParameterId, ')
+          ..write('deleteStatus: $deleteStatus')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    testId,
+    title,
+    unit,
+    valueType,
+    formula,
+    maleRange,
+    femaleRange,
+    sortOrder,
+    sectionTitle,
+    groupSumEquals,
+    masterParameterId,
+    deleteStatus,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TestParameter &&
+          other.id == this.id &&
+          other.testId == this.testId &&
+          other.title == this.title &&
+          other.unit == this.unit &&
+          other.valueType == this.valueType &&
+          other.formula == this.formula &&
+          other.maleRange == this.maleRange &&
+          other.femaleRange == this.femaleRange &&
+          other.sortOrder == this.sortOrder &&
+          other.sectionTitle == this.sectionTitle &&
+          other.groupSumEquals == this.groupSumEquals &&
+          other.masterParameterId == this.masterParameterId &&
+          other.deleteStatus == this.deleteStatus);
+}
+
+class TestParametersCompanion extends UpdateCompanion<TestParameter> {
+  final Value<int> id;
+  final Value<int> testId;
+  final Value<String> title;
+  final Value<String> unit;
+  final Value<String> valueType;
+  final Value<String> formula;
+  final Value<String> maleRange;
+  final Value<String> femaleRange;
+  final Value<int> sortOrder;
+  final Value<String?> sectionTitle;
+  final Value<double?> groupSumEquals;
+  final Value<int?> masterParameterId;
+  final Value<bool> deleteStatus;
+  const TestParametersCompanion({
+    this.id = const Value.absent(),
+    this.testId = const Value.absent(),
+    this.title = const Value.absent(),
+    this.unit = const Value.absent(),
+    this.valueType = const Value.absent(),
+    this.formula = const Value.absent(),
+    this.maleRange = const Value.absent(),
+    this.femaleRange = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.sectionTitle = const Value.absent(),
+    this.groupSumEquals = const Value.absent(),
+    this.masterParameterId = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+  });
+  TestParametersCompanion.insert({
+    this.id = const Value.absent(),
+    required int testId,
+    required String title,
+    this.unit = const Value.absent(),
+    this.valueType = const Value.absent(),
+    this.formula = const Value.absent(),
+    this.maleRange = const Value.absent(),
+    this.femaleRange = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.sectionTitle = const Value.absent(),
+    this.groupSumEquals = const Value.absent(),
+    this.masterParameterId = const Value.absent(),
+    this.deleteStatus = const Value.absent(),
+  }) : testId = Value(testId),
+       title = Value(title);
+  static Insertable<TestParameter> custom({
+    Expression<int>? id,
+    Expression<int>? testId,
+    Expression<String>? title,
+    Expression<String>? unit,
+    Expression<String>? valueType,
+    Expression<String>? formula,
+    Expression<String>? maleRange,
+    Expression<String>? femaleRange,
+    Expression<int>? sortOrder,
+    Expression<String>? sectionTitle,
+    Expression<double>? groupSumEquals,
+    Expression<int>? masterParameterId,
+    Expression<bool>? deleteStatus,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (testId != null) 'test_id': testId,
+      if (title != null) 'title': title,
+      if (unit != null) 'unit': unit,
+      if (valueType != null) 'value_type': valueType,
+      if (formula != null) 'formula': formula,
+      if (maleRange != null) 'male_range': maleRange,
+      if (femaleRange != null) 'female_range': femaleRange,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (sectionTitle != null) 'section_title': sectionTitle,
+      if (groupSumEquals != null) 'group_sum_equals': groupSumEquals,
+      if (masterParameterId != null) 'master_parameter_id': masterParameterId,
+      if (deleteStatus != null) 'delete_status': deleteStatus,
+    });
+  }
+
+  TestParametersCompanion copyWith({
+    Value<int>? id,
+    Value<int>? testId,
+    Value<String>? title,
+    Value<String>? unit,
+    Value<String>? valueType,
+    Value<String>? formula,
+    Value<String>? maleRange,
+    Value<String>? femaleRange,
+    Value<int>? sortOrder,
+    Value<String?>? sectionTitle,
+    Value<double?>? groupSumEquals,
+    Value<int?>? masterParameterId,
+    Value<bool>? deleteStatus,
+  }) {
+    return TestParametersCompanion(
+      id: id ?? this.id,
+      testId: testId ?? this.testId,
+      title: title ?? this.title,
+      unit: unit ?? this.unit,
+      valueType: valueType ?? this.valueType,
+      formula: formula ?? this.formula,
+      maleRange: maleRange ?? this.maleRange,
+      femaleRange: femaleRange ?? this.femaleRange,
+      sortOrder: sortOrder ?? this.sortOrder,
+      sectionTitle: sectionTitle ?? this.sectionTitle,
+      groupSumEquals: groupSumEquals ?? this.groupSumEquals,
+      masterParameterId: masterParameterId ?? this.masterParameterId,
+      deleteStatus: deleteStatus ?? this.deleteStatus,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (testId.present) {
+      map['test_id'] = Variable<int>(testId.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (unit.present) {
+      map['unit'] = Variable<String>(unit.value);
+    }
+    if (valueType.present) {
+      map['value_type'] = Variable<String>(valueType.value);
+    }
+    if (formula.present) {
+      map['formula'] = Variable<String>(formula.value);
+    }
+    if (maleRange.present) {
+      map['male_range'] = Variable<String>(maleRange.value);
+    }
+    if (femaleRange.present) {
+      map['female_range'] = Variable<String>(femaleRange.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (sectionTitle.present) {
+      map['section_title'] = Variable<String>(sectionTitle.value);
+    }
+    if (groupSumEquals.present) {
+      map['group_sum_equals'] = Variable<double>(groupSumEquals.value);
+    }
+    if (masterParameterId.present) {
+      map['master_parameter_id'] = Variable<int>(masterParameterId.value);
+    }
+    if (deleteStatus.present) {
+      map['delete_status'] = Variable<bool>(deleteStatus.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TestParametersCompanion(')
+          ..write('id: $id, ')
+          ..write('testId: $testId, ')
+          ..write('title: $title, ')
+          ..write('unit: $unit, ')
+          ..write('valueType: $valueType, ')
+          ..write('formula: $formula, ')
+          ..write('maleRange: $maleRange, ')
+          ..write('femaleRange: $femaleRange, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('sectionTitle: $sectionTitle, ')
+          ..write('groupSumEquals: $groupSumEquals, ')
+          ..write('masterParameterId: $masterParameterId, ')
+          ..write('deleteStatus: $deleteStatus')
           ..write(')'))
         .toString();
   }
@@ -5212,10 +7262,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $AppSettingsTable appSettings = $AppSettingsTable(this);
   late final $DoctorsTable doctors = $DoctorsTable(this);
-  late final $LabTestsTable labTests = $LabTestsTable(this);
-  late final $TestParametersTable testParameters = $TestParametersTable(this);
   late final $PatientsTable patients = $PatientsTable(this);
+  late final $DoctorPercentsTable doctorPercents = $DoctorPercentsTable(this);
+  late final $LabTestsTable labTests = $LabTestsTable(this);
   late final $PatientTestsTable patientTests = $PatientTestsTable(this);
+  late final $DoctorCommissionItemsTable doctorCommissionItems =
+      $DoctorCommissionItemsTable(this);
+  late final $TestParametersTable testParameters = $TestParametersTable(this);
   late final $TestReadingsTable testReadings = $TestReadingsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -5224,10 +7277,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   List<DatabaseSchemaEntity> get allSchemaEntities => [
     appSettings,
     doctors,
-    labTests,
-    testParameters,
     patients,
+    doctorPercents,
+    labTests,
     patientTests,
+    doctorCommissionItems,
+    testParameters,
     testReadings,
   ];
 }
@@ -5239,6 +7294,13 @@ typedef $$AppSettingsTableCreateCompanionBuilder =
       Value<String> licenseKey,
       Value<String> licenseVer,
       Value<String> labName,
+      Value<String> address,
+      Value<String> contact,
+      Value<String> email,
+      Value<String> websiteUrl,
+      Value<String> additionalInfo,
+      Value<String> logoPath,
+      Value<int> defaultDoctorCommissionPercent,
       Value<bool> registered,
       Value<bool> securityEnabled,
       Value<String?> passwordHash,
@@ -5247,6 +7309,14 @@ typedef $$AppSettingsTableCreateCompanionBuilder =
       Value<DateTime?> registeredAt,
       Value<bool> showReportHeader,
       Value<bool> showReportFooter,
+      Value<bool> showReportSectionTitles,
+      Value<int?> reportFontPatientPt,
+      Value<int?> reportFontTestsPt,
+      Value<int?> reportFontDescriptionPt,
+      Value<bool> reportColorInRange,
+      Value<bool> reportColorOutOfRange,
+      Value<bool> reportFlagLow,
+      Value<bool> reportFlagHigh,
       Value<String> reportHeaderHtml,
       Value<String> reportFooterHtml,
       Value<int?> reportHeaderHeightMm,
@@ -5259,6 +7329,13 @@ typedef $$AppSettingsTableUpdateCompanionBuilder =
       Value<String> licenseKey,
       Value<String> licenseVer,
       Value<String> labName,
+      Value<String> address,
+      Value<String> contact,
+      Value<String> email,
+      Value<String> websiteUrl,
+      Value<String> additionalInfo,
+      Value<String> logoPath,
+      Value<int> defaultDoctorCommissionPercent,
       Value<bool> registered,
       Value<bool> securityEnabled,
       Value<String?> passwordHash,
@@ -5267,6 +7344,14 @@ typedef $$AppSettingsTableUpdateCompanionBuilder =
       Value<DateTime?> registeredAt,
       Value<bool> showReportHeader,
       Value<bool> showReportFooter,
+      Value<bool> showReportSectionTitles,
+      Value<int?> reportFontPatientPt,
+      Value<int?> reportFontTestsPt,
+      Value<int?> reportFontDescriptionPt,
+      Value<bool> reportColorInRange,
+      Value<bool> reportColorOutOfRange,
+      Value<bool> reportFlagLow,
+      Value<bool> reportFlagHigh,
       Value<String> reportHeaderHtml,
       Value<String> reportFooterHtml,
       Value<int?> reportHeaderHeightMm,
@@ -5307,6 +7392,41 @@ class $$AppSettingsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
+  ColumnFilters<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contact => $composableBuilder(
+    column: $table.contact,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get websiteUrl => $composableBuilder(
+    column: $table.websiteUrl,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get additionalInfo => $composableBuilder(
+    column: $table.additionalInfo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get logoPath => $composableBuilder(
+    column: $table.logoPath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get defaultDoctorCommissionPercent => $composableBuilder(
+    column: $table.defaultDoctorCommissionPercent,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<bool> get registered => $composableBuilder(
     column: $table.registered,
     builder: (column) => ColumnFilters(column),
@@ -5344,6 +7464,46 @@ class $$AppSettingsTableFilterComposer
 
   ColumnFilters<bool> get showReportFooter => $composableBuilder(
     column: $table.showReportFooter,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get showReportSectionTitles => $composableBuilder(
+    column: $table.showReportSectionTitles,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get reportFontPatientPt => $composableBuilder(
+    column: $table.reportFontPatientPt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get reportFontTestsPt => $composableBuilder(
+    column: $table.reportFontTestsPt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get reportFontDescriptionPt => $composableBuilder(
+    column: $table.reportFontDescriptionPt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get reportColorInRange => $composableBuilder(
+    column: $table.reportColorInRange,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get reportColorOutOfRange => $composableBuilder(
+    column: $table.reportColorOutOfRange,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get reportFlagLow => $composableBuilder(
+    column: $table.reportFlagLow,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get reportFlagHigh => $composableBuilder(
+    column: $table.reportFlagHigh,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -5402,6 +7562,41 @@ class $$AppSettingsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contact => $composableBuilder(
+    column: $table.contact,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get websiteUrl => $composableBuilder(
+    column: $table.websiteUrl,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get additionalInfo => $composableBuilder(
+    column: $table.additionalInfo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get logoPath => $composableBuilder(
+    column: $table.logoPath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get defaultDoctorCommissionPercent => $composableBuilder(
+    column: $table.defaultDoctorCommissionPercent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<bool> get registered => $composableBuilder(
     column: $table.registered,
     builder: (column) => ColumnOrderings(column),
@@ -5439,6 +7634,46 @@ class $$AppSettingsTableOrderingComposer
 
   ColumnOrderings<bool> get showReportFooter => $composableBuilder(
     column: $table.showReportFooter,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get showReportSectionTitles => $composableBuilder(
+    column: $table.showReportSectionTitles,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get reportFontPatientPt => $composableBuilder(
+    column: $table.reportFontPatientPt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get reportFontTestsPt => $composableBuilder(
+    column: $table.reportFontTestsPt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get reportFontDescriptionPt => $composableBuilder(
+    column: $table.reportFontDescriptionPt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get reportColorInRange => $composableBuilder(
+    column: $table.reportColorInRange,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get reportColorOutOfRange => $composableBuilder(
+    column: $table.reportColorOutOfRange,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get reportFlagLow => $composableBuilder(
+    column: $table.reportFlagLow,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get reportFlagHigh => $composableBuilder(
+    column: $table.reportFlagHigh,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -5491,6 +7726,33 @@ class $$AppSettingsTableAnnotationComposer
   GeneratedColumn<String> get labName =>
       $composableBuilder(column: $table.labName, builder: (column) => column);
 
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get contact =>
+      $composableBuilder(column: $table.contact, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get websiteUrl => $composableBuilder(
+    column: $table.websiteUrl,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get additionalInfo => $composableBuilder(
+    column: $table.additionalInfo,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get logoPath =>
+      $composableBuilder(column: $table.logoPath, builder: (column) => column);
+
+  GeneratedColumn<int> get defaultDoctorCommissionPercent => $composableBuilder(
+    column: $table.defaultDoctorCommissionPercent,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<bool> get registered => $composableBuilder(
     column: $table.registered,
     builder: (column) => column,
@@ -5528,6 +7790,46 @@ class $$AppSettingsTableAnnotationComposer
 
   GeneratedColumn<bool> get showReportFooter => $composableBuilder(
     column: $table.showReportFooter,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get showReportSectionTitles => $composableBuilder(
+    column: $table.showReportSectionTitles,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get reportFontPatientPt => $composableBuilder(
+    column: $table.reportFontPatientPt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get reportFontTestsPt => $composableBuilder(
+    column: $table.reportFontTestsPt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get reportFontDescriptionPt => $composableBuilder(
+    column: $table.reportFontDescriptionPt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get reportColorInRange => $composableBuilder(
+    column: $table.reportColorInRange,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get reportColorOutOfRange => $composableBuilder(
+    column: $table.reportColorOutOfRange,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get reportFlagLow => $composableBuilder(
+    column: $table.reportFlagLow,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get reportFlagHigh => $composableBuilder(
+    column: $table.reportFlagHigh,
     builder: (column) => column,
   );
 
@@ -5588,6 +7890,14 @@ class $$AppSettingsTableTableManager
                 Value<String> licenseKey = const Value.absent(),
                 Value<String> licenseVer = const Value.absent(),
                 Value<String> labName = const Value.absent(),
+                Value<String> address = const Value.absent(),
+                Value<String> contact = const Value.absent(),
+                Value<String> email = const Value.absent(),
+                Value<String> websiteUrl = const Value.absent(),
+                Value<String> additionalInfo = const Value.absent(),
+                Value<String> logoPath = const Value.absent(),
+                Value<int> defaultDoctorCommissionPercent =
+                    const Value.absent(),
                 Value<bool> registered = const Value.absent(),
                 Value<bool> securityEnabled = const Value.absent(),
                 Value<String?> passwordHash = const Value.absent(),
@@ -5596,6 +7906,14 @@ class $$AppSettingsTableTableManager
                 Value<DateTime?> registeredAt = const Value.absent(),
                 Value<bool> showReportHeader = const Value.absent(),
                 Value<bool> showReportFooter = const Value.absent(),
+                Value<bool> showReportSectionTitles = const Value.absent(),
+                Value<int?> reportFontPatientPt = const Value.absent(),
+                Value<int?> reportFontTestsPt = const Value.absent(),
+                Value<int?> reportFontDescriptionPt = const Value.absent(),
+                Value<bool> reportColorInRange = const Value.absent(),
+                Value<bool> reportColorOutOfRange = const Value.absent(),
+                Value<bool> reportFlagLow = const Value.absent(),
+                Value<bool> reportFlagHigh = const Value.absent(),
                 Value<String> reportHeaderHtml = const Value.absent(),
                 Value<String> reportFooterHtml = const Value.absent(),
                 Value<int?> reportHeaderHeightMm = const Value.absent(),
@@ -5606,6 +7924,13 @@ class $$AppSettingsTableTableManager
                 licenseKey: licenseKey,
                 licenseVer: licenseVer,
                 labName: labName,
+                address: address,
+                contact: contact,
+                email: email,
+                websiteUrl: websiteUrl,
+                additionalInfo: additionalInfo,
+                logoPath: logoPath,
+                defaultDoctorCommissionPercent: defaultDoctorCommissionPercent,
                 registered: registered,
                 securityEnabled: securityEnabled,
                 passwordHash: passwordHash,
@@ -5614,6 +7939,14 @@ class $$AppSettingsTableTableManager
                 registeredAt: registeredAt,
                 showReportHeader: showReportHeader,
                 showReportFooter: showReportFooter,
+                showReportSectionTitles: showReportSectionTitles,
+                reportFontPatientPt: reportFontPatientPt,
+                reportFontTestsPt: reportFontTestsPt,
+                reportFontDescriptionPt: reportFontDescriptionPt,
+                reportColorInRange: reportColorInRange,
+                reportColorOutOfRange: reportColorOutOfRange,
+                reportFlagLow: reportFlagLow,
+                reportFlagHigh: reportFlagHigh,
                 reportHeaderHtml: reportHeaderHtml,
                 reportFooterHtml: reportFooterHtml,
                 reportHeaderHeightMm: reportHeaderHeightMm,
@@ -5626,6 +7959,14 @@ class $$AppSettingsTableTableManager
                 Value<String> licenseKey = const Value.absent(),
                 Value<String> licenseVer = const Value.absent(),
                 Value<String> labName = const Value.absent(),
+                Value<String> address = const Value.absent(),
+                Value<String> contact = const Value.absent(),
+                Value<String> email = const Value.absent(),
+                Value<String> websiteUrl = const Value.absent(),
+                Value<String> additionalInfo = const Value.absent(),
+                Value<String> logoPath = const Value.absent(),
+                Value<int> defaultDoctorCommissionPercent =
+                    const Value.absent(),
                 Value<bool> registered = const Value.absent(),
                 Value<bool> securityEnabled = const Value.absent(),
                 Value<String?> passwordHash = const Value.absent(),
@@ -5634,6 +7975,14 @@ class $$AppSettingsTableTableManager
                 Value<DateTime?> registeredAt = const Value.absent(),
                 Value<bool> showReportHeader = const Value.absent(),
                 Value<bool> showReportFooter = const Value.absent(),
+                Value<bool> showReportSectionTitles = const Value.absent(),
+                Value<int?> reportFontPatientPt = const Value.absent(),
+                Value<int?> reportFontTestsPt = const Value.absent(),
+                Value<int?> reportFontDescriptionPt = const Value.absent(),
+                Value<bool> reportColorInRange = const Value.absent(),
+                Value<bool> reportColorOutOfRange = const Value.absent(),
+                Value<bool> reportFlagLow = const Value.absent(),
+                Value<bool> reportFlagHigh = const Value.absent(),
                 Value<String> reportHeaderHtml = const Value.absent(),
                 Value<String> reportFooterHtml = const Value.absent(),
                 Value<int?> reportHeaderHeightMm = const Value.absent(),
@@ -5644,6 +7993,13 @@ class $$AppSettingsTableTableManager
                 licenseKey: licenseKey,
                 licenseVer: licenseVer,
                 labName: labName,
+                address: address,
+                contact: contact,
+                email: email,
+                websiteUrl: websiteUrl,
+                additionalInfo: additionalInfo,
+                logoPath: logoPath,
+                defaultDoctorCommissionPercent: defaultDoctorCommissionPercent,
                 registered: registered,
                 securityEnabled: securityEnabled,
                 passwordHash: passwordHash,
@@ -5652,6 +8008,14 @@ class $$AppSettingsTableTableManager
                 registeredAt: registeredAt,
                 showReportHeader: showReportHeader,
                 showReportFooter: showReportFooter,
+                showReportSectionTitles: showReportSectionTitles,
+                reportFontPatientPt: reportFontPatientPt,
+                reportFontTestsPt: reportFontTestsPt,
+                reportFontDescriptionPt: reportFontDescriptionPt,
+                reportColorInRange: reportColorInRange,
+                reportColorOutOfRange: reportColorOutOfRange,
+                reportFlagLow: reportFlagLow,
+                reportFlagHigh: reportFlagHigh,
                 reportHeaderHtml: reportHeaderHtml,
                 reportFooterHtml: reportFooterHtml,
                 reportHeaderHeightMm: reportHeaderHeightMm,
@@ -5729,6 +8093,24 @@ final class $$DoctorsTableReferences
     ).filter((f) => f.doctorId.id.sqlEquals($_itemColumn<int>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_patientsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$DoctorPercentsTable, List<DoctorPercent>>
+  _doctorPercentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.doctorPercents,
+    aliasName: $_aliasNameGenerator(db.doctors.id, db.doctorPercents.doctorId),
+  );
+
+  $$DoctorPercentsTableProcessedTableManager get doctorPercentsRefs {
+    final manager = $$DoctorPercentsTableTableManager(
+      $_db,
+      $_db.doctorPercents,
+    ).filter((f) => f.doctorId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_doctorPercentsRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -5815,6 +8197,31 @@ class $$DoctorsTableFilterComposer
           }) => $$PatientsTableFilterComposer(
             $db: $db,
             $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> doctorPercentsRefs(
+    Expression<bool> Function($$DoctorPercentsTableFilterComposer f) f,
+  ) {
+    final $$DoctorPercentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.doctorId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableFilterComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -5962,6 +8369,31 @@ class $$DoctorsTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> doctorPercentsRefs<T extends Object>(
+    Expression<T> Function($$DoctorPercentsTableAnnotationComposer a) f,
+  ) {
+    final $$DoctorPercentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.doctorId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$DoctorsTableTableManager
@@ -5977,7 +8409,7 @@ class $$DoctorsTableTableManager
           $$DoctorsTableUpdateCompanionBuilder,
           (Doctor, $$DoctorsTableReferences),
           Doctor,
-          PrefetchHooks Function({bool patientsRefs})
+          PrefetchHooks Function({bool patientsRefs, bool doctorPercentsRefs})
         > {
   $$DoctorsTableTableManager(_$AppDatabase db, $DoctorsTable table)
     : super(
@@ -6050,28 +8482,63 @@ class $$DoctorsTableTableManager
                 ),
               )
               .toList(),
-          prefetchHooksCallback: ({patientsRefs = false}) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [if (patientsRefs) db.patients],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (patientsRefs)
-                    await $_getPrefetchedData<Doctor, $DoctorsTable, Patient>(
-                      currentTable: table,
-                      referencedTable: $$DoctorsTableReferences
-                          ._patientsRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$DoctorsTableReferences(db, table, p0).patientsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.doctorId == item.id),
-                      typedResults: items,
-                    ),
-                ];
+          prefetchHooksCallback:
+              ({patientsRefs = false, doctorPercentsRefs = false}) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (patientsRefs) db.patients,
+                    if (doctorPercentsRefs) db.doctorPercents,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (patientsRefs)
+                        await $_getPrefetchedData<
+                          Doctor,
+                          $DoctorsTable,
+                          Patient
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DoctorsTableReferences
+                              ._patientsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DoctorsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).patientsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.doctorId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (doctorPercentsRefs)
+                        await $_getPrefetchedData<
+                          Doctor,
+                          $DoctorsTable,
+                          DoctorPercent
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DoctorsTableReferences
+                              ._doctorPercentsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DoctorsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).doctorPercentsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.doctorId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -6088,7 +8555,1558 @@ typedef $$DoctorsTableProcessedTableManager =
       $$DoctorsTableUpdateCompanionBuilder,
       (Doctor, $$DoctorsTableReferences),
       Doctor,
-      PrefetchHooks Function({bool patientsRefs})
+      PrefetchHooks Function({bool patientsRefs, bool doctorPercentsRefs})
+    >;
+typedef $$PatientsTableCreateCompanionBuilder =
+    PatientsCompanion Function({
+      Value<int> id,
+      Value<String> prefix,
+      required String firstName,
+      Value<String> lastName,
+      Value<int?> age,
+      Value<String> sex,
+      Value<String> phone,
+      Value<String> email,
+      Value<String> address,
+      Value<int?> doctorId,
+      Value<String> referredBy,
+      Value<double> totalAmount,
+      Value<double> discountAmount,
+      Value<double> discountPercent,
+      Value<double> payableAmount,
+      Value<double> paidAmount,
+      Value<String> paymentMethod,
+      Value<String> remark,
+      Value<String> status,
+      Value<DateTime?> approvedAt,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+typedef $$PatientsTableUpdateCompanionBuilder =
+    PatientsCompanion Function({
+      Value<int> id,
+      Value<String> prefix,
+      Value<String> firstName,
+      Value<String> lastName,
+      Value<int?> age,
+      Value<String> sex,
+      Value<String> phone,
+      Value<String> email,
+      Value<String> address,
+      Value<int?> doctorId,
+      Value<String> referredBy,
+      Value<double> totalAmount,
+      Value<double> discountAmount,
+      Value<double> discountPercent,
+      Value<double> payableAmount,
+      Value<double> paidAmount,
+      Value<String> paymentMethod,
+      Value<String> remark,
+      Value<String> status,
+      Value<DateTime?> approvedAt,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+
+final class $$PatientsTableReferences
+    extends BaseReferences<_$AppDatabase, $PatientsTable, Patient> {
+  $$PatientsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $DoctorsTable _doctorIdTable(_$AppDatabase db) => db.doctors
+      .createAlias($_aliasNameGenerator(db.patients.doctorId, db.doctors.id));
+
+  $$DoctorsTableProcessedTableManager? get doctorId {
+    final $_column = $_itemColumn<int>('doctor_id');
+    if ($_column == null) return null;
+    final manager = $$DoctorsTableTableManager(
+      $_db,
+      $_db.doctors,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_doctorIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$DoctorPercentsTable, List<DoctorPercent>>
+  _doctorPercentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.doctorPercents,
+    aliasName: $_aliasNameGenerator(
+      db.patients.id,
+      db.doctorPercents.patientId,
+    ),
+  );
+
+  $$DoctorPercentsTableProcessedTableManager get doctorPercentsRefs {
+    final manager = $$DoctorPercentsTableTableManager(
+      $_db,
+      $_db.doctorPercents,
+    ).filter((f) => f.patientId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_doctorPercentsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$PatientTestsTable, List<PatientTest>>
+  _patientTestsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.patientTests,
+    aliasName: $_aliasNameGenerator(db.patients.id, db.patientTests.patientId),
+  );
+
+  $$PatientTestsTableProcessedTableManager get patientTestsRefs {
+    final manager = $$PatientTestsTableTableManager(
+      $_db,
+      $_db.patientTests,
+    ).filter((f) => f.patientId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_patientTestsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$TestReadingsTable, List<TestReading>>
+  _testReadingsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.testReadings,
+    aliasName: $_aliasNameGenerator(db.patients.id, db.testReadings.patientId),
+  );
+
+  $$TestReadingsTableProcessedTableManager get testReadingsRefs {
+    final manager = $$TestReadingsTableTableManager(
+      $_db,
+      $_db.testReadings,
+    ).filter((f) => f.patientId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_testReadingsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$PatientsTableFilterComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get prefix => $composableBuilder(
+    column: $table.prefix,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get firstName => $composableBuilder(
+    column: $table.firstName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastName => $composableBuilder(
+    column: $table.lastName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get age => $composableBuilder(
+    column: $table.age,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get referredBy => $composableBuilder(
+    column: $table.referredBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get totalAmount => $composableBuilder(
+    column: $table.totalAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get discountAmount => $composableBuilder(
+    column: $table.discountAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get discountPercent => $composableBuilder(
+    column: $table.discountPercent,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get paidAmount => $composableBuilder(
+    column: $table.paidAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentMethod => $composableBuilder(
+    column: $table.paymentMethod,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get remark => $composableBuilder(
+    column: $table.remark,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get approvedAt => $composableBuilder(
+    column: $table.approvedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$DoctorsTableFilterComposer get doctorId {
+    final $$DoctorsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableFilterComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> doctorPercentsRefs(
+    Expression<bool> Function($$DoctorPercentsTableFilterComposer f) f,
+  ) {
+    final $$DoctorPercentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableFilterComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> patientTestsRefs(
+    Expression<bool> Function($$PatientTestsTableFilterComposer f) f,
+  ) {
+    final $$PatientTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.patientTests,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> testReadingsRefs(
+    Expression<bool> Function($$TestReadingsTableFilterComposer f) f,
+  ) {
+    final $$TestReadingsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testReadings,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestReadingsTableFilterComposer(
+            $db: $db,
+            $table: $db.testReadings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$PatientsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get prefix => $composableBuilder(
+    column: $table.prefix,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get firstName => $composableBuilder(
+    column: $table.firstName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastName => $composableBuilder(
+    column: $table.lastName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get age => $composableBuilder(
+    column: $table.age,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get referredBy => $composableBuilder(
+    column: $table.referredBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get totalAmount => $composableBuilder(
+    column: $table.totalAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get discountAmount => $composableBuilder(
+    column: $table.discountAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get discountPercent => $composableBuilder(
+    column: $table.discountPercent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get paidAmount => $composableBuilder(
+    column: $table.paidAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentMethod => $composableBuilder(
+    column: $table.paymentMethod,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get remark => $composableBuilder(
+    column: $table.remark,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get approvedAt => $composableBuilder(
+    column: $table.approvedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$DoctorsTableOrderingComposer get doctorId {
+    final $$DoctorsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableOrderingComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$PatientsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get prefix =>
+      $composableBuilder(column: $table.prefix, builder: (column) => column);
+
+  GeneratedColumn<String> get firstName =>
+      $composableBuilder(column: $table.firstName, builder: (column) => column);
+
+  GeneratedColumn<String> get lastName =>
+      $composableBuilder(column: $table.lastName, builder: (column) => column);
+
+  GeneratedColumn<int> get age =>
+      $composableBuilder(column: $table.age, builder: (column) => column);
+
+  GeneratedColumn<String> get sex =>
+      $composableBuilder(column: $table.sex, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get referredBy => $composableBuilder(
+    column: $table.referredBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get totalAmount => $composableBuilder(
+    column: $table.totalAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get discountAmount => $composableBuilder(
+    column: $table.discountAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get discountPercent => $composableBuilder(
+    column: $table.discountPercent,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get paidAmount => $composableBuilder(
+    column: $table.paidAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get paymentMethod => $composableBuilder(
+    column: $table.paymentMethod,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get remark =>
+      $composableBuilder(column: $table.remark, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get approvedAt => $composableBuilder(
+    column: $table.approvedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  $$DoctorsTableAnnotationComposer get doctorId {
+    final $$DoctorsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> doctorPercentsRefs<T extends Object>(
+    Expression<T> Function($$DoctorPercentsTableAnnotationComposer a) f,
+  ) {
+    final $$DoctorPercentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> patientTestsRefs<T extends Object>(
+    Expression<T> Function($$PatientTestsTableAnnotationComposer a) f,
+  ) {
+    final $$PatientTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.patientTests,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> testReadingsRefs<T extends Object>(
+    Expression<T> Function($$TestReadingsTableAnnotationComposer a) f,
+  ) {
+    final $$TestReadingsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testReadings,
+      getReferencedColumn: (t) => t.patientId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestReadingsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.testReadings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$PatientsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PatientsTable,
+          Patient,
+          $$PatientsTableFilterComposer,
+          $$PatientsTableOrderingComposer,
+          $$PatientsTableAnnotationComposer,
+          $$PatientsTableCreateCompanionBuilder,
+          $$PatientsTableUpdateCompanionBuilder,
+          (Patient, $$PatientsTableReferences),
+          Patient,
+          PrefetchHooks Function({
+            bool doctorId,
+            bool doctorPercentsRefs,
+            bool patientTestsRefs,
+            bool testReadingsRefs,
+          })
+        > {
+  $$PatientsTableTableManager(_$AppDatabase db, $PatientsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PatientsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PatientsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PatientsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> prefix = const Value.absent(),
+                Value<String> firstName = const Value.absent(),
+                Value<String> lastName = const Value.absent(),
+                Value<int?> age = const Value.absent(),
+                Value<String> sex = const Value.absent(),
+                Value<String> phone = const Value.absent(),
+                Value<String> email = const Value.absent(),
+                Value<String> address = const Value.absent(),
+                Value<int?> doctorId = const Value.absent(),
+                Value<String> referredBy = const Value.absent(),
+                Value<double> totalAmount = const Value.absent(),
+                Value<double> discountAmount = const Value.absent(),
+                Value<double> discountPercent = const Value.absent(),
+                Value<double> payableAmount = const Value.absent(),
+                Value<double> paidAmount = const Value.absent(),
+                Value<String> paymentMethod = const Value.absent(),
+                Value<String> remark = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<DateTime?> approvedAt = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => PatientsCompanion(
+                id: id,
+                prefix: prefix,
+                firstName: firstName,
+                lastName: lastName,
+                age: age,
+                sex: sex,
+                phone: phone,
+                email: email,
+                address: address,
+                doctorId: doctorId,
+                referredBy: referredBy,
+                totalAmount: totalAmount,
+                discountAmount: discountAmount,
+                discountPercent: discountPercent,
+                payableAmount: payableAmount,
+                paidAmount: paidAmount,
+                paymentMethod: paymentMethod,
+                remark: remark,
+                status: status,
+                approvedAt: approvedAt,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> prefix = const Value.absent(),
+                required String firstName,
+                Value<String> lastName = const Value.absent(),
+                Value<int?> age = const Value.absent(),
+                Value<String> sex = const Value.absent(),
+                Value<String> phone = const Value.absent(),
+                Value<String> email = const Value.absent(),
+                Value<String> address = const Value.absent(),
+                Value<int?> doctorId = const Value.absent(),
+                Value<String> referredBy = const Value.absent(),
+                Value<double> totalAmount = const Value.absent(),
+                Value<double> discountAmount = const Value.absent(),
+                Value<double> discountPercent = const Value.absent(),
+                Value<double> payableAmount = const Value.absent(),
+                Value<double> paidAmount = const Value.absent(),
+                Value<String> paymentMethod = const Value.absent(),
+                Value<String> remark = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<DateTime?> approvedAt = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => PatientsCompanion.insert(
+                id: id,
+                prefix: prefix,
+                firstName: firstName,
+                lastName: lastName,
+                age: age,
+                sex: sex,
+                phone: phone,
+                email: email,
+                address: address,
+                doctorId: doctorId,
+                referredBy: referredBy,
+                totalAmount: totalAmount,
+                discountAmount: discountAmount,
+                discountPercent: discountPercent,
+                payableAmount: payableAmount,
+                paidAmount: paidAmount,
+                paymentMethod: paymentMethod,
+                remark: remark,
+                status: status,
+                approvedAt: approvedAt,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PatientsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                doctorId = false,
+                doctorPercentsRefs = false,
+                patientTestsRefs = false,
+                testReadingsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (doctorPercentsRefs) db.doctorPercents,
+                    if (patientTestsRefs) db.patientTests,
+                    if (testReadingsRefs) db.testReadings,
+                  ],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (doctorId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.doctorId,
+                                    referencedTable: $$PatientsTableReferences
+                                        ._doctorIdTable(db),
+                                    referencedColumn: $$PatientsTableReferences
+                                        ._doctorIdTable(db)
+                                        .id,
+                                  )
+                                  as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (doctorPercentsRefs)
+                        await $_getPrefetchedData<
+                          Patient,
+                          $PatientsTable,
+                          DoctorPercent
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PatientsTableReferences
+                              ._doctorPercentsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$PatientsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).doctorPercentsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.patientId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (patientTestsRefs)
+                        await $_getPrefetchedData<
+                          Patient,
+                          $PatientsTable,
+                          PatientTest
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PatientsTableReferences
+                              ._patientTestsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$PatientsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).patientTestsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.patientId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (testReadingsRefs)
+                        await $_getPrefetchedData<
+                          Patient,
+                          $PatientsTable,
+                          TestReading
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PatientsTableReferences
+                              ._testReadingsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$PatientsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).testReadingsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.patientId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$PatientsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PatientsTable,
+      Patient,
+      $$PatientsTableFilterComposer,
+      $$PatientsTableOrderingComposer,
+      $$PatientsTableAnnotationComposer,
+      $$PatientsTableCreateCompanionBuilder,
+      $$PatientsTableUpdateCompanionBuilder,
+      (Patient, $$PatientsTableReferences),
+      Patient,
+      PrefetchHooks Function({
+        bool doctorId,
+        bool doctorPercentsRefs,
+        bool patientTestsRefs,
+        bool testReadingsRefs,
+      })
+    >;
+typedef $$DoctorPercentsTableCreateCompanionBuilder =
+    DoctorPercentsCompanion Function({
+      Value<int> id,
+      required int patientId,
+      required int doctorId,
+      Value<double> amount,
+      Value<double> percent,
+      Value<double> payableAmount,
+      Value<bool> status,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+typedef $$DoctorPercentsTableUpdateCompanionBuilder =
+    DoctorPercentsCompanion Function({
+      Value<int> id,
+      Value<int> patientId,
+      Value<int> doctorId,
+      Value<double> amount,
+      Value<double> percent,
+      Value<double> payableAmount,
+      Value<bool> status,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+
+final class $$DoctorPercentsTableReferences
+    extends BaseReferences<_$AppDatabase, $DoctorPercentsTable, DoctorPercent> {
+  $$DoctorPercentsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $PatientsTable _patientIdTable(_$AppDatabase db) =>
+      db.patients.createAlias(
+        $_aliasNameGenerator(db.doctorPercents.patientId, db.patients.id),
+      );
+
+  $$PatientsTableProcessedTableManager get patientId {
+    final $_column = $_itemColumn<int>('patient_id')!;
+
+    final manager = $$PatientsTableTableManager(
+      $_db,
+      $_db.patients,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_patientIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $DoctorsTable _doctorIdTable(_$AppDatabase db) =>
+      db.doctors.createAlias(
+        $_aliasNameGenerator(db.doctorPercents.doctorId, db.doctors.id),
+      );
+
+  $$DoctorsTableProcessedTableManager get doctorId {
+    final $_column = $_itemColumn<int>('doctor_id')!;
+
+    final manager = $$DoctorsTableTableManager(
+      $_db,
+      $_db.doctors,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_doctorIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<
+    $DoctorCommissionItemsTable,
+    List<DoctorCommissionItem>
+  >
+  _doctorCommissionItemsRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.doctorCommissionItems,
+        aliasName: $_aliasNameGenerator(
+          db.doctorPercents.id,
+          db.doctorCommissionItems.doctorPercentId,
+        ),
+      );
+
+  $$DoctorCommissionItemsTableProcessedTableManager
+  get doctorCommissionItemsRefs {
+    final manager = $$DoctorCommissionItemsTableTableManager(
+      $_db,
+      $_db.doctorCommissionItems,
+    ).filter((f) => f.doctorPercentId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _doctorCommissionItemsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$DoctorPercentsTableFilterComposer
+    extends Composer<_$AppDatabase, $DoctorPercentsTable> {
+  $$DoctorPercentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get percent => $composableBuilder(
+    column: $table.percent,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$PatientsTableFilterComposer get patientId {
+    final $$PatientsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableFilterComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DoctorsTableFilterComposer get doctorId {
+    final $$DoctorsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableFilterComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> doctorCommissionItemsRefs(
+    Expression<bool> Function($$DoctorCommissionItemsTableFilterComposer f) f,
+  ) {
+    final $$DoctorCommissionItemsTableFilterComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.doctorPercentId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableFilterComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$DoctorPercentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DoctorPercentsTable> {
+  $$DoctorPercentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get percent => $composableBuilder(
+    column: $table.percent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$PatientsTableOrderingComposer get patientId {
+    final $$PatientsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableOrderingComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DoctorsTableOrderingComposer get doctorId {
+    final $$DoctorsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableOrderingComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DoctorPercentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DoctorPercentsTable> {
+  $$DoctorPercentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<double> get amount =>
+      $composableBuilder(column: $table.amount, builder: (column) => column);
+
+  GeneratedColumn<double> get percent =>
+      $composableBuilder(column: $table.percent, builder: (column) => column);
+
+  GeneratedColumn<double> get payableAmount => $composableBuilder(
+    column: $table.payableAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  $$PatientsTableAnnotationComposer get patientId {
+    final $$PatientsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DoctorsTableAnnotationComposer get doctorId {
+    final $$DoctorsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorId,
+      referencedTable: $db.doctors,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.doctors,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> doctorCommissionItemsRefs<T extends Object>(
+    Expression<T> Function($$DoctorCommissionItemsTableAnnotationComposer a) f,
+  ) {
+    final $$DoctorCommissionItemsTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.doctorPercentId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableAnnotationComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$DoctorPercentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DoctorPercentsTable,
+          DoctorPercent,
+          $$DoctorPercentsTableFilterComposer,
+          $$DoctorPercentsTableOrderingComposer,
+          $$DoctorPercentsTableAnnotationComposer,
+          $$DoctorPercentsTableCreateCompanionBuilder,
+          $$DoctorPercentsTableUpdateCompanionBuilder,
+          (DoctorPercent, $$DoctorPercentsTableReferences),
+          DoctorPercent,
+          PrefetchHooks Function({
+            bool patientId,
+            bool doctorId,
+            bool doctorCommissionItemsRefs,
+          })
+        > {
+  $$DoctorPercentsTableTableManager(
+    _$AppDatabase db,
+    $DoctorPercentsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DoctorPercentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DoctorPercentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DoctorPercentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> patientId = const Value.absent(),
+                Value<int> doctorId = const Value.absent(),
+                Value<double> amount = const Value.absent(),
+                Value<double> percent = const Value.absent(),
+                Value<double> payableAmount = const Value.absent(),
+                Value<bool> status = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => DoctorPercentsCompanion(
+                id: id,
+                patientId: patientId,
+                doctorId: doctorId,
+                amount: amount,
+                percent: percent,
+                payableAmount: payableAmount,
+                status: status,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int patientId,
+                required int doctorId,
+                Value<double> amount = const Value.absent(),
+                Value<double> percent = const Value.absent(),
+                Value<double> payableAmount = const Value.absent(),
+                Value<bool> status = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => DoctorPercentsCompanion.insert(
+                id: id,
+                patientId: patientId,
+                doctorId: doctorId,
+                amount: amount,
+                percent: percent,
+                payableAmount: payableAmount,
+                status: status,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$DoctorPercentsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                patientId = false,
+                doctorId = false,
+                doctorCommissionItemsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (doctorCommissionItemsRefs) db.doctorCommissionItems,
+                  ],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (patientId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.patientId,
+                                    referencedTable:
+                                        $$DoctorPercentsTableReferences
+                                            ._patientIdTable(db),
+                                    referencedColumn:
+                                        $$DoctorPercentsTableReferences
+                                            ._patientIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (doctorId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.doctorId,
+                                    referencedTable:
+                                        $$DoctorPercentsTableReferences
+                                            ._doctorIdTable(db),
+                                    referencedColumn:
+                                        $$DoctorPercentsTableReferences
+                                            ._doctorIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (doctorCommissionItemsRefs)
+                        await $_getPrefetchedData<
+                          DoctorPercent,
+                          $DoctorPercentsTable,
+                          DoctorCommissionItem
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DoctorPercentsTableReferences
+                              ._doctorCommissionItemsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DoctorPercentsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).doctorCommissionItemsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.doctorPercentId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$DoctorPercentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DoctorPercentsTable,
+      DoctorPercent,
+      $$DoctorPercentsTableFilterComposer,
+      $$DoctorPercentsTableOrderingComposer,
+      $$DoctorPercentsTableAnnotationComposer,
+      $$DoctorPercentsTableCreateCompanionBuilder,
+      $$DoctorPercentsTableUpdateCompanionBuilder,
+      (DoctorPercent, $$DoctorPercentsTableReferences),
+      DoctorPercent,
+      PrefetchHooks Function({
+        bool patientId,
+        bool doctorId,
+        bool doctorCommissionItemsRefs,
+      })
     >;
 typedef $$LabTestsTableCreateCompanionBuilder =
     LabTestsCompanion Function({
@@ -6125,24 +10143,6 @@ final class $$LabTestsTableReferences
     extends BaseReferences<_$AppDatabase, $LabTestsTable, LabTest> {
   $$LabTestsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static MultiTypedResultKey<$TestParametersTable, List<TestParameter>>
-  _testParametersRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.testParameters,
-    aliasName: $_aliasNameGenerator(db.labTests.id, db.testParameters.testId),
-  );
-
-  $$TestParametersTableProcessedTableManager get testParametersRefs {
-    final manager = $$TestParametersTableTableManager(
-      $_db,
-      $_db.testParameters,
-    ).filter((f) => f.testId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(_testParametersRefsTable($_db));
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-
   static MultiTypedResultKey<$PatientTestsTable, List<PatientTest>>
   _patientTestsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.patientTests,
@@ -6156,6 +10156,52 @@ final class $$LabTestsTableReferences
     ).filter((f) => f.testId.id.sqlEquals($_itemColumn<int>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_patientTestsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<
+    $DoctorCommissionItemsTable,
+    List<DoctorCommissionItem>
+  >
+  _doctorCommissionItemsRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.doctorCommissionItems,
+        aliasName: $_aliasNameGenerator(
+          db.labTests.id,
+          db.doctorCommissionItems.testId,
+        ),
+      );
+
+  $$DoctorCommissionItemsTableProcessedTableManager
+  get doctorCommissionItemsRefs {
+    final manager = $$DoctorCommissionItemsTableTableManager(
+      $_db,
+      $_db.doctorCommissionItems,
+    ).filter((f) => f.testId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _doctorCommissionItemsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$TestParametersTable, List<TestParameter>>
+  _testParametersRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.testParameters,
+    aliasName: $_aliasNameGenerator(db.labTests.id, db.testParameters.testId),
+  );
+
+  $$TestParametersTableProcessedTableManager get testParametersRefs {
+    final manager = $$TestParametersTableTableManager(
+      $_db,
+      $_db.testParameters,
+    ).filter((f) => f.testId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_testParametersRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -6231,31 +10277,6 @@ class $$LabTestsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  Expression<bool> testParametersRefs(
-    Expression<bool> Function($$TestParametersTableFilterComposer f) f,
-  ) {
-    final $$TestParametersTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testParameters,
-      getReferencedColumn: (t) => t.testId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestParametersTableFilterComposer(
-            $db: $db,
-            $table: $db.testParameters,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-
   Expression<bool> patientTestsRefs(
     Expression<bool> Function($$PatientTestsTableFilterComposer f) f,
   ) {
@@ -6272,6 +10293,57 @@ class $$LabTestsTableFilterComposer
           }) => $$PatientTestsTableFilterComposer(
             $db: $db,
             $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> doctorCommissionItemsRefs(
+    Expression<bool> Function($$DoctorCommissionItemsTableFilterComposer f) f,
+  ) {
+    final $$DoctorCommissionItemsTableFilterComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.testId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableFilterComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+
+  Expression<bool> testParametersRefs(
+    Expression<bool> Function($$TestParametersTableFilterComposer f) f,
+  ) {
+    final $$TestParametersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testParameters,
+      getReferencedColumn: (t) => t.testId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestParametersTableFilterComposer(
+            $db: $db,
+            $table: $db.testParameters,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -6409,31 +10481,6 @@ class $$LabTestsTableAnnotationComposer
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
 
-  Expression<T> testParametersRefs<T extends Object>(
-    Expression<T> Function($$TestParametersTableAnnotationComposer a) f,
-  ) {
-    final $$TestParametersTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testParameters,
-      getReferencedColumn: (t) => t.testId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestParametersTableAnnotationComposer(
-            $db: $db,
-            $table: $db.testParameters,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-
   Expression<T> patientTestsRefs<T extends Object>(
     Expression<T> Function($$PatientTestsTableAnnotationComposer a) f,
   ) {
@@ -6458,6 +10505,57 @@ class $$LabTestsTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> doctorCommissionItemsRefs<T extends Object>(
+    Expression<T> Function($$DoctorCommissionItemsTableAnnotationComposer a) f,
+  ) {
+    final $$DoctorCommissionItemsTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.testId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableAnnotationComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+
+  Expression<T> testParametersRefs<T extends Object>(
+    Expression<T> Function($$TestParametersTableAnnotationComposer a) f,
+  ) {
+    final $$TestParametersTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testParameters,
+      getReferencedColumn: (t) => t.testId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestParametersTableAnnotationComposer(
+            $db: $db,
+            $table: $db.testParameters,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$LabTestsTableTableManager
@@ -6474,8 +10572,9 @@ class $$LabTestsTableTableManager
           (LabTest, $$LabTestsTableReferences),
           LabTest,
           PrefetchHooks Function({
-            bool testParametersRefs,
             bool patientTestsRefs,
+            bool doctorCommissionItemsRefs,
+            bool testParametersRefs,
           })
         > {
   $$LabTestsTableTableManager(_$AppDatabase db, $LabTestsTable table)
@@ -6554,37 +10653,21 @@ class $$LabTestsTableTableManager
               )
               .toList(),
           prefetchHooksCallback:
-              ({testParametersRefs = false, patientTestsRefs = false}) {
+              ({
+                patientTestsRefs = false,
+                doctorCommissionItemsRefs = false,
+                testParametersRefs = false,
+              }) {
                 return PrefetchHooks(
                   db: db,
                   explicitlyWatchedTables: [
-                    if (testParametersRefs) db.testParameters,
                     if (patientTestsRefs) db.patientTests,
+                    if (doctorCommissionItemsRefs) db.doctorCommissionItems,
+                    if (testParametersRefs) db.testParameters,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
                     return [
-                      if (testParametersRefs)
-                        await $_getPrefetchedData<
-                          LabTest,
-                          $LabTestsTable,
-                          TestParameter
-                        >(
-                          currentTable: table,
-                          referencedTable: $$LabTestsTableReferences
-                              ._testParametersRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$LabTestsTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).testParametersRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.testId == item.id,
-                              ),
-                          typedResults: items,
-                        ),
                       if (patientTestsRefs)
                         await $_getPrefetchedData<
                           LabTest,
@@ -6600,6 +10683,48 @@ class $$LabTestsTableTableManager
                                 table,
                                 p0,
                               ).patientTestsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.testId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (doctorCommissionItemsRefs)
+                        await $_getPrefetchedData<
+                          LabTest,
+                          $LabTestsTable,
+                          DoctorCommissionItem
+                        >(
+                          currentTable: table,
+                          referencedTable: $$LabTestsTableReferences
+                              ._doctorCommissionItemsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$LabTestsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).doctorCommissionItemsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.testId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (testParametersRefs)
+                        await $_getPrefetchedData<
+                          LabTest,
+                          $LabTestsTable,
+                          TestParameter
+                        >(
+                          currentTable: table,
+                          referencedTable: $$LabTestsTableReferences
+                              ._testParametersRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$LabTestsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).testParametersRefs,
                           referencedItemsForCurrentItem:
                               (item, referencedItems) => referencedItems.where(
                                 (e) => e.testId == item.id,
@@ -6626,7 +10751,1306 @@ typedef $$LabTestsTableProcessedTableManager =
       $$LabTestsTableUpdateCompanionBuilder,
       (LabTest, $$LabTestsTableReferences),
       LabTest,
-      PrefetchHooks Function({bool testParametersRefs, bool patientTestsRefs})
+      PrefetchHooks Function({
+        bool patientTestsRefs,
+        bool doctorCommissionItemsRefs,
+        bool testParametersRefs,
+      })
+    >;
+typedef $$PatientTestsTableCreateCompanionBuilder =
+    PatientTestsCompanion Function({
+      Value<int> id,
+      required int patientId,
+      required int testId,
+      Value<double> price,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+typedef $$PatientTestsTableUpdateCompanionBuilder =
+    PatientTestsCompanion Function({
+      Value<int> id,
+      Value<int> patientId,
+      Value<int> testId,
+      Value<double> price,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+
+final class $$PatientTestsTableReferences
+    extends BaseReferences<_$AppDatabase, $PatientTestsTable, PatientTest> {
+  $$PatientTestsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $PatientsTable _patientIdTable(_$AppDatabase db) =>
+      db.patients.createAlias(
+        $_aliasNameGenerator(db.patientTests.patientId, db.patients.id),
+      );
+
+  $$PatientsTableProcessedTableManager get patientId {
+    final $_column = $_itemColumn<int>('patient_id')!;
+
+    final manager = $$PatientsTableTableManager(
+      $_db,
+      $_db.patients,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_patientIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $LabTestsTable _testIdTable(_$AppDatabase db) =>
+      db.labTests.createAlias(
+        $_aliasNameGenerator(db.patientTests.testId, db.labTests.id),
+      );
+
+  $$LabTestsTableProcessedTableManager get testId {
+    final $_column = $_itemColumn<int>('test_id')!;
+
+    final manager = $$LabTestsTableTableManager(
+      $_db,
+      $_db.labTests,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_testIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<
+    $DoctorCommissionItemsTable,
+    List<DoctorCommissionItem>
+  >
+  _doctorCommissionItemsRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.doctorCommissionItems,
+        aliasName: $_aliasNameGenerator(
+          db.patientTests.id,
+          db.doctorCommissionItems.patientTestId,
+        ),
+      );
+
+  $$DoctorCommissionItemsTableProcessedTableManager
+  get doctorCommissionItemsRefs {
+    final manager = $$DoctorCommissionItemsTableTableManager(
+      $_db,
+      $_db.doctorCommissionItems,
+    ).filter((f) => f.patientTestId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _doctorCommissionItemsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$TestReadingsTable, List<TestReading>>
+  _testReadingsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.testReadings,
+    aliasName: $_aliasNameGenerator(
+      db.patientTests.id,
+      db.testReadings.patientTestId,
+    ),
+  );
+
+  $$TestReadingsTableProcessedTableManager get testReadingsRefs {
+    final manager = $$TestReadingsTableTableManager(
+      $_db,
+      $_db.testReadings,
+    ).filter((f) => f.patientTestId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_testReadingsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$PatientTestsTableFilterComposer
+    extends Composer<_$AppDatabase, $PatientTestsTable> {
+  $$PatientTestsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get price => $composableBuilder(
+    column: $table.price,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$PatientsTableFilterComposer get patientId {
+    final $$PatientsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableFilterComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableFilterComposer get testId {
+    final $$LabTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> doctorCommissionItemsRefs(
+    Expression<bool> Function($$DoctorCommissionItemsTableFilterComposer f) f,
+  ) {
+    final $$DoctorCommissionItemsTableFilterComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.patientTestId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableFilterComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+
+  Expression<bool> testReadingsRefs(
+    Expression<bool> Function($$TestReadingsTableFilterComposer f) f,
+  ) {
+    final $$TestReadingsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testReadings,
+      getReferencedColumn: (t) => t.patientTestId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestReadingsTableFilterComposer(
+            $db: $db,
+            $table: $db.testReadings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$PatientTestsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PatientTestsTable> {
+  $$PatientTestsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get price => $composableBuilder(
+    column: $table.price,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$PatientsTableOrderingComposer get patientId {
+    final $$PatientsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableOrderingComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableOrderingComposer get testId {
+    final $$LabTestsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableOrderingComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$PatientTestsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PatientTestsTable> {
+  $$PatientTestsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<double> get price =>
+      $composableBuilder(column: $table.price, builder: (column) => column);
+
+  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  $$PatientsTableAnnotationComposer get patientId {
+    final $$PatientsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientId,
+      referencedTable: $db.patients,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.patients,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableAnnotationComposer get testId {
+    final $$LabTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> doctorCommissionItemsRefs<T extends Object>(
+    Expression<T> Function($$DoctorCommissionItemsTableAnnotationComposer a) f,
+  ) {
+    final $$DoctorCommissionItemsTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.doctorCommissionItems,
+          getReferencedColumn: (t) => t.patientTestId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$DoctorCommissionItemsTableAnnotationComposer(
+                $db: $db,
+                $table: $db.doctorCommissionItems,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+
+  Expression<T> testReadingsRefs<T extends Object>(
+    Expression<T> Function($$TestReadingsTableAnnotationComposer a) f,
+  ) {
+    final $$TestReadingsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.testReadings,
+      getReferencedColumn: (t) => t.patientTestId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$TestReadingsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.testReadings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$PatientTestsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PatientTestsTable,
+          PatientTest,
+          $$PatientTestsTableFilterComposer,
+          $$PatientTestsTableOrderingComposer,
+          $$PatientTestsTableAnnotationComposer,
+          $$PatientTestsTableCreateCompanionBuilder,
+          $$PatientTestsTableUpdateCompanionBuilder,
+          (PatientTest, $$PatientTestsTableReferences),
+          PatientTest,
+          PrefetchHooks Function({
+            bool patientId,
+            bool testId,
+            bool doctorCommissionItemsRefs,
+            bool testReadingsRefs,
+          })
+        > {
+  $$PatientTestsTableTableManager(_$AppDatabase db, $PatientTestsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PatientTestsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PatientTestsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PatientTestsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> patientId = const Value.absent(),
+                Value<int> testId = const Value.absent(),
+                Value<double> price = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => PatientTestsCompanion(
+                id: id,
+                patientId: patientId,
+                testId: testId,
+                price: price,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int patientId,
+                required int testId,
+                Value<double> price = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => PatientTestsCompanion.insert(
+                id: id,
+                patientId: patientId,
+                testId: testId,
+                price: price,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PatientTestsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                patientId = false,
+                testId = false,
+                doctorCommissionItemsRefs = false,
+                testReadingsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (doctorCommissionItemsRefs) db.doctorCommissionItems,
+                    if (testReadingsRefs) db.testReadings,
+                  ],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (patientId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.patientId,
+                                    referencedTable:
+                                        $$PatientTestsTableReferences
+                                            ._patientIdTable(db),
+                                    referencedColumn:
+                                        $$PatientTestsTableReferences
+                                            ._patientIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (testId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.testId,
+                                    referencedTable:
+                                        $$PatientTestsTableReferences
+                                            ._testIdTable(db),
+                                    referencedColumn:
+                                        $$PatientTestsTableReferences
+                                            ._testIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (doctorCommissionItemsRefs)
+                        await $_getPrefetchedData<
+                          PatientTest,
+                          $PatientTestsTable,
+                          DoctorCommissionItem
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PatientTestsTableReferences
+                              ._doctorCommissionItemsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$PatientTestsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).doctorCommissionItemsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.patientTestId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (testReadingsRefs)
+                        await $_getPrefetchedData<
+                          PatientTest,
+                          $PatientTestsTable,
+                          TestReading
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PatientTestsTableReferences
+                              ._testReadingsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$PatientTestsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).testReadingsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.patientTestId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$PatientTestsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PatientTestsTable,
+      PatientTest,
+      $$PatientTestsTableFilterComposer,
+      $$PatientTestsTableOrderingComposer,
+      $$PatientTestsTableAnnotationComposer,
+      $$PatientTestsTableCreateCompanionBuilder,
+      $$PatientTestsTableUpdateCompanionBuilder,
+      (PatientTest, $$PatientTestsTableReferences),
+      PatientTest,
+      PrefetchHooks Function({
+        bool patientId,
+        bool testId,
+        bool doctorCommissionItemsRefs,
+        bool testReadingsRefs,
+      })
+    >;
+typedef $$DoctorCommissionItemsTableCreateCompanionBuilder =
+    DoctorCommissionItemsCompanion Function({
+      Value<int> id,
+      required int doctorPercentId,
+      Value<int?> patientTestId,
+      required int testId,
+      Value<String> testName,
+      Value<double> billedAmount,
+      Value<double> percentApplied,
+      Value<double> commissionAmount,
+      Value<bool> status,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+typedef $$DoctorCommissionItemsTableUpdateCompanionBuilder =
+    DoctorCommissionItemsCompanion Function({
+      Value<int> id,
+      Value<int> doctorPercentId,
+      Value<int?> patientTestId,
+      Value<int> testId,
+      Value<String> testName,
+      Value<double> billedAmount,
+      Value<double> percentApplied,
+      Value<double> commissionAmount,
+      Value<bool> status,
+      Value<bool> deleteStatus,
+      Value<DateTime> createdAt,
+    });
+
+final class $$DoctorCommissionItemsTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $DoctorCommissionItemsTable,
+          DoctorCommissionItem
+        > {
+  $$DoctorCommissionItemsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $DoctorPercentsTable _doctorPercentIdTable(_$AppDatabase db) =>
+      db.doctorPercents.createAlias(
+        $_aliasNameGenerator(
+          db.doctorCommissionItems.doctorPercentId,
+          db.doctorPercents.id,
+        ),
+      );
+
+  $$DoctorPercentsTableProcessedTableManager get doctorPercentId {
+    final $_column = $_itemColumn<int>('doctor_percent_id')!;
+
+    final manager = $$DoctorPercentsTableTableManager(
+      $_db,
+      $_db.doctorPercents,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_doctorPercentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $PatientTestsTable _patientTestIdTable(_$AppDatabase db) =>
+      db.patientTests.createAlias(
+        $_aliasNameGenerator(
+          db.doctorCommissionItems.patientTestId,
+          db.patientTests.id,
+        ),
+      );
+
+  $$PatientTestsTableProcessedTableManager? get patientTestId {
+    final $_column = $_itemColumn<int>('patient_test_id');
+    if ($_column == null) return null;
+    final manager = $$PatientTestsTableTableManager(
+      $_db,
+      $_db.patientTests,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_patientTestIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $LabTestsTable _testIdTable(_$AppDatabase db) =>
+      db.labTests.createAlias(
+        $_aliasNameGenerator(db.doctorCommissionItems.testId, db.labTests.id),
+      );
+
+  $$LabTestsTableProcessedTableManager get testId {
+    final $_column = $_itemColumn<int>('test_id')!;
+
+    final manager = $$LabTestsTableTableManager(
+      $_db,
+      $_db.labTests,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_testIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$DoctorCommissionItemsTableFilterComposer
+    extends Composer<_$AppDatabase, $DoctorCommissionItemsTable> {
+  $$DoctorCommissionItemsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get testName => $composableBuilder(
+    column: $table.testName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get billedAmount => $composableBuilder(
+    column: $table.billedAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get percentApplied => $composableBuilder(
+    column: $table.percentApplied,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get commissionAmount => $composableBuilder(
+    column: $table.commissionAmount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$DoctorPercentsTableFilterComposer get doctorPercentId {
+    final $$DoctorPercentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorPercentId,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableFilterComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$PatientTestsTableFilterComposer get patientTestId {
+    final $$PatientTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientTestId,
+      referencedTable: $db.patientTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableFilterComposer get testId {
+    final $$LabTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DoctorCommissionItemsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DoctorCommissionItemsTable> {
+  $$DoctorCommissionItemsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get testName => $composableBuilder(
+    column: $table.testName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get billedAmount => $composableBuilder(
+    column: $table.billedAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get percentApplied => $composableBuilder(
+    column: $table.percentApplied,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get commissionAmount => $composableBuilder(
+    column: $table.commissionAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$DoctorPercentsTableOrderingComposer get doctorPercentId {
+    final $$DoctorPercentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorPercentId,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$PatientTestsTableOrderingComposer get patientTestId {
+    final $$PatientTestsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientTestId,
+      referencedTable: $db.patientTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientTestsTableOrderingComposer(
+            $db: $db,
+            $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableOrderingComposer get testId {
+    final $$LabTestsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableOrderingComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DoctorCommissionItemsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DoctorCommissionItemsTable> {
+  $$DoctorCommissionItemsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get testName =>
+      $composableBuilder(column: $table.testName, builder: (column) => column);
+
+  GeneratedColumn<double> get billedAmount => $composableBuilder(
+    column: $table.billedAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get percentApplied => $composableBuilder(
+    column: $table.percentApplied,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get commissionAmount => $composableBuilder(
+    column: $table.commissionAmount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
+    column: $table.deleteStatus,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  $$DoctorPercentsTableAnnotationComposer get doctorPercentId {
+    final $$DoctorPercentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.doctorPercentId,
+      referencedTable: $db.doctorPercents,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DoctorPercentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.doctorPercents,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$PatientTestsTableAnnotationComposer get patientTestId {
+    final $$PatientTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patientTestId,
+      referencedTable: $db.patientTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$PatientTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.patientTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$LabTestsTableAnnotationComposer get testId {
+    final $$LabTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.labTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LabTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.labTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DoctorCommissionItemsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DoctorCommissionItemsTable,
+          DoctorCommissionItem,
+          $$DoctorCommissionItemsTableFilterComposer,
+          $$DoctorCommissionItemsTableOrderingComposer,
+          $$DoctorCommissionItemsTableAnnotationComposer,
+          $$DoctorCommissionItemsTableCreateCompanionBuilder,
+          $$DoctorCommissionItemsTableUpdateCompanionBuilder,
+          (DoctorCommissionItem, $$DoctorCommissionItemsTableReferences),
+          DoctorCommissionItem,
+          PrefetchHooks Function({
+            bool doctorPercentId,
+            bool patientTestId,
+            bool testId,
+          })
+        > {
+  $$DoctorCommissionItemsTableTableManager(
+    _$AppDatabase db,
+    $DoctorCommissionItemsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DoctorCommissionItemsTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$DoctorCommissionItemsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$DoctorCommissionItemsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> doctorPercentId = const Value.absent(),
+                Value<int?> patientTestId = const Value.absent(),
+                Value<int> testId = const Value.absent(),
+                Value<String> testName = const Value.absent(),
+                Value<double> billedAmount = const Value.absent(),
+                Value<double> percentApplied = const Value.absent(),
+                Value<double> commissionAmount = const Value.absent(),
+                Value<bool> status = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => DoctorCommissionItemsCompanion(
+                id: id,
+                doctorPercentId: doctorPercentId,
+                patientTestId: patientTestId,
+                testId: testId,
+                testName: testName,
+                billedAmount: billedAmount,
+                percentApplied: percentApplied,
+                commissionAmount: commissionAmount,
+                status: status,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int doctorPercentId,
+                Value<int?> patientTestId = const Value.absent(),
+                required int testId,
+                Value<String> testName = const Value.absent(),
+                Value<double> billedAmount = const Value.absent(),
+                Value<double> percentApplied = const Value.absent(),
+                Value<double> commissionAmount = const Value.absent(),
+                Value<bool> status = const Value.absent(),
+                Value<bool> deleteStatus = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => DoctorCommissionItemsCompanion.insert(
+                id: id,
+                doctorPercentId: doctorPercentId,
+                patientTestId: patientTestId,
+                testId: testId,
+                testName: testName,
+                billedAmount: billedAmount,
+                percentApplied: percentApplied,
+                commissionAmount: commissionAmount,
+                status: status,
+                deleteStatus: deleteStatus,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$DoctorCommissionItemsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                doctorPercentId = false,
+                patientTestId = false,
+                testId = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (doctorPercentId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.doctorPercentId,
+                                    referencedTable:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._doctorPercentIdTable(db),
+                                    referencedColumn:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._doctorPercentIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (patientTestId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.patientTestId,
+                                    referencedTable:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._patientTestIdTable(db),
+                                    referencedColumn:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._patientTestIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (testId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.testId,
+                                    referencedTable:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._testIdTable(db),
+                                    referencedColumn:
+                                        $$DoctorCommissionItemsTableReferences
+                                            ._testIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$DoctorCommissionItemsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DoctorCommissionItemsTable,
+      DoctorCommissionItem,
+      $$DoctorCommissionItemsTableFilterComposer,
+      $$DoctorCommissionItemsTableOrderingComposer,
+      $$DoctorCommissionItemsTableAnnotationComposer,
+      $$DoctorCommissionItemsTableCreateCompanionBuilder,
+      $$DoctorCommissionItemsTableUpdateCompanionBuilder,
+      (DoctorCommissionItem, $$DoctorCommissionItemsTableReferences),
+      DoctorCommissionItem,
+      PrefetchHooks Function({
+        bool doctorPercentId,
+        bool patientTestId,
+        bool testId,
+      })
     >;
 typedef $$TestParametersTableCreateCompanionBuilder =
     TestParametersCompanion Function({
@@ -7202,1383 +12626,6 @@ typedef $$TestParametersTableProcessedTableManager =
       (TestParameter, $$TestParametersTableReferences),
       TestParameter,
       PrefetchHooks Function({bool testId, bool testReadingsRefs})
-    >;
-typedef $$PatientsTableCreateCompanionBuilder =
-    PatientsCompanion Function({
-      Value<int> id,
-      Value<String> prefix,
-      required String firstName,
-      Value<String> lastName,
-      Value<int?> age,
-      Value<String> sex,
-      Value<String> phone,
-      Value<String> email,
-      Value<String> address,
-      Value<int?> doctorId,
-      Value<String> referredBy,
-      Value<double> totalAmount,
-      Value<double> discountAmount,
-      Value<double> discountPercent,
-      Value<double> payableAmount,
-      Value<double> paidAmount,
-      Value<String> paymentMethod,
-      Value<String> remark,
-      Value<String> status,
-      Value<DateTime?> approvedAt,
-      Value<bool> deleteStatus,
-      Value<DateTime> createdAt,
-    });
-typedef $$PatientsTableUpdateCompanionBuilder =
-    PatientsCompanion Function({
-      Value<int> id,
-      Value<String> prefix,
-      Value<String> firstName,
-      Value<String> lastName,
-      Value<int?> age,
-      Value<String> sex,
-      Value<String> phone,
-      Value<String> email,
-      Value<String> address,
-      Value<int?> doctorId,
-      Value<String> referredBy,
-      Value<double> totalAmount,
-      Value<double> discountAmount,
-      Value<double> discountPercent,
-      Value<double> payableAmount,
-      Value<double> paidAmount,
-      Value<String> paymentMethod,
-      Value<String> remark,
-      Value<String> status,
-      Value<DateTime?> approvedAt,
-      Value<bool> deleteStatus,
-      Value<DateTime> createdAt,
-    });
-
-final class $$PatientsTableReferences
-    extends BaseReferences<_$AppDatabase, $PatientsTable, Patient> {
-  $$PatientsTableReferences(super.$_db, super.$_table, super.$_typedResult);
-
-  static $DoctorsTable _doctorIdTable(_$AppDatabase db) => db.doctors
-      .createAlias($_aliasNameGenerator(db.patients.doctorId, db.doctors.id));
-
-  $$DoctorsTableProcessedTableManager? get doctorId {
-    final $_column = $_itemColumn<int>('doctor_id');
-    if ($_column == null) return null;
-    final manager = $$DoctorsTableTableManager(
-      $_db,
-      $_db.doctors,
-    ).filter((f) => f.id.sqlEquals($_column));
-    final item = $_typedResult.readTableOrNull(_doctorIdTable($_db));
-    if (item == null) return manager;
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: [item]),
-    );
-  }
-
-  static MultiTypedResultKey<$PatientTestsTable, List<PatientTest>>
-  _patientTestsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.patientTests,
-    aliasName: $_aliasNameGenerator(db.patients.id, db.patientTests.patientId),
-  );
-
-  $$PatientTestsTableProcessedTableManager get patientTestsRefs {
-    final manager = $$PatientTestsTableTableManager(
-      $_db,
-      $_db.patientTests,
-    ).filter((f) => f.patientId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(_patientTestsRefsTable($_db));
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-
-  static MultiTypedResultKey<$TestReadingsTable, List<TestReading>>
-  _testReadingsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.testReadings,
-    aliasName: $_aliasNameGenerator(db.patients.id, db.testReadings.patientId),
-  );
-
-  $$TestReadingsTableProcessedTableManager get testReadingsRefs {
-    final manager = $$TestReadingsTableTableManager(
-      $_db,
-      $_db.testReadings,
-    ).filter((f) => f.patientId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(_testReadingsRefsTable($_db));
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-}
-
-class $$PatientsTableFilterComposer
-    extends Composer<_$AppDatabase, $PatientsTable> {
-  $$PatientsTableFilterComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  ColumnFilters<int> get id => $composableBuilder(
-    column: $table.id,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get prefix => $composableBuilder(
-    column: $table.prefix,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get firstName => $composableBuilder(
-    column: $table.firstName,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get lastName => $composableBuilder(
-    column: $table.lastName,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<int> get age => $composableBuilder(
-    column: $table.age,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get sex => $composableBuilder(
-    column: $table.sex,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get phone => $composableBuilder(
-    column: $table.phone,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get email => $composableBuilder(
-    column: $table.email,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get address => $composableBuilder(
-    column: $table.address,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get referredBy => $composableBuilder(
-    column: $table.referredBy,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get totalAmount => $composableBuilder(
-    column: $table.totalAmount,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get discountAmount => $composableBuilder(
-    column: $table.discountAmount,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get discountPercent => $composableBuilder(
-    column: $table.discountPercent,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get payableAmount => $composableBuilder(
-    column: $table.payableAmount,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get paidAmount => $composableBuilder(
-    column: $table.paidAmount,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get paymentMethod => $composableBuilder(
-    column: $table.paymentMethod,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get remark => $composableBuilder(
-    column: $table.remark,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get status => $composableBuilder(
-    column: $table.status,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<DateTime> get approvedAt => $composableBuilder(
-    column: $table.approvedAt,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<DateTime> get createdAt => $composableBuilder(
-    column: $table.createdAt,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  $$DoctorsTableFilterComposer get doctorId {
-    final $$DoctorsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.doctorId,
-      referencedTable: $db.doctors,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$DoctorsTableFilterComposer(
-            $db: $db,
-            $table: $db.doctors,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  Expression<bool> patientTestsRefs(
-    Expression<bool> Function($$PatientTestsTableFilterComposer f) f,
-  ) {
-    final $$PatientTestsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.patientTests,
-      getReferencedColumn: (t) => t.patientId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$PatientTestsTableFilterComposer(
-            $db: $db,
-            $table: $db.patientTests,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-
-  Expression<bool> testReadingsRefs(
-    Expression<bool> Function($$TestReadingsTableFilterComposer f) f,
-  ) {
-    final $$TestReadingsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testReadings,
-      getReferencedColumn: (t) => t.patientId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestReadingsTableFilterComposer(
-            $db: $db,
-            $table: $db.testReadings,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-}
-
-class $$PatientsTableOrderingComposer
-    extends Composer<_$AppDatabase, $PatientsTable> {
-  $$PatientsTableOrderingComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  ColumnOrderings<int> get id => $composableBuilder(
-    column: $table.id,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get prefix => $composableBuilder(
-    column: $table.prefix,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get firstName => $composableBuilder(
-    column: $table.firstName,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get lastName => $composableBuilder(
-    column: $table.lastName,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<int> get age => $composableBuilder(
-    column: $table.age,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get sex => $composableBuilder(
-    column: $table.sex,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get phone => $composableBuilder(
-    column: $table.phone,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get email => $composableBuilder(
-    column: $table.email,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get address => $composableBuilder(
-    column: $table.address,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get referredBy => $composableBuilder(
-    column: $table.referredBy,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get totalAmount => $composableBuilder(
-    column: $table.totalAmount,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get discountAmount => $composableBuilder(
-    column: $table.discountAmount,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get discountPercent => $composableBuilder(
-    column: $table.discountPercent,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get payableAmount => $composableBuilder(
-    column: $table.payableAmount,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get paidAmount => $composableBuilder(
-    column: $table.paidAmount,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get paymentMethod => $composableBuilder(
-    column: $table.paymentMethod,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get remark => $composableBuilder(
-    column: $table.remark,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<String> get status => $composableBuilder(
-    column: $table.status,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<DateTime> get approvedAt => $composableBuilder(
-    column: $table.approvedAt,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
-    column: $table.createdAt,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  $$DoctorsTableOrderingComposer get doctorId {
-    final $$DoctorsTableOrderingComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.doctorId,
-      referencedTable: $db.doctors,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$DoctorsTableOrderingComposer(
-            $db: $db,
-            $table: $db.doctors,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-}
-
-class $$PatientsTableAnnotationComposer
-    extends Composer<_$AppDatabase, $PatientsTable> {
-  $$PatientsTableAnnotationComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  GeneratedColumn<int> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
-
-  GeneratedColumn<String> get prefix =>
-      $composableBuilder(column: $table.prefix, builder: (column) => column);
-
-  GeneratedColumn<String> get firstName =>
-      $composableBuilder(column: $table.firstName, builder: (column) => column);
-
-  GeneratedColumn<String> get lastName =>
-      $composableBuilder(column: $table.lastName, builder: (column) => column);
-
-  GeneratedColumn<int> get age =>
-      $composableBuilder(column: $table.age, builder: (column) => column);
-
-  GeneratedColumn<String> get sex =>
-      $composableBuilder(column: $table.sex, builder: (column) => column);
-
-  GeneratedColumn<String> get phone =>
-      $composableBuilder(column: $table.phone, builder: (column) => column);
-
-  GeneratedColumn<String> get email =>
-      $composableBuilder(column: $table.email, builder: (column) => column);
-
-  GeneratedColumn<String> get address =>
-      $composableBuilder(column: $table.address, builder: (column) => column);
-
-  GeneratedColumn<String> get referredBy => $composableBuilder(
-    column: $table.referredBy,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<double> get totalAmount => $composableBuilder(
-    column: $table.totalAmount,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<double> get discountAmount => $composableBuilder(
-    column: $table.discountAmount,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<double> get discountPercent => $composableBuilder(
-    column: $table.discountPercent,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<double> get payableAmount => $composableBuilder(
-    column: $table.payableAmount,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<double> get paidAmount => $composableBuilder(
-    column: $table.paidAmount,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<String> get paymentMethod => $composableBuilder(
-    column: $table.paymentMethod,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<String> get remark =>
-      $composableBuilder(column: $table.remark, builder: (column) => column);
-
-  GeneratedColumn<String> get status =>
-      $composableBuilder(column: $table.status, builder: (column) => column);
-
-  GeneratedColumn<DateTime> get approvedAt => $composableBuilder(
-    column: $table.approvedAt,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<DateTime> get createdAt =>
-      $composableBuilder(column: $table.createdAt, builder: (column) => column);
-
-  $$DoctorsTableAnnotationComposer get doctorId {
-    final $$DoctorsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.doctorId,
-      referencedTable: $db.doctors,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$DoctorsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.doctors,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  Expression<T> patientTestsRefs<T extends Object>(
-    Expression<T> Function($$PatientTestsTableAnnotationComposer a) f,
-  ) {
-    final $$PatientTestsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.patientTests,
-      getReferencedColumn: (t) => t.patientId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$PatientTestsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.patientTests,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-
-  Expression<T> testReadingsRefs<T extends Object>(
-    Expression<T> Function($$TestReadingsTableAnnotationComposer a) f,
-  ) {
-    final $$TestReadingsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testReadings,
-      getReferencedColumn: (t) => t.patientId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestReadingsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.testReadings,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-}
-
-class $$PatientsTableTableManager
-    extends
-        RootTableManager<
-          _$AppDatabase,
-          $PatientsTable,
-          Patient,
-          $$PatientsTableFilterComposer,
-          $$PatientsTableOrderingComposer,
-          $$PatientsTableAnnotationComposer,
-          $$PatientsTableCreateCompanionBuilder,
-          $$PatientsTableUpdateCompanionBuilder,
-          (Patient, $$PatientsTableReferences),
-          Patient,
-          PrefetchHooks Function({
-            bool doctorId,
-            bool patientTestsRefs,
-            bool testReadingsRefs,
-          })
-        > {
-  $$PatientsTableTableManager(_$AppDatabase db, $PatientsTable table)
-    : super(
-        TableManagerState(
-          db: db,
-          table: table,
-          createFilteringComposer: () =>
-              $$PatientsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$PatientsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$PatientsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback:
-              ({
-                Value<int> id = const Value.absent(),
-                Value<String> prefix = const Value.absent(),
-                Value<String> firstName = const Value.absent(),
-                Value<String> lastName = const Value.absent(),
-                Value<int?> age = const Value.absent(),
-                Value<String> sex = const Value.absent(),
-                Value<String> phone = const Value.absent(),
-                Value<String> email = const Value.absent(),
-                Value<String> address = const Value.absent(),
-                Value<int?> doctorId = const Value.absent(),
-                Value<String> referredBy = const Value.absent(),
-                Value<double> totalAmount = const Value.absent(),
-                Value<double> discountAmount = const Value.absent(),
-                Value<double> discountPercent = const Value.absent(),
-                Value<double> payableAmount = const Value.absent(),
-                Value<double> paidAmount = const Value.absent(),
-                Value<String> paymentMethod = const Value.absent(),
-                Value<String> remark = const Value.absent(),
-                Value<String> status = const Value.absent(),
-                Value<DateTime?> approvedAt = const Value.absent(),
-                Value<bool> deleteStatus = const Value.absent(),
-                Value<DateTime> createdAt = const Value.absent(),
-              }) => PatientsCompanion(
-                id: id,
-                prefix: prefix,
-                firstName: firstName,
-                lastName: lastName,
-                age: age,
-                sex: sex,
-                phone: phone,
-                email: email,
-                address: address,
-                doctorId: doctorId,
-                referredBy: referredBy,
-                totalAmount: totalAmount,
-                discountAmount: discountAmount,
-                discountPercent: discountPercent,
-                payableAmount: payableAmount,
-                paidAmount: paidAmount,
-                paymentMethod: paymentMethod,
-                remark: remark,
-                status: status,
-                approvedAt: approvedAt,
-                deleteStatus: deleteStatus,
-                createdAt: createdAt,
-              ),
-          createCompanionCallback:
-              ({
-                Value<int> id = const Value.absent(),
-                Value<String> prefix = const Value.absent(),
-                required String firstName,
-                Value<String> lastName = const Value.absent(),
-                Value<int?> age = const Value.absent(),
-                Value<String> sex = const Value.absent(),
-                Value<String> phone = const Value.absent(),
-                Value<String> email = const Value.absent(),
-                Value<String> address = const Value.absent(),
-                Value<int?> doctorId = const Value.absent(),
-                Value<String> referredBy = const Value.absent(),
-                Value<double> totalAmount = const Value.absent(),
-                Value<double> discountAmount = const Value.absent(),
-                Value<double> discountPercent = const Value.absent(),
-                Value<double> payableAmount = const Value.absent(),
-                Value<double> paidAmount = const Value.absent(),
-                Value<String> paymentMethod = const Value.absent(),
-                Value<String> remark = const Value.absent(),
-                Value<String> status = const Value.absent(),
-                Value<DateTime?> approvedAt = const Value.absent(),
-                Value<bool> deleteStatus = const Value.absent(),
-                Value<DateTime> createdAt = const Value.absent(),
-              }) => PatientsCompanion.insert(
-                id: id,
-                prefix: prefix,
-                firstName: firstName,
-                lastName: lastName,
-                age: age,
-                sex: sex,
-                phone: phone,
-                email: email,
-                address: address,
-                doctorId: doctorId,
-                referredBy: referredBy,
-                totalAmount: totalAmount,
-                discountAmount: discountAmount,
-                discountPercent: discountPercent,
-                payableAmount: payableAmount,
-                paidAmount: paidAmount,
-                paymentMethod: paymentMethod,
-                remark: remark,
-                status: status,
-                approvedAt: approvedAt,
-                deleteStatus: deleteStatus,
-                createdAt: createdAt,
-              ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable(table),
-                  $$PatientsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                doctorId = false,
-                patientTestsRefs = false,
-                testReadingsRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (patientTestsRefs) db.patientTests,
-                    if (testReadingsRefs) db.testReadings,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (doctorId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.doctorId,
-                                    referencedTable: $$PatientsTableReferences
-                                        ._doctorIdTable(db),
-                                    referencedColumn: $$PatientsTableReferences
-                                        ._doctorIdTable(db)
-                                        .id,
-                                  )
-                                  as T;
-                        }
-
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (patientTestsRefs)
-                        await $_getPrefetchedData<
-                          Patient,
-                          $PatientsTable,
-                          PatientTest
-                        >(
-                          currentTable: table,
-                          referencedTable: $$PatientsTableReferences
-                              ._patientTestsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$PatientsTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).patientTestsRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.patientId == item.id,
-                              ),
-                          typedResults: items,
-                        ),
-                      if (testReadingsRefs)
-                        await $_getPrefetchedData<
-                          Patient,
-                          $PatientsTable,
-                          TestReading
-                        >(
-                          currentTable: table,
-                          referencedTable: $$PatientsTableReferences
-                              ._testReadingsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$PatientsTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).testReadingsRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.patientId == item.id,
-                              ),
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
-              },
-        ),
-      );
-}
-
-typedef $$PatientsTableProcessedTableManager =
-    ProcessedTableManager<
-      _$AppDatabase,
-      $PatientsTable,
-      Patient,
-      $$PatientsTableFilterComposer,
-      $$PatientsTableOrderingComposer,
-      $$PatientsTableAnnotationComposer,
-      $$PatientsTableCreateCompanionBuilder,
-      $$PatientsTableUpdateCompanionBuilder,
-      (Patient, $$PatientsTableReferences),
-      Patient,
-      PrefetchHooks Function({
-        bool doctorId,
-        bool patientTestsRefs,
-        bool testReadingsRefs,
-      })
-    >;
-typedef $$PatientTestsTableCreateCompanionBuilder =
-    PatientTestsCompanion Function({
-      Value<int> id,
-      required int patientId,
-      required int testId,
-      Value<double> price,
-      Value<bool> deleteStatus,
-      Value<DateTime> createdAt,
-    });
-typedef $$PatientTestsTableUpdateCompanionBuilder =
-    PatientTestsCompanion Function({
-      Value<int> id,
-      Value<int> patientId,
-      Value<int> testId,
-      Value<double> price,
-      Value<bool> deleteStatus,
-      Value<DateTime> createdAt,
-    });
-
-final class $$PatientTestsTableReferences
-    extends BaseReferences<_$AppDatabase, $PatientTestsTable, PatientTest> {
-  $$PatientTestsTableReferences(super.$_db, super.$_table, super.$_typedResult);
-
-  static $PatientsTable _patientIdTable(_$AppDatabase db) =>
-      db.patients.createAlias(
-        $_aliasNameGenerator(db.patientTests.patientId, db.patients.id),
-      );
-
-  $$PatientsTableProcessedTableManager get patientId {
-    final $_column = $_itemColumn<int>('patient_id')!;
-
-    final manager = $$PatientsTableTableManager(
-      $_db,
-      $_db.patients,
-    ).filter((f) => f.id.sqlEquals($_column));
-    final item = $_typedResult.readTableOrNull(_patientIdTable($_db));
-    if (item == null) return manager;
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: [item]),
-    );
-  }
-
-  static $LabTestsTable _testIdTable(_$AppDatabase db) =>
-      db.labTests.createAlias(
-        $_aliasNameGenerator(db.patientTests.testId, db.labTests.id),
-      );
-
-  $$LabTestsTableProcessedTableManager get testId {
-    final $_column = $_itemColumn<int>('test_id')!;
-
-    final manager = $$LabTestsTableTableManager(
-      $_db,
-      $_db.labTests,
-    ).filter((f) => f.id.sqlEquals($_column));
-    final item = $_typedResult.readTableOrNull(_testIdTable($_db));
-    if (item == null) return manager;
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: [item]),
-    );
-  }
-
-  static MultiTypedResultKey<$TestReadingsTable, List<TestReading>>
-  _testReadingsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.testReadings,
-    aliasName: $_aliasNameGenerator(
-      db.patientTests.id,
-      db.testReadings.patientTestId,
-    ),
-  );
-
-  $$TestReadingsTableProcessedTableManager get testReadingsRefs {
-    final manager = $$TestReadingsTableTableManager(
-      $_db,
-      $_db.testReadings,
-    ).filter((f) => f.patientTestId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(_testReadingsRefsTable($_db));
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-}
-
-class $$PatientTestsTableFilterComposer
-    extends Composer<_$AppDatabase, $PatientTestsTable> {
-  $$PatientTestsTableFilterComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  ColumnFilters<int> get id => $composableBuilder(
-    column: $table.id,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<double> get price => $composableBuilder(
-    column: $table.price,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<DateTime> get createdAt => $composableBuilder(
-    column: $table.createdAt,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  $$PatientsTableFilterComposer get patientId {
-    final $$PatientsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.patientId,
-      referencedTable: $db.patients,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$PatientsTableFilterComposer(
-            $db: $db,
-            $table: $db.patients,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  $$LabTestsTableFilterComposer get testId {
-    final $$LabTestsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.testId,
-      referencedTable: $db.labTests,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$LabTestsTableFilterComposer(
-            $db: $db,
-            $table: $db.labTests,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  Expression<bool> testReadingsRefs(
-    Expression<bool> Function($$TestReadingsTableFilterComposer f) f,
-  ) {
-    final $$TestReadingsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testReadings,
-      getReferencedColumn: (t) => t.patientTestId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestReadingsTableFilterComposer(
-            $db: $db,
-            $table: $db.testReadings,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-}
-
-class $$PatientTestsTableOrderingComposer
-    extends Composer<_$AppDatabase, $PatientTestsTable> {
-  $$PatientTestsTableOrderingComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  ColumnOrderings<int> get id => $composableBuilder(
-    column: $table.id,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<double> get price => $composableBuilder(
-    column: $table.price,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
-    column: $table.createdAt,
-    builder: (column) => ColumnOrderings(column),
-  );
-
-  $$PatientsTableOrderingComposer get patientId {
-    final $$PatientsTableOrderingComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.patientId,
-      referencedTable: $db.patients,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$PatientsTableOrderingComposer(
-            $db: $db,
-            $table: $db.patients,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  $$LabTestsTableOrderingComposer get testId {
-    final $$LabTestsTableOrderingComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.testId,
-      referencedTable: $db.labTests,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$LabTestsTableOrderingComposer(
-            $db: $db,
-            $table: $db.labTests,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-}
-
-class $$PatientTestsTableAnnotationComposer
-    extends Composer<_$AppDatabase, $PatientTestsTable> {
-  $$PatientTestsTableAnnotationComposer({
-    required super.$db,
-    required super.$table,
-    super.joinBuilder,
-    super.$addJoinBuilderToRootComposer,
-    super.$removeJoinBuilderFromRootComposer,
-  });
-  GeneratedColumn<int> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
-
-  GeneratedColumn<double> get price =>
-      $composableBuilder(column: $table.price, builder: (column) => column);
-
-  GeneratedColumn<bool> get deleteStatus => $composableBuilder(
-    column: $table.deleteStatus,
-    builder: (column) => column,
-  );
-
-  GeneratedColumn<DateTime> get createdAt =>
-      $composableBuilder(column: $table.createdAt, builder: (column) => column);
-
-  $$PatientsTableAnnotationComposer get patientId {
-    final $$PatientsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.patientId,
-      referencedTable: $db.patients,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$PatientsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.patients,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  $$LabTestsTableAnnotationComposer get testId {
-    final $$LabTestsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.testId,
-      referencedTable: $db.labTests,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$LabTestsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.labTests,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
-
-  Expression<T> testReadingsRefs<T extends Object>(
-    Expression<T> Function($$TestReadingsTableAnnotationComposer a) f,
-  ) {
-    final $$TestReadingsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.testReadings,
-      getReferencedColumn: (t) => t.patientTestId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$TestReadingsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.testReadings,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
-}
-
-class $$PatientTestsTableTableManager
-    extends
-        RootTableManager<
-          _$AppDatabase,
-          $PatientTestsTable,
-          PatientTest,
-          $$PatientTestsTableFilterComposer,
-          $$PatientTestsTableOrderingComposer,
-          $$PatientTestsTableAnnotationComposer,
-          $$PatientTestsTableCreateCompanionBuilder,
-          $$PatientTestsTableUpdateCompanionBuilder,
-          (PatientTest, $$PatientTestsTableReferences),
-          PatientTest,
-          PrefetchHooks Function({
-            bool patientId,
-            bool testId,
-            bool testReadingsRefs,
-          })
-        > {
-  $$PatientTestsTableTableManager(_$AppDatabase db, $PatientTestsTable table)
-    : super(
-        TableManagerState(
-          db: db,
-          table: table,
-          createFilteringComposer: () =>
-              $$PatientTestsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$PatientTestsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$PatientTestsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback:
-              ({
-                Value<int> id = const Value.absent(),
-                Value<int> patientId = const Value.absent(),
-                Value<int> testId = const Value.absent(),
-                Value<double> price = const Value.absent(),
-                Value<bool> deleteStatus = const Value.absent(),
-                Value<DateTime> createdAt = const Value.absent(),
-              }) => PatientTestsCompanion(
-                id: id,
-                patientId: patientId,
-                testId: testId,
-                price: price,
-                deleteStatus: deleteStatus,
-                createdAt: createdAt,
-              ),
-          createCompanionCallback:
-              ({
-                Value<int> id = const Value.absent(),
-                required int patientId,
-                required int testId,
-                Value<double> price = const Value.absent(),
-                Value<bool> deleteStatus = const Value.absent(),
-                Value<DateTime> createdAt = const Value.absent(),
-              }) => PatientTestsCompanion.insert(
-                id: id,
-                patientId: patientId,
-                testId: testId,
-                price: price,
-                deleteStatus: deleteStatus,
-                createdAt: createdAt,
-              ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable(table),
-                  $$PatientTestsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({patientId = false, testId = false, testReadingsRefs = false}) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (testReadingsRefs) db.testReadings,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (patientId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.patientId,
-                                    referencedTable:
-                                        $$PatientTestsTableReferences
-                                            ._patientIdTable(db),
-                                    referencedColumn:
-                                        $$PatientTestsTableReferences
-                                            ._patientIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
-                        }
-                        if (testId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.testId,
-                                    referencedTable:
-                                        $$PatientTestsTableReferences
-                                            ._testIdTable(db),
-                                    referencedColumn:
-                                        $$PatientTestsTableReferences
-                                            ._testIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
-                        }
-
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (testReadingsRefs)
-                        await $_getPrefetchedData<
-                          PatientTest,
-                          $PatientTestsTable,
-                          TestReading
-                        >(
-                          currentTable: table,
-                          referencedTable: $$PatientTestsTableReferences
-                              ._testReadingsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$PatientTestsTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).testReadingsRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.patientTestId == item.id,
-                              ),
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
-              },
-        ),
-      );
-}
-
-typedef $$PatientTestsTableProcessedTableManager =
-    ProcessedTableManager<
-      _$AppDatabase,
-      $PatientTestsTable,
-      PatientTest,
-      $$PatientTestsTableFilterComposer,
-      $$PatientTestsTableOrderingComposer,
-      $$PatientTestsTableAnnotationComposer,
-      $$PatientTestsTableCreateCompanionBuilder,
-      $$PatientTestsTableUpdateCompanionBuilder,
-      (PatientTest, $$PatientTestsTableReferences),
-      PatientTest,
-      PrefetchHooks Function({
-        bool patientId,
-        bool testId,
-        bool testReadingsRefs,
-      })
     >;
 typedef $$TestReadingsTableCreateCompanionBuilder =
     TestReadingsCompanion Function({
@@ -9158,14 +13205,18 @@ class $AppDatabaseManager {
       $$AppSettingsTableTableManager(_db, _db.appSettings);
   $$DoctorsTableTableManager get doctors =>
       $$DoctorsTableTableManager(_db, _db.doctors);
-  $$LabTestsTableTableManager get labTests =>
-      $$LabTestsTableTableManager(_db, _db.labTests);
-  $$TestParametersTableTableManager get testParameters =>
-      $$TestParametersTableTableManager(_db, _db.testParameters);
   $$PatientsTableTableManager get patients =>
       $$PatientsTableTableManager(_db, _db.patients);
+  $$DoctorPercentsTableTableManager get doctorPercents =>
+      $$DoctorPercentsTableTableManager(_db, _db.doctorPercents);
+  $$LabTestsTableTableManager get labTests =>
+      $$LabTestsTableTableManager(_db, _db.labTests);
   $$PatientTestsTableTableManager get patientTests =>
       $$PatientTestsTableTableManager(_db, _db.patientTests);
+  $$DoctorCommissionItemsTableTableManager get doctorCommissionItems =>
+      $$DoctorCommissionItemsTableTableManager(_db, _db.doctorCommissionItems);
+  $$TestParametersTableTableManager get testParameters =>
+      $$TestParametersTableTableManager(_db, _db.testParameters);
   $$TestReadingsTableTableManager get testReadings =>
       $$TestReadingsTableTableManager(_db, _db.testReadings);
 }

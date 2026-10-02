@@ -15,8 +15,17 @@ class ReportPrintOptions {
     required this.showFooter,
     required this.headerHtml,
     required this.footerHtml,
+    this.logoPath = '',
     this.headerHeightMm,
     this.footerHeightMm,
+    this.showSectionTitles = true,
+    this.reportColorInRange = true,
+    this.reportColorOutOfRange = true,
+    this.reportFlagLow = true,
+    this.reportFlagHigh = true,
+    this.fontPatientPt = 9,
+    this.fontTestsPt = 9,
+    this.fontDescriptionPt = 8,
   });
 
   final String labName;
@@ -24,8 +33,17 @@ class ReportPrintOptions {
   final bool showFooter;
   final String headerHtml;
   final String footerHtml;
+  final String logoPath;
   final int? headerHeightMm;
   final int? footerHeightMm;
+  final bool showSectionTitles;
+  final bool reportColorInRange;
+  final bool reportColorOutOfRange;
+  final bool reportFlagLow;
+  final bool reportFlagHigh;
+  final int fontPatientPt;
+  final int fontTestsPt;
+  final int fontDescriptionPt;
 
   /// Same rule for View + Print: toggle on AND non-empty HTML.
   bool get paintHeader => showHeader && headerHtml.trim().isNotEmpty;
@@ -59,13 +77,26 @@ Future<Uint8List> buildReportPdf({
 
   // Build letterhead once; omit entirely when settings toggles are off.
   final headerBlock = options.paintHeader
-      ? await _htmlLetterheadPdf(options.headerHtml, heightMm: options.headerHeightMm)
+      ? await _htmlLetterheadPdf(
+          options.headerHtml,
+          heightMm: options.headerHeightMm,
+          logoPath: options.logoPath,
+          labLabel: options.labName,
+        )
       : null;
   final footerBlock = options.paintFooter
-      ? await _htmlLetterheadPdf(options.footerHtml, heightMm: options.footerHeightMm)
+      ? await _htmlLetterheadPdf(
+          options.footerHtml,
+          heightMm: options.footerHeightMm,
+          logoPath: options.logoPath,
+          labLabel: options.labName,
+        )
       : null;
 
   final doc = pw.Document();
+  final testFont = options.fontTestsPt.clamp(6, 24);
+  final descriptionFont = options.fontDescriptionPt.clamp(6, 24);
+
   doc.addPage(
     pw.MultiPage(
       pageFormat: format,
@@ -116,20 +147,65 @@ Future<Uint8List> buildReportPdf({
             testName: testName,
             description: descByTest[testName] ?? '',
             lines: byTest[testName]!,
+            showSectionTitles: options.showSectionTitles,
+            fontTestsPt: testFont,
+            fontDescriptionPt: descriptionFont,
+            reportColorInRange: options.reportColorInRange,
+            reportColorOutOfRange: options.reportColorOutOfRange,
+            reportFlagLow: options.reportFlagLow,
+            reportFlagHigh: options.reportFlagHigh,
           ),
           pw.SizedBox(height: 12),
         ],
         if (lines.isEmpty)
-          pw.Text('No readings yet.', style: const pw.TextStyle(color: PdfColors.grey600, fontSize: 10)),
+          pw.Text('No readings yet.', style: pw.TextStyle(color: PdfColors.grey600, fontSize: 10)),
       ],
     ),
   );
   return doc.save();
 }
 
-Future<pw.Widget?> _htmlLetterheadPdf(String html, {int? heightMm}) async {
+Future<pw.Widget?> _htmlLetterheadPdf(
+  String html, {
+  int? heightMm,
+  String logoPath = '',
+  String labLabel = 'Lab',
+}) async {
   final trimmed = html.trim();
-  if (trimmed.isEmpty) return null;
+  if (trimmed.isEmpty) {
+    if (logoPath.trim().isEmpty) return null;
+    final file = File(logoPath);
+    if (!await file.exists()) return null;
+    final imgBytes = await file.readAsBytes();
+    final headerTitle = labLabel.trim().isEmpty ? 'Lab' : labLabel;
+    final content = pw.Container(
+      width: double.infinity,
+      decoration: pw.BoxDecoration(
+        color: PdfColor.fromHex('#1e3a6e'),
+        borderRadius: pw.BorderRadius.circular(4),
+      ),
+      padding: const pw.EdgeInsets.fromLTRB(12, 10, 12, 8),
+      child: pw.Row(
+        children: [
+          pw.Image(pw.MemoryImage(imgBytes), width: 42, height: 42, fit: pw.BoxFit.contain),
+          pw.SizedBox(width: 10),
+          pw.Expanded(
+            child: pw.Text(
+              headerTitle,
+              style: pw.TextStyle(color: PdfColors.white, fontSize: 16, fontWeight: pw.FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (heightMm != null && heightMm > 0) {
+      return pw.ConstrainedBox(
+        constraints: pw.BoxConstraints(maxHeight: heightMm * PdfPageFormat.mm),
+        child: content,
+      );
+    }
+    return content;
+  }
 
   final bg = _firstColor(trimmed) ?? PdfColor.fromHex('#1e3a6e');
   final lines = _htmlTextLines(trimmed);
@@ -188,7 +264,7 @@ Future<pw.Widget?> _htmlLetterheadPdf(String html, {int? heightMm}) async {
                   child: pw.Text(
                     line,
                     textAlign: pw.TextAlign.center,
-                    style: const pw.TextStyle(color: PdfColors.white, fontSize: 9),
+                    style: pw.TextStyle(color: PdfColors.white, fontSize: 9),
                   ),
                 ),
             ],
@@ -268,6 +344,13 @@ pw.Widget _testBlock({
   required String testName,
   required String description,
   required List<ReportLine> lines,
+  required bool showSectionTitles,
+  required int fontTestsPt,
+  required int fontDescriptionPt,
+  required bool reportColorInRange,
+  required bool reportColorOutOfRange,
+  required bool reportFlagLow,
+  required bool reportFlagHigh,
 }) {
   return pw.Column(
     crossAxisAlignment: pw.CrossAxisAlignment.stretch,
@@ -296,7 +379,10 @@ pw.Widget _testBlock({
         ),
         padding: const pw.EdgeInsets.all(6),
         child: pw.Center(
-          child: pw.Text(testName, style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10)),
+          child: pw.Text(
+            testName,
+            style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: fontTestsPt.toDouble()),
+          ),
         ),
       ),
       pw.Table(
@@ -317,7 +403,16 @@ pw.Widget _testBlock({
               _th('Reffence Range', center: true),
             ],
           ),
-          ..._paramPdfRows(lines),
+          ..._paramPdfRows(
+            lines,
+            showSectionTitles: showSectionTitles,
+            reportColorInRange: reportColorInRange,
+            reportColorOutOfRange: reportColorOutOfRange,
+            reportFlagLow: reportFlagLow,
+            reportFlagHigh: reportFlagHigh,
+            fontTestsPt: fontTestsPt,
+            fontDescriptionPt: fontDescriptionPt,
+          ),
         ],
       ),
       // Web: <td colspan="4">Descrption:…</td>
@@ -337,11 +432,11 @@ pw.Widget _testBlock({
               children: [
                 pw.TextSpan(
                   text: 'Descrption:',
-                  style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 8),
+                  style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: fontDescriptionPt.toDouble()),
                 ),
                 pw.TextSpan(
                   text: description.trim(),
-                  style: const pw.TextStyle(fontSize: 8),
+                  style: pw.TextStyle(fontSize: fontDescriptionPt.toDouble()),
                 ),
               ],
             ),
@@ -351,19 +446,32 @@ pw.Widget _testBlock({
   );
 }
 
-List<pw.TableRow> _paramPdfRows(List<ReportLine> lines) {
+List<pw.TableRow> _paramPdfRows(
+  List<ReportLine> lines, {
+    required bool showSectionTitles,
+    required bool reportColorInRange,
+    required bool reportColorOutOfRange,
+    required bool reportFlagLow,
+    required bool reportFlagHigh,
+    required int fontTestsPt,
+    required int fontDescriptionPt,
+  }) {
   final rows = <pw.TableRow>[];
   String? lastSection;
   for (final line in lines) {
     final section = line.sectionTitle?.trim();
-    if (section != null && section.isNotEmpty && section != lastSection) {
+    final hasSection = section != null && section.isNotEmpty;
+    if (showSectionTitles && hasSection && section != lastSection) {
       lastSection = section;
       rows.add(
         pw.TableRow(
           children: [
             pw.Padding(
               padding: const pw.EdgeInsets.all(5),
-              child: pw.Text(section, style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9)),
+              child: pw.Text(
+                section,
+                style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: fontTestsPt.toDouble()),
+              ),
             ),
             pw.SizedBox(),
             pw.SizedBox(),
@@ -371,17 +479,18 @@ List<pw.TableRow> _paramPdfRows(List<ReportLine> lines) {
           ],
         ),
       );
-    } else if (section == null || section.isEmpty) {
+    } else if (!showSectionTitles || !hasSection) {
       lastSection = null;
     }
-    final indent = section != null && section.isNotEmpty;
+    final indent = hasSection;
     rows.add(
       pw.TableRow(
         children: [
-          _td(indent ? '    ${line.parameterTitle}' : line.parameterTitle),
-          _td(line.value.isEmpty ? '—' : line.value, bold: true),
-          _td(line.unit == '—' ? '' : line.unit),
-          _td(line.refRange.isEmpty ? '—' : line.refRange, center: true),
+          _td(indent ? '    ${line.parameterTitle}' : line.parameterTitle,
+              fontSize: fontTestsPt.toDouble()),
+          _td(line.value.isEmpty ? '—' : line.value, bold: true, fontSize: fontTestsPt.toDouble()),
+          _td(line.unit == '—' ? '' : line.unit, fontSize: fontTestsPt.toDouble()),
+          _td(line.refRange.isEmpty ? '—' : line.refRange, center: true, fontSize: fontTestsPt.toDouble()),
         ],
       ),
     );
@@ -407,7 +516,7 @@ pw.Widget _bold(String text) => pw.Padding(
 
 pw.Widget _plain(String text) => pw.Padding(
       padding: const pw.EdgeInsets.symmetric(vertical: 3, horizontal: 2),
-      child: pw.Text(text, style: const pw.TextStyle(fontSize: 9)),
+      child: pw.Text(text, style: pw.TextStyle(fontSize: 9)),
     );
 
 pw.Widget _th(String text, {bool center = false}) => pw.Padding(
@@ -419,13 +528,13 @@ pw.Widget _th(String text, {bool center = false}) => pw.Padding(
       ),
     );
 
-pw.Widget _td(String text, {bool bold = false, bool center = false}) => pw.Padding(
+pw.Widget _td(String text, {bool bold = false, bool center = false, double fontSize = 9}) => pw.Padding(
       padding: const pw.EdgeInsets.all(5),
       child: pw.Text(
         text,
         textAlign: center ? pw.TextAlign.center : pw.TextAlign.left,
         style: pw.TextStyle(
-          fontSize: 9,
+          fontSize: fontSize,
           fontWeight: bold ? pw.FontWeight.bold : pw.FontWeight.normal,
         ),
       ),

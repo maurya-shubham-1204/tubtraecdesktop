@@ -61,8 +61,17 @@ class _ReportPageState extends State<ReportPage> {
       showFooter: s.showReportFooter,
       headerHtml: s.reportHeaderHtml,
       footerHtml: s.reportFooterHtml,
+      logoPath: s.logoPath,
       headerHeightMm: s.reportHeaderHeightMm,
       footerHeightMm: s.reportFooterHeightMm,
+      showSectionTitles: s.showReportSectionTitles,
+      reportColorInRange: s.reportColorInRange,
+      reportColorOutOfRange: s.reportColorOutOfRange,
+      reportFlagLow: s.reportFlagLow,
+      reportFlagHigh: s.reportFlagHigh,
+      fontPatientPt: s.reportFontPatientPt ?? 9,
+      fontTestsPt: s.reportFontTestsPt ?? 9,
+      fontDescriptionPt: s.reportFontDescriptionPt ?? 8,
     );
   }
 
@@ -133,8 +142,17 @@ class _ReportPageState extends State<ReportPage> {
       showFooter: s?.showReportFooter ?? true,
       headerHtml: s?.reportHeaderHtml ?? '',
       footerHtml: s?.reportFooterHtml ?? '',
+      logoPath: s?.logoPath ?? '',
       headerHeightMm: s?.reportHeaderHeightMm,
       footerHeightMm: s?.reportFooterHeightMm,
+      showSectionTitles: s?.showReportSectionTitles ?? true,
+      reportColorInRange: s?.reportColorInRange ?? true,
+      reportColorOutOfRange: s?.reportColorOutOfRange ?? true,
+      reportFlagLow: s?.reportFlagLow ?? true,
+      reportFlagHigh: s?.reportFlagHigh ?? true,
+      fontPatientPt: s?.reportFontPatientPt ?? 9,
+      fontTestsPt: s?.reportFontTestsPt ?? 9,
+      fontDescriptionPt: s?.reportFontDescriptionPt ?? 8,
     );
   }
 

@@ -14,6 +14,13 @@ class AppSettings extends Table {
   TextColumn get licenseKey => text().withDefault(const Constant(''))();
   TextColumn get licenseVer => text().withDefault(const Constant(''))();
   TextColumn get labName => text().withDefault(const Constant('My Lab'))();
+  TextColumn get address => text().withDefault(const Constant(''))();
+  TextColumn get contact => text().withDefault(const Constant(''))();
+  TextColumn get email => text().withDefault(const Constant(''))();
+  TextColumn get websiteUrl => text().withDefault(const Constant(''))();
+  TextColumn get additionalInfo => text().withDefault(const Constant(''))();
+  TextColumn get logoPath => text().withDefault(const Constant(''))();
+  IntColumn get defaultDoctorCommissionPercent => integer().withDefault(const Constant(0))();
   BoolColumn get registered => boolean().withDefault(const Constant(false))();
   BoolColumn get securityEnabled => boolean().withDefault(const Constant(false))();
   TextColumn get passwordHash => text().nullable()();
@@ -23,6 +30,15 @@ class AppSettings extends Table {
   /// Match web lab_settings.show_report_header / show_report_footer.
   BoolColumn get showReportHeader => boolean().withDefault(const Constant(true))();
   BoolColumn get showReportFooter => boolean().withDefault(const Constant(true))();
+  BoolColumn get showReportSectionTitles => boolean().withDefault(const Constant(true))();
+  /// Web report font and color settings.
+  IntColumn get reportFontPatientPt => integer().nullable()();
+  IntColumn get reportFontTestsPt => integer().nullable()();
+  IntColumn get reportFontDescriptionPt => integer().nullable()();
+  BoolColumn get reportColorInRange => boolean().withDefault(const Constant(true))();
+  BoolColumn get reportColorOutOfRange => boolean().withDefault(const Constant(true))();
+  BoolColumn get reportFlagLow => boolean().withDefault(const Constant(true))();
+  BoolColumn get reportFlagHigh => boolean().withDefault(const Constant(true))();
   /// Web `report_header_html` / `report_footer_html` (HTML letterhead).
   TextColumn get reportHeaderHtml => text().withDefault(const Constant(''))();
   TextColumn get reportFooterHtml => text().withDefault(const Constant(''))();
@@ -43,6 +59,32 @@ class Doctors extends Table {
   RealColumn get commissionPercent => real().withDefault(const Constant(0))();
   RealColumn get wallet => real().withDefault(const Constant(0))();
   BoolColumn get isInternal => boolean().withDefault(const Constant(false))();
+  BoolColumn get deleteStatus => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+}
+
+class DoctorPercents extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get patientId => integer().references(Patients, #id)();
+  IntColumn get doctorId => integer().references(Doctors, #id)();
+  RealColumn get amount => real().withDefault(const Constant(0))();
+  RealColumn get percent => real().withDefault(const Constant(0))();
+  RealColumn get payableAmount => real().withDefault(const Constant(0))();
+  BoolColumn get status => boolean().withDefault(const Constant(true))();
+  BoolColumn get deleteStatus => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+}
+
+class DoctorCommissionItems extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get doctorPercentId => integer().references(DoctorPercents, #id)();
+  IntColumn get patientTestId => integer().nullable().references(PatientTests, #id)();
+  IntColumn get testId => integer().references(LabTests, #id)();
+  TextColumn get testName => text().withDefault(const Constant(''))();
+  RealColumn get billedAmount => real().withDefault(const Constant(0))();
+  RealColumn get percentApplied => real().withDefault(const Constant(0))();
+  RealColumn get commissionAmount => real().withDefault(const Constant(0))();
+  BoolColumn get status => boolean().withDefault(const Constant(true))();
   BoolColumn get deleteStatus => boolean().withDefault(const Constant(false))();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
 }
@@ -126,6 +168,8 @@ class TestReadings extends Table {
 @DriftDatabase(tables: [
   AppSettings,
   Doctors,
+  DoctorPercents,
+  DoctorCommissionItems,
   LabTests,
   TestParameters,
   Patients,
@@ -138,7 +182,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.forTesting(super.e);
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 9;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -209,6 +253,51 @@ class AppDatabase extends _$AppDatabase {
                     ELSE report_footer_html END
               ''');
             } catch (_) {}
+          }
+          if (from < 6) {
+            Future<void> addIfMissing(TableInfo table, GeneratedColumn col) async {
+              try {
+                await m.addColumn(table, col);
+              } catch (_) {
+                // Already present (manual patch / re-run).
+              }
+            }
+
+            await addIfMissing(appSettings, appSettings.showReportSectionTitles);
+            await addIfMissing(appSettings, appSettings.reportFontPatientPt);
+            await addIfMissing(appSettings, appSettings.reportFontTestsPt);
+            await addIfMissing(appSettings, appSettings.reportFontDescriptionPt);
+            await addIfMissing(appSettings, appSettings.reportColorInRange);
+            await addIfMissing(appSettings, appSettings.reportColorOutOfRange);
+            await addIfMissing(appSettings, appSettings.reportFlagLow);
+            await addIfMissing(appSettings, appSettings.reportFlagHigh);
+          }
+          if (from < 7) {
+            Future<void> addIfMissing(TableInfo table, GeneratedColumn col) async {
+              try {
+                await m.addColumn(table, col);
+              } catch (_) {
+                // Already present (manual patch / re-run).
+              }
+            }
+
+            await addIfMissing(appSettings, appSettings.address);
+            await addIfMissing(appSettings, appSettings.contact);
+            await addIfMissing(appSettings, appSettings.email);
+            await addIfMissing(appSettings, appSettings.websiteUrl);
+            await addIfMissing(appSettings, appSettings.additionalInfo);
+            await addIfMissing(appSettings, appSettings.defaultDoctorCommissionPercent);
+          }
+          if (from < 8) {
+            try {
+              await m.addColumn(appSettings, appSettings.logoPath);
+            } catch (_) {
+              // Already present (manual patch / re-run).
+            }
+          }
+          if (from < 9) {
+            await m.createTable(doctorPercents);
+            await m.createTable(doctorCommissionItems);
           }
         },
       );

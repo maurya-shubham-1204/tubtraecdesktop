@@ -15,6 +15,8 @@ class PortablePack {
     final patients = await db.select(db.patients).get();
     final patientTests = await db.select(db.patientTests).get();
     final readings = await db.select(db.testReadings).get();
+    final doctorPercents = await db.select(db.doctorPercents).get();
+    final doctorCommissionItems = await db.select(db.doctorCommissionItems).get();
 
     return {
       'format': schema,
@@ -22,7 +24,15 @@ class PortablePack {
       'exported_at': DateTime.now().toUtc().toIso8601String(),
       'manifest': {
         'lab_code': settings.labCode,
+        'org_name': settings.labName,
         'lab_name': settings.labName,
+        'address': settings.address,
+        'contact': settings.contact,
+        'email': settings.email,
+        'website_url': settings.websiteUrl,
+        'additional_info': settings.additionalInfo,
+        'logo_path': settings.logoPath,
+        'default_doctor_commission_percent': settings.defaultDoctorCommissionPercent,
         'license_key': settings.licenseKey,
         'license_ver': settings.licenseVer,
         'registered': settings.registered,
@@ -33,6 +43,14 @@ class PortablePack {
         'import_prompt_done': settings.importPromptDone,
         'show_report_header': settings.showReportHeader,
         'show_report_footer': settings.showReportFooter,
+        'show_report_section_titles': settings.showReportSectionTitles,
+        'report_font_patient_pt': settings.reportFontPatientPt,
+        'report_font_tests_pt': settings.reportFontTestsPt,
+        'report_font_description_pt': settings.reportFontDescriptionPt,
+        'report_color_in_range': settings.reportColorInRange,
+        'report_color_out_of_range': settings.reportColorOutOfRange,
+        'report_flag_low': settings.reportFlagLow,
+        'report_flag_high': settings.reportFlagHigh,
         'report_header_html': settings.reportHeaderHtml,
         'report_footer_html': settings.reportFooterHtml,
         'report_header_height_mm': settings.reportHeaderHeightMm,
@@ -140,6 +158,36 @@ class PortablePack {
             'updated_at': r.updatedAt.toUtc().toIso8601String(),
           },
       ],
+      'doctor_percent': [
+        for (final s in doctorPercents)
+          {
+            'id': s.id,
+            'patient_id': s.patientId,
+            'doctor_id': s.doctorId,
+            'amount': s.amount,
+            'percent': s.percent,
+            'payable_amount': s.payableAmount,
+            'status': s.status,
+            'delete_status': s.deleteStatus,
+            'created_at': s.createdAt.toUtc().toIso8601String(),
+          },
+      ],
+      'doctor_commission_items': [
+        for (final i in doctorCommissionItems)
+          {
+            'id': i.id,
+            'doctor_percent_id': i.doctorPercentId,
+            'patient_test_id': i.patientTestId,
+            'test_id': i.testId,
+            'test_name': i.testName,
+            'billed_amount': i.billedAmount,
+            'percent_applied': i.percentApplied,
+            'commission_amount': i.commissionAmount,
+            'status': i.status,
+            'delete_status': i.deleteStatus,
+            'created_at': i.createdAt.toUtc().toIso8601String(),
+          },
+      ],
     };
   }
 
@@ -160,8 +208,12 @@ class PortablePack {
     final patients = (root['patients'] as List? ?? const []).cast<dynamic>();
     final patientTests = (root['patient_tests'] as List? ?? const []).cast<dynamic>();
     final readings = (root['test_readings'] as List? ?? const []).cast<dynamic>();
+    final doctorPercents = (root['doctor_percent'] as List? ?? const []).cast<dynamic>();
+    final doctorCommissionItems = (root['doctor_commission_items'] as List? ?? const []).cast<dynamic>();
 
     await db.transaction(() async {
+      await db.delete(db.doctorCommissionItems).go();
+      await db.delete(db.doctorPercents).go();
       await db.delete(db.testReadings).go();
       await db.delete(db.patientTests).go();
       await db.delete(db.patients).go();
@@ -175,7 +227,16 @@ class PortablePack {
               labCode: Value('${manifest['lab_code'] ?? ''}'),
               licenseKey: Value('${manifest['license_key'] ?? ''}'),
               licenseVer: Value('${manifest['license_ver'] ?? ''}'),
-              labName: Value('${manifest['lab_name'] ?? 'My Lab'}'),
+              labName: Value('${manifest['lab_name'] ?? manifest['org_name'] ?? 'My Lab'}'),
+              address: Value('${manifest['address'] ?? ''}'),
+              contact: Value('${manifest['contact'] ?? ''}'),
+              email: Value('${manifest['email'] ?? ''}'),
+              websiteUrl: Value('${manifest['website_url'] ?? ''}'),
+              additionalInfo: Value('${manifest['additional_info'] ?? ''}'),
+              logoPath: Value('${manifest['logo_path'] ?? ''}'),
+              defaultDoctorCommissionPercent: Value(
+                _intOrNull(manifest['default_doctor_commission_percent']) ?? 0,
+              ),
               registered: Value(manifest['registered'] == true),
               securityEnabled: Value(manifest['security_enabled'] == true),
               passwordHash: Value(manifest['password_hash'] as String?),
@@ -184,6 +245,14 @@ class PortablePack {
               registeredAt: Value(_dt(manifest['registered_at'])),
               showReportHeader: Value(manifest['show_report_header'] != false),
               showReportFooter: Value(manifest['show_report_footer'] != false),
+              showReportSectionTitles: Value(manifest['show_report_section_titles'] != false),
+              reportFontPatientPt: Value(_intOrNull(manifest['report_font_patient_pt']) ?? 9),
+              reportFontTestsPt: Value(_intOrNull(manifest['report_font_tests_pt']) ?? 9),
+              reportFontDescriptionPt: Value(_intOrNull(manifest['report_font_description_pt']) ?? 8),
+              reportColorInRange: Value(manifest['report_color_in_range'] != false),
+              reportColorOutOfRange: Value(manifest['report_color_out_of_range'] != false),
+              reportFlagLow: Value(manifest['report_flag_low'] != false),
+              reportFlagHigh: Value(manifest['report_flag_high'] != false),
               reportHeaderHtml: Value(_manifestHtml(
                 manifest['report_header_html'] ?? manifest['report_header_text'],
               )),
@@ -315,6 +384,42 @@ class PortablePack {
                 value: Value('${r['reading'] ?? r['value'] ?? ''}'),
                 unit: Value('${r['unit'] ?? ''}'),
                 updatedAt: Value(_dt(r['updated_at']) ?? DateTime.now()),
+              ),
+            );
+      }
+
+      for (final raw in doctorPercents) {
+        final s = Map<String, dynamic>.from(raw as Map);
+        await db.into(db.doctorPercents).insert(
+              DoctorPercentsCompanion.insert(
+                id: Value(s['id'] as int),
+                patientId: s['patient_id'] as int,
+                doctorId: s['doctor_id'] as int,
+                amount: Value(_num(s['amount'])),
+                percent: Value(_num(s['percent'])),
+                payableAmount: Value(_num(s['payable_amount'])),
+                status: Value(s['status'] != false),
+                deleteStatus: Value(s['delete_status'] == true),
+                createdAt: Value(_dt(s['created_at']) ?? DateTime.now()),
+              ),
+            );
+      }
+
+      for (final raw in doctorCommissionItems) {
+        final i = Map<String, dynamic>.from(raw as Map);
+        await db.into(db.doctorCommissionItems).insert(
+              DoctorCommissionItemsCompanion.insert(
+                id: Value(i['id'] as int),
+                doctorPercentId: i['doctor_percent_id'] as int,
+                patientTestId: Value(i['patient_test_id'] as int?),
+                testId: i['test_id'] as int,
+                testName: Value('${i['test_name'] ?? ''}'),
+                billedAmount: Value(_num(i['billed_amount'])),
+                percentApplied: Value(_num(i['percent_applied'])),
+                commissionAmount: Value(_num(i['commission_amount'])),
+                status: Value(i['status'] != false),
+                deleteStatus: Value(i['delete_status'] == true),
+                createdAt: Value(_dt(i['created_at']) ?? DateTime.now()),
               ),
             );
       }
