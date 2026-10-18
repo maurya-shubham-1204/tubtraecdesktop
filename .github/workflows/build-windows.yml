@@ -7,6 +7,7 @@ on:
     paths:
       - 'lib/**'
       - 'windows/**'
+      - 'installer/**'
       - 'pubspec.yaml'
       - 'pubspec.lock'
       - '.github/workflows/build-windows.yml'
@@ -28,27 +29,36 @@ jobs:
       - name: Enable Windows desktop
         run: flutter config --enable-windows-desktop
 
+      - name: Generate Windows platform files
+        run: flutter create --platforms=windows .
+
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Run desktop tests
+        run: flutter test
 
       - name: Build Windows release
         run: flutter build windows --release
 
-      - name: Create zip artifact
+      - name: Install Inno Setup
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build Windows installer
         shell: powershell
         run: |
-          $output = Join-Path $PWD 'build/windows/x64/runner/Release'
-          $zip = Join-Path $PWD 'tubtrace_desktop_windows_release.zip'
-          if (Test-Path $output) {
-            Compress-Archive -Path (Join-Path $output '*') -DestinationPath $zip -Force
-            Write-Host "Created $zip"
-          } else {
-            throw "Windows build output not found: $output"
+          $compiler = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6/ISCC.exe'
+          if (-not (Test-Path $compiler)) {
+            throw "Inno Setup compiler not found: $compiler"
+          }
+          & $compiler 'installer/tubtrace_desktop.iss'
+          if ($LASTEXITCODE -ne 0) {
+            throw "Inno Setup failed with exit code $LASTEXITCODE"
           }
 
-      - name: Upload Windows artifact
+      - name: Upload Windows installer
         uses: actions/upload-artifact@v4
         with:
-          name: tubtrace-desktop-windows
-          path: tubtrace_desktop_windows_release.zip
+          name: tubtrace-desktop-windows-installer
+          path: dist/TubTraceDesktopSetup.exe
           if-no-files-found: error
